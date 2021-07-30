@@ -3,17 +3,18 @@ export default [{
     _children: [
         {
             _name: "CSidebarNavItem",
-            name: "First",
-            to: "/",
+            name: "+ New Employee",
+            _class: "bg-success",
+            to: "new",
         }, {
             _name: "CSidebarNavItem",
             name: "Second",
-            to: "/a",
+            to: "/",
 
         }, {
             _name: "CSidebarNavItem",
             name: "Third",
-            to: "/b",
+            to: "/",
 
         }
     ]
