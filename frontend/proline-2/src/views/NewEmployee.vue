@@ -37,7 +37,9 @@
     <CCardBody>
       <Socials/>
     </CCardBody>
+
   </CCard>
+
 </template>
 
 <script>

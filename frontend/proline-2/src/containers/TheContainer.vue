@@ -3,7 +3,7 @@
     <TheSidebar/>
     <CWrapper>
       <div class="c-body">
-        <main class="c-main">
+        <main>
           <CContainer fluid>
             <transition name="fade" mode="out-in">
               <RouterView/>

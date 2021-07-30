@@ -4,19 +4,29 @@
       <template #no-items-view>
         <div/>
       </template>
+      <template #delete="{index}">
+        <td>
+          <CButton color="danger" @click="delete_item(index)" size="sm">-</CButton>
+        </td>
+      </template>
+      <template #icon="{item}">
+        <td>
+          <CIcon :name="item.icon"/>
+        </td>
+      </template>
     </CDataTable>
     <CRow>
       <CCol sm="2">
-        <CSelect :options="socials" placeholder="<empty>" />
+        <CSelect :options="options" placeholder="<empty>" :value.sync="social"/>
       </CCol>
       <CCol sm="2">
-        <CInput name="nick" placeholder="Nick"/>
+        <CInput name="nick" placeholder="Nick" v-model="nick"/>
       </CCol>
       <CCol sm="7">
-        <CInput name="link" placeholder="Link" />
+        <CInput name="link" placeholder="Link" v-model="link"/>
       </CCol>
       <CCol sm>
-        <CButton color="success">+</CButton>
+        <CButton color="success" @click="add">+</CButton>
       </CCol>
     </CRow>
   </div>
@@ -24,30 +34,55 @@
 
 <script>
 const fields = [{
+  key: "icon",
+  label: "",
+  _classes: "col-xs-1"
+}, {
   key: "name",
   label: "Name",
-  _classes: "col-md-2"
+  _classes: "col-sm-2"
 }, {
   key: "nick",
   label: "Nick",
-  _classes: "col-md-2"
+  _classes: "col-sm-2"
 }, {
   key: "link",
   label: "Link",
-  _classes: "col-md-8"
+  _classes: "col-xl-7"
+}, {
+  key: "delete",
+  label: '',
+  _classes: "col-xs-1"
 }]
 
 import socials from "./_socials"
 
 
-
 export default {
   name: "Socials",
-  data () {
+  data() {
     return {
       items: [],
       fields: fields,
-      socials: socials
+      socials: socials,
+      social: {},
+      nick: '',
+      link: ''
+    }
+  },
+  computed: {
+    options: function () {
+      return socials.map(function (s) {
+        return {label: s.name, value: s}
+      })
+    }
+  },
+  methods: {
+    add() {
+      this.items.push({icon: this.social.icon, name: this.social.name, nick: this.nick, link: this.link})
+    },
+    delete_item(id) {
+      this.items.splice(id, 1)
     }
   }
 }
