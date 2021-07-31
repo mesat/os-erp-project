@@ -27,7 +27,7 @@
           <CTextarea name="bio" label="Bio" rows="10" placeholder="Short bio of the employee..."/>
         </CCol>
         <CCol>
-          <CInput type="file" name="img" label="Image"></CInput>
+          <CInputFile custom/>
         </CCol>
       </CRow>
     </CCardBody>
@@ -35,7 +35,7 @@
       <strong>Communication Info</strong>
     </CCardHeader>
     <CCardBody>
-      <Socials/>
+      <Socials v-model="socials" @input="sin"/>
     </CCardBody>
 
   </CCard>
@@ -44,8 +44,19 @@
 
 <script>
 import Socials from "../components/Socials";
+
 export default {
   name: "NewEmployee",
+  data() {
+    return {
+      socials: []
+    }
+  },
+  methods: {
+    sin() {
+
+    }
+  },
   components: {
     Socials
   }

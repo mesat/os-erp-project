@@ -60,6 +60,7 @@ import socials from "./_socials"
 
 export default {
   name: "Socials",
+  props: ['value'],
   data() {
     return {
       items: [],
@@ -71,17 +72,29 @@ export default {
     }
   },
   computed: {
-    options: function () {
+    options() {
       return socials.map(function (s) {
         return {label: s.name, value: s}
       })
     }
   },
+  watch: {
+    value: function (newItems) {
+      this.items = newItems
+    }
+  },
   methods: {
     add() {
-      this.items.push({icon: this.social.icon, name: this.social.name, nick: this.nick, link: this.link})
+      if (typeof(this.social.name) != "undefined" && this.nick !== '' && this.link !== '') {
+        this.$emit('input', this.items)
+        this.items.push({icon: this.social.icon, name: this.social.name, nick: this.nick, link: this.link})
+      } else {
+        // Change This!
+        alert('dont leave fields empty')
+      }
     },
     delete_item(id) {
+      this.$emit('input', this.items)
       this.items.splice(id, 1)
     }
   }
