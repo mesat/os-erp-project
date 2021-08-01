@@ -32,7 +32,14 @@
       </CRow>
     </CCardBody>
     <CCardHeader>
-      <strong>Communication Info</strong>
+      <h2>Communication Info</h2>
+    </CCardHeader>
+    <CCardBody>
+    <CInput name="tel" label="Telephone Number" placeholder="Telephone number"/>
+    <CInput name="e-mail" label="E-Mail" placeholder="Enter mail"/>
+    </CCardBody>
+    <CCardHeader>
+      <strong>Social media</strong>
     </CCardHeader>
     <CCardBody>
       <Socials v-model="socials" @input="sin"/>
