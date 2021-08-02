@@ -22,7 +22,8 @@ export default {
   components: {
     EmployeeCard,
     EmployeeFilter
-  }
+  },
+
 }
 </script>
 
