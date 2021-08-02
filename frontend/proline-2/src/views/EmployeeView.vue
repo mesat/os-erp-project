@@ -37,11 +37,10 @@
 import emp from "./_employee";
 export default {
   name: "EmployeeView",
-  props: ['item'],
+  props: ['itemx'],
   data () {
     return {
-      // eslint-disable-next-line vue/no-dupe-keys
-      item: emp
+      item: {...emp}
     }
   }
 }
