@@ -8,8 +8,8 @@ export default [{
             to: "new",
         }, {
             _name: "CSidebarNavItem",
-            name: "Second",
-            to: "/",
+            name: "Employees",
+            to: "table",
 
         }, {
             _name: "CSidebarNavItem",

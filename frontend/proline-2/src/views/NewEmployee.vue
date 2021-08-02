@@ -35,8 +35,8 @@
       <h2>Communication Info</h2>
     </CCardHeader>
     <CCardBody>
-    <CInput name="tel" label="Telephone Number" placeholder="Telephone number"/>
-    <CInput name="e-mail" label="E-Mail" placeholder="Enter mail"/>
+      <CInput name="tel" label="Telephone Number" type="mail" placeholder="Telephone number"/>
+      <CInput name="e-mail" label="E-Mail" type="tel" placeholder="Enter mail"/>
     </CCardBody>
     <CCardHeader>
       <strong>Social media</strong>

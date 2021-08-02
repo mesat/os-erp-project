@@ -1,9 +1,10 @@
 <template>
   <div class="c-app">
-    <TheSidebar/>
+    <TheSidebar :minimized="minimized"/>
     <CWrapper>
+      <TheHeader @toggle="minimize"/>
       <div class="c-body">
-        <main>
+        <main class="c-main">
           <CContainer fluid>
             <transition name="fade" mode="out-in">
               <RouterView/>
@@ -11,16 +12,36 @@
           </CContainer>
         </main>
       </div>
+      <TheFooter/>
     </CWrapper>
   </div>
 </template>
 
 <script>
 import TheSidebar from "./TheSidebar";
+import TheHeader from "./TheHeader";
+import TheFooter from "./TheFooter";
+
 export default {
   name: "TheContainer",
+  data() {
+    return {
+      minimized: false
+    }
+  },
+  methods: {
+    minimize() {
+      if (this.minimized) {
+        this.minimized = false
+      } else {
+        this.minimized = true
+      }
+    }
+  },
   components: {
-    TheSidebar
+    TheSidebar,
+    TheHeader,
+    TheFooter
   }
 }
 </script>
@@ -30,6 +51,7 @@ export default {
 .fade-leave-active {
   transition: opacity 0.3s;
 }
+
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
