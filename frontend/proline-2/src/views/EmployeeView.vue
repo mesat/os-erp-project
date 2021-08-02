@@ -12,10 +12,10 @@
 import emp from "./_employee";
 export default {
   name: "EmployeeView",
-  props: ['item'],
+  props: ['itemx'],
   data () {
     return {
-      item: emp
+      item: {...emp}
     }
   }
 }
