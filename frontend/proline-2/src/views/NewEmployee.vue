@@ -15,7 +15,7 @@
             </CCol>
             <CRow>
               <CInput
-            label="Date"
+            label="Start Date"
             type="date"
             ></CInput>
             </CRow>

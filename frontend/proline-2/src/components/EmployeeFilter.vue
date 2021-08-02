@@ -22,6 +22,11 @@
           </CRow>
           <CRow>
             <CCol>
+              <CInput name="role" label="Role" placeholder="enter role"/>
+            </CCol>
+          </CRow>
+          <CRow>
+            <CCol>
               <CInput name="date" label="Date" type="date"/>
             </CCol>
             <CCol>
