@@ -39,7 +39,7 @@ export default {
   background: gray;
   border-radius: 10px;
   .card {
-    flex: 0 0 200px;
+    flex: 0 0 150px;
     margin: 5px;
   }
 }
