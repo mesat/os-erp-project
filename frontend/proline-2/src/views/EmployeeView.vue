@@ -9,11 +9,9 @@
           <CCardText align="left">
             <h4>Ahmet SOYLU</h4>
           </CCardText>
-
-
-
         </CCol>
       </CRow>
+
       <CRow>
         <CCol>
           <CCardText align="left">
@@ -21,6 +19,7 @@
           </CCardText>
         </CCol>
       </CRow>
+
       <CRow>
         <CCol>
           <CCardText align="left">
@@ -28,6 +27,19 @@
           </CCardText>
         </CCol>
       </CRow>
+
+      <CRow>
+        <CCol col="8">
+          <CCardText align="right" id="bio">
+            <strong> Biography </strong>
+
+
+          </CCardText>
+        </CCol>
+      </CRow>
+
+
+
     </CCardBody>
   </CCard>
 </template>
@@ -47,5 +59,8 @@ export default {
 </script>
 
 <style scoped>
-
+#id {
+  display: block;
+  border: 20px solid green;
+}
 </style>
