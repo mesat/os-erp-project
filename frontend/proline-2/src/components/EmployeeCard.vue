@@ -30,13 +30,13 @@
       <CRow>
         <CCol col="-10"/>
         <CCol col="2">
-          <CButton color="success">
+          <CButton variant="outline" size="sm" shape="pill" color="success">
             Edit
           </CButton>
         </CCol>
         <CCol col="6"/>
         <CCol col="2">
-          <CButton color="danger">
+          <CButton size="sm" shape="pill" color="danger">
             -
           </CButton>
         </CCol>
