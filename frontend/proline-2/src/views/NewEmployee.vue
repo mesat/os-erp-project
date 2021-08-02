@@ -5,7 +5,12 @@
     </CCardHeader>
     <CCardBody>
       <CRow>
-        <CCol xl="9">
+        <CCol class="order-md-12">
+          <img src="../assets/logo.png" alt="logo" height="150" width="150">
+          <CInputFile custom/>
+        </CCol>
+
+        <CCol md="9" class="order-md-0">
           <CRow>
             <CCol>
               <CInput name="name" label="Name" placeholder="Enter employees name"/>
@@ -14,28 +19,24 @@
               <CInput name="last-name" label="Surname" placeholder="Enter employees surname"/>
             </CCol>
             <CRow>
-              <CInput
-            label="Start Date"
-            type="date"
-            ></CInput>
+              <CCol>
+                <CInput label="Date" type="date"/>
+              </CCol>
             </CRow>
           </CRow>
           <CRow md="2">
             <CInput name="role" label="Role" placeholder="Role in the company"/>
           </CRow>
+          <CRow>
+            <CCol>
+              <CTextarea name="bio" label="Bio" rows="8" placeholder="Short bio of the employee..."/>
+            </CCol>
+          </CRow>
         </CCol>
-        <CCol>
-          <img src="../assets/logo.png" alt="logo" height="150" width="150">
-        </CCol>
+
+
       </CRow>
-      <CRow>
-        <CCol md="9">
-          <CTextarea name="bio" label="Bio" rows="10" placeholder="Short bio of the employee..."/>
-        </CCol>
-        <CCol>
-          <CInputFile custom/>
-        </CCol>
-      </CRow>
+
     </CCardBody>
     <CCardHeader>
       <h2>Communication Info</h2>
@@ -48,11 +49,9 @@
       <strong>Social media</strong>
     </CCardHeader>
     <CCardBody>
-      <Socials v-model="socials" @input="sin"/>
+      <Socials v-model="socials"/>
     </CCardBody>
-
   </CCard>
-
 </template>
 
 <script>
@@ -62,13 +61,15 @@ export default {
   name: "NewEmployee",
   data() {
     return {
-      socials: []
+      name: "",
+      surName: "",
+      date: "",
+      role: "",
+      bio: ""
     }
   },
   methods: {
-    sin() {
 
-    }
   },
   components: {
     Socials

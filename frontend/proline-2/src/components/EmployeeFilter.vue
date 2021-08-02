@@ -39,7 +39,7 @@
         <CRow>
           <CCol col="10"/>
           <CCol col="2">
-            <CButton color="success">
+            <CButton color="success" block>
               filter
             </CButton>
           </CCol>

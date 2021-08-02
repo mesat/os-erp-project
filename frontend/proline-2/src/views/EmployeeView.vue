@@ -4,7 +4,8 @@
 
 <script>
 export default {
-  name: "EmployeeView"
+  name: "EmployeeView",
+  props: ['item']
 }
 </script>
 

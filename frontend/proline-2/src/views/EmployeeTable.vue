@@ -2,13 +2,13 @@
   <div>
     <EmployeeFilter/>
     <div id="employeeContainer">
-      <EmployeeCard card/>
-      <EmployeeCard card/>
-      <EmployeeCard card/>
-      <EmployeeCard card/>
-      <EmployeeCard card/>
-      <EmployeeCard card/>
-      <EmployeeCard card/>
+      <EmployeeCard card :item="emp"/>
+      <EmployeeCard card :item="emp"/>
+      <EmployeeCard card :item="emp"/>
+      <EmployeeCard card :item="emp"/>
+      <EmployeeCard card :item="emp"/>
+      <EmployeeCard card :item="emp"/>
+      <EmployeeCard card :item="emp"/>
     </div>
   </div>
 </template>
@@ -16,6 +16,7 @@
 <script>
 import EmployeeCard from "../components/EmployeeCard";
 import EmployeeFilter from "../components/EmployeeFilter";
+import emp from './_employee';
 
 export default {
   name: "EmployeeTable",
@@ -23,7 +24,11 @@ export default {
     EmployeeCard,
     EmployeeFilter
   },
-
+  data () {
+    return {
+      emp: emp
+    }
+  }
 }
 </script>
 
@@ -31,6 +36,8 @@ export default {
 #employeeContainer {
   display: flex;
   flex-wrap: wrap;
+  background: gray;
+  border-radius: 10px;
   .card {
     flex: 0 0 200px;
     margin: 5px;

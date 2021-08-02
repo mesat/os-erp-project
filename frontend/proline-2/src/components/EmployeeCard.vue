@@ -7,7 +7,7 @@
       <CRow>
         <CCol>
           <CCardText align="center">
-            <h1> AHMET </h1>
+            <h1> {{item.name}} </h1>
           </CCardText>
         </CCol>
       </CRow>
@@ -48,7 +48,8 @@
 
 <script>
 export default {
-  name: "EmployeeCard"
+  name: "EmployeeCard",
+  props: ['item']
 }
 </script>
 
