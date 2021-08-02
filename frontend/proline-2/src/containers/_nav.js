@@ -13,8 +13,8 @@ export default [{
 
         }, {
             _name: "CSidebarNavItem",
-            name: "Third",
-            to: "/",
+            name: "ViewTest",
+            to: "view",
 
         }
     ]
