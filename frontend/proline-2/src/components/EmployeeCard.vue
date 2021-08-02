@@ -1,27 +1,27 @@
 <template>
   <CCard align="left">
     <CCardHeader>
-      <img src="../assets/icons/admin.jpg" hegiht="150" width="150">
+      <img src="../assets/icons/admin.jpg" hegiht="100" width="100">
     </CCardHeader>
     <CCardBody>
       <CRow>
         <CCol>
           <CCardText align="center">
-            <h1> {{item.name}} </h1>
+            <h3> {{item.name}} </h3>
           </CCardText>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
           <CCardText align="center">
-            <h2>SOYLU</h2>
+            <h4>SOYLU</h4>
           </CCardText>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
           <CCardText align="center">
-            <h3>CIO</h3>
+            <strong>CIO</strong>
           </CCardText>
         </CCol>
       </CRow>
