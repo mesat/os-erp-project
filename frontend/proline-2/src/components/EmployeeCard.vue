@@ -26,6 +26,25 @@
         </CCol>
       </CRow>
     </CCardBody>
+    <CCardFooter>
+      <CRow>
+        <CCol col="6"/>
+        <CCol col="2">
+          <CButton color="success">
+            Edit
+          </CButton>
+        </CCol>
+      </CRow>
+      <CRow>
+        <CCol col="6"/>
+        <CCol col="2">
+          <CButton color="danger">
+            Delete
+          </CButton>
+        </CCol>
+      </CRow>
+
+    </CCardFooter>
   </CCard>
 </template>
 
