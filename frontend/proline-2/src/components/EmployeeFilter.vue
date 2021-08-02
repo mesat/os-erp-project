@@ -2,9 +2,9 @@
 
   <CCard>
     <CCardHeader>
-      <CToggler inHeader="true"><CIcon name="cilList" /></CToggler>
+      <CToggler inHeader="true" @click="toggleFilter"><CIcon name="cilList" /></CToggler>
     </CCardHeader>
-    <CCollapse>
+    <CCollapse :show="filterShow">
       lorem ipsum
     </CCollapse>
   </CCard>
@@ -12,7 +12,21 @@
 
 <script>
 export default {
-  name: "EmployeeFilter"
+  name: "EmployeeFilter",
+  data () {
+    return {
+      filterShow: true
+    }
+  },
+  methods: {
+    toggleFilter () {
+      if(this.filterShow) {
+        this.filterShow = false
+      } else {
+        this.filterShow = true
+      }
+    }
+  }
 }
 </script>
 
