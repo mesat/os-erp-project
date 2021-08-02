@@ -6,9 +6,9 @@
     <CCardBody>
       <CRow>
         <CCol>
-          <CCardText align="center">
-            <h3> {{item.name}} </h3>
-          </CCardText>
+      <CCardText align="center">
+        <h3> {{item.name}} </h3>
+      </CCardText>
         </CCol>
       </CRow>
       <CRow>
