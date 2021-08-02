@@ -13,6 +13,12 @@
             <CCol>
               <CInput name="last-name" label="Surname" placeholder="Enter employees surname"/>
             </CCol>
+            <CRow>
+              <CInput
+            label="Date"
+            type="date"
+            ></CInput>
+            </CRow>
           </CRow>
           <CRow md="2">
             <CInput name="role" label="Role" placeholder="Role in the company"/>
@@ -70,8 +76,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 div {
   text-align: left;
 }
+
+
 </style>
