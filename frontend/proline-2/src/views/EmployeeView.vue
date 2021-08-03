@@ -145,6 +145,7 @@ $secondary:       #3c4b64;
   background-color: #b1b7c1;
   margin-bottom: 20px;
   overflow: auto;
+
 }
 
 #telephone{
@@ -169,11 +170,13 @@ $secondary:       #3c4b64;
 }
 #header
 {
-  background-color: #3c4b64;;
+  background-color: #3c4b64;
+
 }
 #body
 {
   background-color: #b1b7c1;
+
 }
 #blok
 {
