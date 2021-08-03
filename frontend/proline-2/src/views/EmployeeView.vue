@@ -7,7 +7,7 @@
       <CRow>
         <CCol>
           <CCardText align="left">
-            <h4>Ahmet SOYLU</h4>
+            <h4>{{ item.name }}</h4>
           </CCardText>
         </CCol>
       </CRow>
@@ -15,29 +15,42 @@
       <CRow>
         <CCol>
           <CCardText align="left">
-            <strong>CIO</strong>
+            <strong>{{item.role}}</strong>
           </CCardText>
         </CCol>
       </CRow>
 
       <CRow>
-        <CCol col="3">
+        <CCol>
           <CCardText align="left">
-            <strong>Start Date</strong>
+            <strong>{{ item.date }}</strong>
           </CCardText>
-        </CCol>
-
-        <CCol col="9">
-          <CCardText align="center" id="bio">
-            <strong> Biography </strong>
-          </CCardText>
-
-
         </CCol>
       </CRow>
 
+      <CRow>
+        <CCol col="">
+          <CCardText align="right" id="bio">
+            <strong> {{ item.bio }} </strong>
+          </CCardText>
+        </CCol>
+      </CRow>
 
+      <CCRow>
+        <CCol>
+          <CCardText>
+            <strong> {{item.iletisimBilgileri}} </strong>
+          </CCardText>
+        </CCol>
+      </CCRow>
 
+      <CCRow>
+        <CCol>
+          <CCardText>
+            <strong> {{item.sosyalMedya}} </strong>
+          </CCardText>
+        </CCol>
+      </CCRow>
 
 
 
@@ -67,4 +80,3 @@ border-style: solid;
 
 }
 </style>
-
