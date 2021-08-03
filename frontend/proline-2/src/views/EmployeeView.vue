@@ -101,15 +101,16 @@ export default {
 }
 
 #bio {
+  overflow: scroll;
   font-family:"Arial";
   border-style: solid;
   box-sizing: content-box;
   padding:10px;
   height: 400px;
+  text-overflow: ellipsis;
+
   margin-right:50px;
   margin-left:200px;
-  text-overflow: ellipsis;
-  overflow: hidden;
   color:rgb(60,60,60);
 
 }
