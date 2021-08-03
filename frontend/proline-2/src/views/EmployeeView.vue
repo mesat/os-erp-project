@@ -2,20 +2,14 @@
   <CCard align="left">
     <CCardHeader id="header">
       <img src="../assets/icons/admin.jpg" height="100" width="100" alt="img"/>
-    </CCardHeader>
-    <CCardBody id="body">
-      <CRow>
-        <CCol>
-          <CCardText>
-          <span id="name">
+      <span id="name">
             {{ item.name }}
           </span>
-          <span id="surName">
+      <span id="surName">
             {{ item.surName }}
           </span>
-          </CCardText>
-        </CCol>
-      </CRow>
+    </CCardHeader>
+    <CCardBody id="body">
 
       <CRow>
         <CCol>
@@ -28,7 +22,7 @@
       <CRow>
         <CCol>
           <CCardText align="left" id="date">
-            <span>{{ item.date }}</span>
+            Start Date <strong>{{ item.date }}</strong>
           </CCardText>
         </CCol>
       </CRow>
@@ -58,7 +52,12 @@
         </CCol>
       </CRow>
 
+      <CDataTable :fields="fields">
 
+
+
+
+      </CDataTable>
 
 
 
@@ -108,19 +107,19 @@ export default {
 $secondary-50:    #9da5b1;
 $secondary:       #3c4b64;
 #name {
-  color:rgb(60,60,60);
-  font-size: 25px;
+  color:rgb(255,255,255);
+  font-size: 45px;
 }
 
 #surName{
-  color:rgb(60,60,60);
-  font-size: 25px;
+  color:rgb(255,255,255);
+  font-size: 45px;
 }
 
 #role{
-  font-family:"Brush Script MT";
+  font-family:"Berlin Sans FB";
   color:rgb(60,60,60);
-  font-size: 25px;
+  font-size: 35px;
 
 }
 
@@ -131,23 +130,21 @@ $secondary:       #3c4b64;
 }
 
 #bio {
-  overflow: scroll;
   border-style: solid;
   box-sizing: content-box;
-  padding:10px;
+  padding: 10px;
   height: 400px;
   text-overflow: ellipsis;
-  margin-right:50px;
-  margin-left:200px;
+  margin-right: 50px;
+  margin-left: 200px;
   text-overflow: ellipsis;
-  overflow: scroll;
-  color:rgb(60,60,60);
+  color: rgb(60, 60, 60);
   border-radius: 8px;
   border-width: medium;
-  border-color:#3c4b64;;
+  border-color: #3c4b64;;
   background-color: #b1b7c1;
   margin-bottom: 20px;
-
+  overflow: auto;
 }
 
 #telephone{
@@ -167,6 +164,7 @@ $secondary:       #3c4b64;
   height: 20px;
   color:rgb(60,60,60);
   font-size: 16px;
+  margin-bottom: 15px;
 
 }
 #header
@@ -184,8 +182,11 @@ $secondary:       #3c4b64;
   border-width: medium;
   border-color: rgba(150, 150,150, 0.6);
   text-align: center;
-
+  font-family:"Arial Rounded MT Bold";
 
 
 }
+
+
+
 </style>
