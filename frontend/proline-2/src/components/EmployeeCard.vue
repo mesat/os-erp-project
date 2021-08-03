@@ -1,7 +1,7 @@
 <template>
   <CCard align="left" id="card">
-    <CCardHeader id="header">
-      <img src="../assets/icons/admin.jpg" hegiht="100" width="100">
+    <CCardHeader>
+      <img src="../assets/icons/admin.jpg" height="100" width="100" alt="profile photo">
     </CCardHeader>
     <CCardBody>
       <CRow>
@@ -28,21 +28,8 @@
     </CCardBody>
     <CCardFooter id="footer">
       <CRow>
-
-        <CCol col="2">
-          <CButton variant="outline" size="sm" shape="pill" color="success">
-            Edit
-          </CButton>
-        </CCol>
-        <CCol col="10"/>
-        <!--
-        <CCol col="2">
-          <CButton size="sm" shape="pill" color="danger">
-            -
-          </CButton>
-        </CCol> -->
+        <slot name="cardActions" :employee="item"></slot>
       </CRow>
-
     </CCardFooter>
   </CCard>
 </template>
@@ -57,19 +44,16 @@ export default {
 <style scoped lang="scss">
 #footer {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.3s;
+  width: 100%;
 }
 
 #card:hover > #footer {
   opacity: 1;
   visibility: visible;
-}
-#header
-{
-  background-color: teal;
 }
 
 
