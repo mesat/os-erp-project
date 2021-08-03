@@ -42,21 +42,21 @@
         </CCol>
       </CRow>
 
-      <CCRow>
+      <CRow>
         <CCol>
           <CCardText id="telephone">
-            <p1>Telephone:</p1><strong> {{item.telephone}} </strong>
+            Telephone:<strong> {{item.telephone}} </strong>
           </CCardText>
         </CCol>
-      </CCRow>
+      </CRow>
 
-      <CCRow>
+      <CRow>
         <CCol>
           <CCardText  id="mail">
-            <p2>Mail:</p2><strong> {{item.mail}} </strong>
+            Mail:<strong> {{item.mail}} </strong>
           </CCardText>
         </CCol>
-      </CCRow>
+      </CRow>
 
 
 
@@ -80,26 +80,31 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+$secondary-50:    #9da5b1;
+$secondary:       #3c4b64;
 #name {
   font-family:"Arial";
   color:rgb(60,60,60);
+  font-size: 30px;
 }
 
 #surName{
   font-family:"Arial";
   color:rgb(60,60,60);
+  font-size: 30px;
 }
 
 #role{
   font-family:"Arial";
   color:rgb(60,60,60);
+  font-size: 25px;
 }
 
 #date{
   font-family:"Arial";
   color:rgb(60,60,60);
+  font-size: 20px;
 }
 
 #bio {
@@ -116,9 +121,9 @@ export default {
   overflow: scroll;
   color:rgb(60,60,60);
   border-radius: 8px;
-  border-width: medium;
-  border-color:teal;
-background-color: lightcyan;
+  border-width: large;
+  border-color:#3c4b64;;
+background-color: $secondary-50;
 
 }
 
@@ -142,11 +147,11 @@ background-color: lightcyan;
 }
 #header
 {
-  background-color: teal;
+  background-color: #3c4b64;;
 }
 #body
 {
-  background-color: lightblue;
+  background-color: #9da5b1;
 }
 #blok
 {
