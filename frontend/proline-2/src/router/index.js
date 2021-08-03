@@ -32,7 +32,7 @@ function configRoutes () {
                     component: EmployeeTable
                 },
                 {
-                    path: 'view',
+                    path: 'view/:id',
                     name: 'EmployeeView',
                     component: EmployeeView
                 }

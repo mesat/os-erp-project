@@ -5,16 +5,16 @@ export default [{
             _name: "CSidebarNavItem",
             name: "+ New Employee",
             _class: "bg-success",
-            to: "new",
+            to: "/new",
         }, {
             _name: "CSidebarNavItem",
             name: "Employees",
-            to: "table",
+            to: "/table",
 
         }, {
             _name: "CSidebarNavItem",
             name: "ViewTest",
-            to: "view",
+            to: "/view/0",
 
         }
     ]

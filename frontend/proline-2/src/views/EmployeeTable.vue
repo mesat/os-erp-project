@@ -1,9 +1,9 @@
 <template>
   <EmployeeSelect>
-    <template #cardActions>
+    <template #cardActions="{item}">
       <CCol col="2">
-        <CButton variant="outline" size="sm" shape="pill" color="success">
-          Edit
+        <CButton variant="outline" size="sm" shape="pill" color="success" :to="'/view/'+item.item.id">
+          View
         </CButton>
       </CCol>
       <CCol col="10"/>
