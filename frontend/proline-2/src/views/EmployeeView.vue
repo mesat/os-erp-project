@@ -74,7 +74,7 @@ export default {
   props: ['itemx'],
   data () {
     return {
-      item: emp[0]
+      item: emp[this.$route.params.id]
     }
   }
 }
