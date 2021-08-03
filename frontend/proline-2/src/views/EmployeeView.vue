@@ -7,7 +7,7 @@
       <CRow>
         <CCol>
           <CCardText align="left">
-            <h4>Ahmet SOYLU</h4>
+            <h4>{{ item.name }}</h4>
           </CCardText>
         </CCol>
       </CRow>
@@ -15,7 +15,7 @@
       <CRow>
         <CCol>
           <CCardText align="left">
-            <strong>CIO</strong>
+            <strong>{{item.role}}</strong>
           </CCardText>
         </CCol>
       </CRow>
@@ -23,7 +23,7 @@
       <CRow>
         <CCol>
           <CCardText align="left">
-            <strong>Start Date</strong>
+            <strong>{{ item.date }}</strong>
           </CCardText>
         </CCol>
       </CRow>
@@ -31,7 +31,7 @@
       <CRow>
         <CCol col="8">
           <CCardText align="right" id="bio">
-            <strong> Biography </strong>
+            <strong> {{ item.bio }} </strong>
 
 
           </CCardText>

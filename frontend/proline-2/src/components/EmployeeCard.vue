@@ -14,14 +14,14 @@
       <CRow>
         <CCol>
           <CCardText align="center">
-            <h4>SOYLU</h4>
+            <h4>{{item.surName}}</h4>
           </CCardText>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
           <CCardText align="center">
-            <strong>CIO</strong>
+            <strong>{{ item.role }}</strong>
           </CCardText>
         </CCol>
       </CRow>
