@@ -69,12 +69,36 @@
 
 <script>
 import emp from "./_employee";
+
+const fields = [{
+  key: "icon",
+  label: "",
+  _classes: "col-xs-1"
+}, {
+  key: "name",
+  label: "Name",
+  _classes: "col-sm-2"
+}, {
+  key: "nick",
+  label: "Nick",
+  _classes: "col-sm-2"
+}, {
+  key: "link",
+  label: "Link",
+  _classes: "col-xl-7"
+}, {
+  key: "delete",
+  label: '',
+  _classes: "col-xs-1"
+}]
+
 export default {
   name: "EmployeeView",
   props: ['itemx'],
   data () {
     return {
-      item: emp[this.$route.params.id]
+      item: emp[this.$route.params.id],
+      fields: fields
     }
   }
 }
