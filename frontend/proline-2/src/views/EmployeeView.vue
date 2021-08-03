@@ -1,6 +1,6 @@
 <template>
-  <CCard align="left">
-    <CCardHeader>
+  <CCard align="left" id="body">
+    <CCardHeader id="header">
       <img src="../assets/icons/admin.jpg" hegiht="100" width="100" alt="img">
     </CCardHeader>
     <CCardBody>
@@ -94,6 +94,7 @@ export default {
 
 #date{
   color:Gray;
+
 }
 
 #bio {
@@ -119,5 +120,13 @@ border-style: solid;
   box-sizing:content-box;
   height: 20px;
 
+}
+#header
+{
+  background-color: teal;
+}
+#body
+{
+  background-color: lightcyan;
 }
 </style>
