@@ -45,7 +45,7 @@
       </CCRow>
 
       <CCRow>
-        <CCol col="12">
+        <CCol>
           <CCardText align="right" id="mail">
             <strong> {{item.mail}} </strong>
           </CCardText>
