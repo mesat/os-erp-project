@@ -6,15 +6,21 @@
     <CCardBody>
       <CRow>
         <CCol>
-          <CCardText align="left">
+          <CCardText align="left" id="name">
             <h4>{{ item.name }}</h4>
+          </CCardText>
+        </CCol>
+        <CCol>
+          <CCardText align="left" id="surName">
+            <h4>{{ item.surName }}</h4>
           </CCardText>
         </CCol>
       </CRow>
 
+      
       <CRow>
         <CCol>
-          <CCardText align="left">
+          <CCardText align="left" id="role">
             <strong>{{item.role}}</strong>
           </CCardText>
         </CCol>
@@ -22,7 +28,7 @@
 
       <CRow>
         <CCol>
-          <CCardText align="left">
+          <CCardText align="left" id="date">
             <strong>{{ item.date }}</strong>
           </CCardText>
         </CCol>
@@ -74,6 +80,23 @@ export default {
 </script>
 
 <style scoped>
+
+#name{
+  color:Gray;
+}
+
+#surName{
+  color:Gray;
+}
+
+#role{
+  color:Gray;
+}
+
+#date{
+  color:Gray;
+}
+
 #bio {
 border-style: solid;
   box-sizing: content-box;
