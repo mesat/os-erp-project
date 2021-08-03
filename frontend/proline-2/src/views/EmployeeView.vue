@@ -29,7 +29,7 @@
       </CRow>
 
       <CRow>
-        <CCol col="">
+        <CCol col="-12">
           <CCardText align="right" id="bio">
             <strong> {{ item.bio }} </strong>
           </CCardText>
@@ -37,16 +37,16 @@
       </CRow>
 
       <CCRow>
-        <CCol>
-          <CCardText>
+        <CCol col="10">
+          <CCardText align="right">
             <strong> {{item.iletisimBilgileri}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
 
       <CCRow>
-        <CCol>
-          <CCardText>
+        <CCol col="10">
+          <CCardText align="right">
             <strong> {{item.sosyalMedya}} </strong>
           </CCardText>
         </CCol>
@@ -77,6 +77,9 @@ export default {
 border-style: solid;
   box-sizing: content-box;
   height: 400px;
+ padding:10px;
+  margin-right: 200px;
+  margin-left: 200px;
 
 }
 </style>
