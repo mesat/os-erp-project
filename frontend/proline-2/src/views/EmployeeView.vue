@@ -29,7 +29,7 @@
       </CRow>
 
       <CRow>
-        <CCol col="-12">
+        <CCol col="">
           <CCardText align="right" id="bio">
             <strong> {{ item.bio }} </strong>
           </CCardText>
@@ -37,17 +37,17 @@
       </CRow>
 
       <CCRow>
-        <CCol col="10">
-          <CCardText align="right">
-            <strong> {{item.iletisimBilgileri}} </strong>
+        <CCol>
+          <CCardText>
+            <strong> {{item.Telefon}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
 
       <CCRow>
-        <CCol col="10">
-          <CCardText align="right">
-            <strong> {{item.sosyalMedya}} </strong>
+        <CCol>
+          <CCardText>
+            <strong> {{item.Mail}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
