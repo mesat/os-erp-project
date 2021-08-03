@@ -29,7 +29,7 @@
       </CRow>
 
       <CRow>
-        <CCol col="">
+        <CCol>
           <CCardText align="right" id="bio">
             <strong> {{ item.bio }} </strong>
           </CCardText>
@@ -38,8 +38,8 @@
 
       <CCRow>
         <CCol>
-          <CCardText>
-            <strong> {{item.Telefon}} </strong>
+          <CCardText align="right" id="telephone">
+            <strong> {{item.telephone}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
@@ -92,7 +92,7 @@ border-style: solid;
 #mail{
   margin-right: 50px;
   box-sizing:content-box;
-  height: 400px;
+  height: 20px;
 
 }
 </style>
