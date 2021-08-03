@@ -28,7 +28,7 @@
     </CCardBody>
     <CCardFooter id="footer">
       <CRow>
-        <slot name="cardActions" :employee="item"></slot>
+        <slot name="cardActions" :item="item"></slot>
       </CRow>
     </CCardFooter>
   </CCard>
