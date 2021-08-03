@@ -36,7 +36,7 @@
       <CRow>
         <CCol>
           <CCardText  id="bio">
-            <h1 align="center"  id="blok">Biography</h1>
+            <h1 align="center"  id="blok"  >Biography</h1>
             <strong> {{ item.bio }} </strong>
           </CCardText>
         </CCol>
@@ -158,6 +158,8 @@ background-color: $secondary-50;
   border-style: solid;
   border-radius: 20px;
   border-width: medium;
+  border-color: rgba(180, 180,180, 0.6);
+
 
 
 }
