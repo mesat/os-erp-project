@@ -6,13 +6,13 @@
     <CCardBody>
       <CRow>
         <CCol>
-          <CCardText align="left" id="name">
-            <h4>{{ item.name }}</h4>
-          </CCardText>
-        </CCol>
-        <CCol>
-          <CCardText align="left" id="surName">
-            <h4>{{ item.surName }}</h4>
+          <CCardText>
+          <h1><span align="left" id="name">
+            {{ item.name }}
+          </span>
+          <span align="left" id="surName">
+            {{ item.surName }}
+          </span></h1>
           </CCardText>
         </CCol>
       </CRow>
