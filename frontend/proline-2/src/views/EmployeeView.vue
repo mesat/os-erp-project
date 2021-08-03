@@ -1,6 +1,6 @@
 <template>
-  <CCard align="left" id="body">
-    <CCardHeader id="header">
+  <CCard align="left">
+    <CCardHeader>
       <img src="../assets/icons/admin.jpg" hegiht="100" width="100" alt="img">
     </CCardHeader>
     <CCardBody>
@@ -102,11 +102,14 @@ export default {
 }
 
 #bio {
+  overflow: scroll;
   font-family:"Arial";
   border-style: solid;
   box-sizing: content-box;
   padding:10px;
   height: 400px;
+  text-overflow: ellipsis;
+
   margin-right:50px;
   margin-left:200px;
   text-overflow: ellipsis;
