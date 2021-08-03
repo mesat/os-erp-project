@@ -2,9 +2,16 @@
 
   <CCard>
     <CCardHeader>
-      <CToggler inHeader="true" @click="toggleFilter">
-        <CIcon name="cilList"/>
-      </CToggler>
+      <CRow>
+        <CCol col="1">
+          <CToggler inHeader="true" @click="toggleFilter">
+            <CIcon name="cilList"/>
+          </CToggler>
+        </CCol>
+        <Col col="11"/>
+
+      </CRow>
+
     </CCardHeader>
     <CCollapse :show="filterShow">
       <CCardBody>
@@ -37,10 +44,16 @@
       </CCardBody>
       <CCardFooter>
         <CRow>
-          <CCol col="10"/>
+          <CCol col="8"/>
+
+          <CCol col="2">
+            <CButton color="warning" block>
+              Clear Filters
+            </CButton>
+          </CCol>
           <CCol col="2">
             <CButton color="success" block>
-              filter
+              Filter
             </CButton>
           </CCol>
         </CRow>
