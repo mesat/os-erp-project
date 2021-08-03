@@ -29,14 +29,28 @@
       </CRow>
 
       <CRow>
-        <CCol col="8">
+        <CCol col="">
           <CCardText align="right" id="bio">
             <strong> {{ item.bio }} </strong>
-
-
           </CCardText>
         </CCol>
       </CRow>
+
+      <CCRow>
+        <CCol>
+          <CCardText>
+            <strong> {{item.iletisimBilgileri}} </strong>
+          </CCardText>
+        </CCol>
+      </CCRow>
+
+      <CCRow>
+        <CCol>
+          <CCardText>
+            <strong> {{item.sosyalMedya}} </strong>
+          </CCardText>
+        </CCol>
+      </CCRow>
 
 
 
