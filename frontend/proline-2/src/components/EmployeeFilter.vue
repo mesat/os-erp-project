@@ -67,7 +67,7 @@ export default {
   name: "EmployeeFilter",
   data() {
     return {
-      filterShow: true
+      filterShow: false
     }
   },
   methods: {

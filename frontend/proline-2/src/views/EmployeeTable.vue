@@ -1,47 +1,53 @@
 <template>
-  <div>
-    <EmployeeFilter/>
-    <div id="employeeContainer">
-      <EmployeeCard card :item="emp"/>
-      <EmployeeCard card :item="emp"/>
-      <EmployeeCard card :item="emp"/>
-      <EmployeeCard card :item="emp"/>
-      <EmployeeCard card :item="emp"/>
-      <EmployeeCard card :item="emp"/>
-      <EmployeeCard card :item="emp"/>
-    </div>
-  </div>
+  <EmployeeSelect>
+    <template #cardActions>
+      <CCol col="2">
+        <CButton variant="outline" size="sm" shape="pill" color="success">
+          Edit
+        </CButton>
+      </CCol>
+      <CCol col="10"/>
+    </template>
+  </EmployeeSelect>
 </template>
-
 <script>
-import EmployeeCard from "../components/EmployeeCard";
-import EmployeeFilter from "../components/EmployeeFilter";
-import emp from './_employee';
+
+import EmployeeSelect from "../components/EmployeeSelect";
 
 export default {
   name: "EmployeeTable",
   components: {
-    EmployeeCard,
-    EmployeeFilter
-  },
-  data () {
-    return {
-      emp: emp
-    }
+    EmployeeSelect
+    /*
+    'employee-cards': {
+      render(createElement) {
+        return createElement('div', {
+          style: {
+            display: 'flex',
+            'flex-wrap': 'wrap',
+            background: '#ddd',
+            'border-radius': '10px'
+          }
+        }, emp.map(function (a) {
+          return createElement('EmployeeCard', {
+            props: {
+              item: a
+            },
+            style: {
+              margin: '5px',
+              flex: '0 0 150px'
+            }
+          })
+        }))
+      },
+      components: {
+        EmployeeCard
+      }
+    }*/
   }
 }
 </script>
 
 <style scoped lang="scss">
-#employeeContainer {
-  display: flex;
-  flex-wrap: wrap;
-  background: gray;
-  border-radius: 10px;
-  .card {
-    flex: 0 0 150px;
-    margin: 5px;
-  }
-}
 
 </style>

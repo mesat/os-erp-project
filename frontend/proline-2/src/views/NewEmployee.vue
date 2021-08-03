@@ -13,23 +13,23 @@
         <CCol md="9" class="order-md-0">
           <CRow>
             <CCol>
-              <CInput name="name" label="Name" placeholder="Enter employees name"/>
+              <CInput name="name" label="Name" placeholder="Enter employees name" v-model="name"/>
             </CCol>
             <CCol>
-              <CInput name="last-name" label="Surname" placeholder="Enter employees surname"/>
+              <CInput name="last-name" label="Surname" placeholder="Enter employees surname" v-model="surName"/>
             </CCol>
             <CRow>
               <CCol>
-                <CInput label="Date" type="date"/>
+                <CInput label="Date" type="date" v-model="date"/>
               </CCol>
             </CRow>
           </CRow>
           <CRow md="2">
-            <CInput name="role" label="Role" placeholder="Role in the company"/>
+            <CInput name="role" label="Role" placeholder="Role in the company" v-model="role"/>
           </CRow>
           <CRow>
             <CCol>
-              <CTextarea name="bio" label="Bio" rows="8" placeholder="Short bio of the employee..."/>
+              <CTextarea name="bio" label="Bio" rows="8" placeholder="Short bio of the employee..." v-model="bio"/>
             </CCol>
           </CRow>
         </CCol>
@@ -51,6 +51,14 @@
     <CCardBody>
       <Socials v-model="socials"/>
     </CCardBody>
+    <CCardFooter>
+      <CRow>
+        <CCol col="0" md="10"/>
+        <CCol md="2">
+          <CButton block color="success" @click="submit">Submit</CButton>
+        </CCol>
+      </CRow>
+    </CCardFooter>
   </CCard>
 </template>
 
@@ -65,11 +73,14 @@ export default {
       surName: "",
       date: "",
       role: "",
-      bio: ""
+      bio: "",
+      socials: []
     }
   },
   methods: {
-
+    submit () {
+      alert(this.date)
+    }
   },
   components: {
     Socials
