@@ -29,7 +29,7 @@
       </CRow>
 
       <CRow>
-        <CCol col="12">
+        <CCol col="">
           <CCardText align="right" id="bio">
             <strong> {{ item.bio }} </strong>
           </CCardText>
@@ -37,13 +37,12 @@
       </CRow>
 
       <CCRow>
-        <CCol col="12">
-          <CCardText align="right" id="telephone">
-            <strong> {{item.telephone}} </strong>
+        <CCol>
+          <CCardText>
+            <strong> {{item.Telefon}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
-
 
       <CCRow>
         <CCol col="12">
@@ -74,11 +73,9 @@ export default {
 }
 </script>
 
-
 <style scoped>
 #bio {
-
-  border-style: solid;
+border-style: solid;
   box-sizing: content-box;
   padding:10px;
   height: 400px;
@@ -96,6 +93,6 @@ export default {
   margin-right: 50px;
   box-sizing:content-box;
   height: 400px;
-}
 
+}
 </style>
