@@ -35,24 +35,24 @@
 
       <CRow>
         <CCol>
-          <CCardText align="right" id="bio">
-            <strong> {{ item.bio }} </strong>
+          <CCardText align="" id="bio">
+            <h2>Biography</h2><strong> {{ item.bio }} </strong>
           </CCardText>
         </CCol>
       </CRow>
 
       <CCRow>
         <CCol>
-          <CCardText align="right" id="telephone">
-            <strong> {{item.telephone}} </strong>
+          <CCardText align="" id="telephone">
+            <p2>Telephone:</p2><strong> {{item.telephone}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
 
       <CCRow>
         <CCol>
-          <CCardText align="right" id="mail">
-            <strong> {{item.mail}} </strong>
+          <CCardText align="" id="mail">
+            <p2>Mail:</p2><strong> {{item.mail}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
@@ -81,23 +81,28 @@ export default {
 <style scoped>
 
 #name {
-  color:Gray;
+  font-family:"Arial";
+  color:rgb(60,60,60);
 }
 
 #surName{
-  color:Gray;
+  font-family:"Arial";
+  color:rgb(60,60,60);
 }
 
 #role{
-  color:Gray;
+  font-family:"Arial";
+  color:rgb(60,60,60);
 }
 
 #date{
-  color:Gray;
+  font-family:"Arial";
+  color:rgb(60,60,60);
 }
 
 #bio {
-border-style: solid;
+  font-family:"Arial";
+  border-style: solid;
   box-sizing: content-box;
   padding:10px;
   height: 400px;
@@ -105,19 +110,26 @@ border-style: solid;
   margin-left:200px;
   text-overflow: ellipsis;
   overflow: hidden;
+  color:rgb(60,60,60);
 
 }
 
 #telephone{
+  font-family:"Arial";
   margin-right: 50px;
+  margin-left:200px;
   box-sizing:content-box;
   height: 20px;
+  color:rgb(60,60,60);
 }
 
 #mail{
+  font-family:"Arial";
   margin-right: 50px;
+  margin-left:200px;
   box-sizing:content-box;
   height: 20px;
+  color:rgb(60,60,60);
 
 }
 </style>
