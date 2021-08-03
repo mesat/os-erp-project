@@ -21,22 +21,23 @@
       </CRow>
 
       <CRow>
-        <CCol>
+        <CCol col="3">
           <CCardText align="left">
             <strong>Start Date</strong>
           </CCardText>
         </CCol>
-      </CRow>
 
-      <CRow>
-        <CCol col="8">
-          <CCardText align="right" id="bio">
+        <CCol col="9">
+          <CCardText align="center" id="bio">
             <strong> Biography </strong>
-
-
           </CCardText>
+
+
         </CCol>
       </CRow>
+
+
+
 
 
 
@@ -59,8 +60,11 @@ export default {
 </script>
 
 <style scoped>
-#id {
-  display: block;
-  border: 20px solid green;
+#bio {
+border-style: solid;
+  box-sizing: content-box;
+  height: 400px;
+
 }
 </style>
+
