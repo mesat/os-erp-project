@@ -1,9 +1,9 @@
 <template>
   <CCard align="left">
-    <CCardHeader>
+    <CCardHeader id="header">
       <img src="../assets/icons/admin.jpg" hegiht="100" width="100" alt="img">
     </CCardHeader>
-    <CCardBody>
+    <CCardBody id="body">
       <CRow>
         <CCol>
           <CCardText>
@@ -110,13 +110,15 @@ export default {
   padding:10px;
   height: 400px;
   text-overflow: ellipsis;
-
   margin-right:50px;
   margin-left:200px;
   text-overflow: ellipsis;
   overflow: scroll;
-
   color:rgb(60,60,60);
+  border-radius: 8px;
+  border-width: medium;
+  border-color:teal;
+
 
 }
 
