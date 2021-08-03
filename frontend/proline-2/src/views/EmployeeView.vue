@@ -36,7 +36,8 @@
       <CRow>
         <CCol>
           <CCardText align="" id="bio">
-            <h2>Biography</h2><strong> {{ item.bio }} </strong>
+            <h2>Biography</h2>
+            <strong> {{ item.bio }} </strong>
           </CCardText>
         </CCol>
       </CRow>
@@ -44,7 +45,7 @@
       <CCRow>
         <CCol>
           <CCardText align="" id="telephone">
-            <p2>Telephone:</p2><strong> {{item.telephone}} </strong>
+            <p1>Telephone:</p1><strong> {{item.telephone}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
@@ -109,7 +110,8 @@ export default {
   margin-right:50px;
   margin-left:200px;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: scroll;
+
   color:rgb(60,60,60);
 
 }
@@ -140,4 +142,5 @@ export default {
 {
   background-color: lightcyan;
 }
+
 </style>

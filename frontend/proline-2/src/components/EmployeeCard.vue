@@ -1,6 +1,6 @@
 <template>
   <CCard align="left" id="card">
-    <CCardHeader>
+    <CCardHeader id="header">
       <img src="../assets/icons/admin.jpg" hegiht="100" width="100">
     </CCardHeader>
     <CCardBody>
@@ -66,6 +66,10 @@ export default {
 #card:hover > #footer {
   opacity: 1;
   visibility: visible;
+}
+#header
+{
+  background-color: teal;
 }
 
 
