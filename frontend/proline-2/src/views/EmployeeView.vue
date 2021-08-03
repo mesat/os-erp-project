@@ -81,6 +81,7 @@ border-style: solid;
   height: 400px;
   margin-right:50px;
   margin-left:200px;
+  word-break: break-word;
 }
 
 #telephone{
