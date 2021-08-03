@@ -39,7 +39,7 @@
       <CCRow>
         <CCol>
           <CCardText>
-            <strong> {{item.iletisimBilgileri}} </strong>
+            <strong> {{item.Telefon}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
@@ -47,10 +47,11 @@
       <CCRow>
         <CCol>
           <CCardText>
-            <strong> {{item.sosyalMedya}} </strong>
+            <strong> {{item.Mail}} </strong>
           </CCardText>
         </CCol>
       </CCRow>
+
 
 
 
