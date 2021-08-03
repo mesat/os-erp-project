@@ -74,7 +74,7 @@ export default {
   props: ['itemx'],
   data () {
     return {
-      item: emp[4]
+      item: emp[0]
     }
   }
 }
