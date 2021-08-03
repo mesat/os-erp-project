@@ -1,6 +1,6 @@
 <template>
   <div>
-    <EmployeeFilter/>
+    <EmployeeFilter id="filter"/>
     <div id="employeeContainer">
       <EmployeeCard v-for="item in emp" :item="item" :key="item.id" card>
         <template #cardActions="item">
@@ -9,7 +9,6 @@
       </EmployeeCard>
       <strong v-if="empty"> No employees match.</strong>
     </div>
-    <CButton @click="ppp">aaa</CButton>
   </div>
 </template>
 <script>
@@ -69,11 +68,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#filter {
+  margin: 0
+}
 #employeeContainer {
   display: flex;
   flex-wrap: wrap;
   background: #ddd;
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   min-height: 100px;
   padding: 5px;
   strong {

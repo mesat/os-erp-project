@@ -5,6 +5,7 @@ const TheContainer = () => import('@/containers/TheContainer')
 const NewEmployee = () => import('@/views/NewEmployee')
 const EmployeeTable = () => import('@/views/EmployeeTable')
 const EmployeeView = () => import('@/views/EmployeeView')
+const CreateTeam = () => import('@/views/CreateTeam')
 
 export default new Router({
     mode: 'hash', // https://router.vuejs.org/api/#mode
@@ -35,6 +36,11 @@ function configRoutes () {
                     path: 'view/:id',
                     name: 'EmployeeView',
                     component: EmployeeView
+                },
+                {
+                    path: 'teams',
+                    name: 'CreateTeam',
+                    component: CreateTeam
                 }
             ]
         }
