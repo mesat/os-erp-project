@@ -17,7 +17,6 @@
         </CCol>
       </CRow>
 
-      
       <CRow>
         <CCol>
           <CCardText align="left" id="role">
@@ -81,7 +80,7 @@ export default {
 
 <style scoped>
 
-#name{
+#name {
   color:Gray;
 }
 
@@ -104,7 +103,9 @@ border-style: solid;
   height: 400px;
   margin-right:50px;
   margin-left:200px;
-  word-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
 }
 
 #telephone{
