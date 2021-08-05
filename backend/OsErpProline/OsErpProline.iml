@@ -15,13 +15,24 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="OsErpProline" />
+          <factory-entry name="default" value="eaab7f9e-4cf2-4f79-a912-829c9dea8f64" />
+          <factory-entry name="entityManagerFactory" value="b14e4da4-67b5-4b07-8576-590f3042461a" />
+          <factory-entry name="noname-a.xml@0" value="e0b1a471-cd49-4e60-8f55-5002ef680124" />
+          <factory-entry name="persistenceUnit" />
         </datasource-mapping>
         <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.xml" />
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration />
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.xml" />
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
@@ -31,6 +42,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
