@@ -1,7 +1,7 @@
 <template>
   <CCard align="left">
     <CCardHeader>
-      <h1>Create a new employee</h1>
+      <h1>Edit Employee</h1>
     </CCardHeader>
     <CCardBody>
       <CRow>
@@ -33,10 +33,7 @@
             </CCol>
           </CRow>
         </CCol>
-
-
       </CRow>
-
     </CCardBody>
     <CCardHeader>
       <h2>Communication Info</h2>
@@ -66,7 +63,7 @@
 import Socials from "../components/Socials";
 
 export default {
-  name: "NewEmployee",
+  name: "EmployeeEdit",
   data() {
     return {
       name: "",

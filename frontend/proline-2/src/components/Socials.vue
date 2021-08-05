@@ -23,7 +23,7 @@
         <CInput name="nick" placeholder="Nick" v-model="nick"/>
       </CCol>
       <CCol sm="7">
-        <CInput name="link" placeholder="Link" v-model="link"/>
+        <CInput name="link" type="url" placeholder="Link" v-model="link"/>
       </CCol>
       <CCol sm>
         <CButton color="success" @click="add">+</CButton>

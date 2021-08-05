@@ -5,17 +5,20 @@ export default [{
             _name: "CSidebarNavItem",
             name: "+ New Employee",
             _class: "bg-success",
-            to: "new",
+            to: "/new",
         }, {
             _name: "CSidebarNavItem",
-            name: "Second",
-            to: "/",
+            name: "Employees",
+            to: "/table",
 
         }, {
             _name: "CSidebarNavItem",
-            name: "Third",
-            to: "/",
-
+            name: "ViewTest",
+            to: "/view/0",
+        }, {
+            _name: "CSidebarNavItem",
+            name: "Create Team",
+            to: "/teams",
         }
     ]
 }

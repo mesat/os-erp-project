@@ -1,8 +1,8 @@
 <template>
 
-  <div id="app">
-    <router-view></router-view>
-  </div>
+
+  <router-view></router-view>
+
 </template>
 
 <script>
@@ -19,8 +19,8 @@ export default {
 <style lang="scss">
 
 
-
 @import "~@coreui/coreui/scss/coreui";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
