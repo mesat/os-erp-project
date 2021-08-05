@@ -1,5 +1,11 @@
 <template>
   <div>
+    <h1>
+      Team name here
+    </h1>
+    <!--
+      v-bind
+    -->
     <div id="selectedTeam">
       <CIcon name="cilStar" id="star" v-if="notEmpty"/>
       <EmployeeCard v-for="item in team" :item="item" :key="item.id">
@@ -16,8 +22,23 @@
           </CCol>
         </template>
       </EmployeeCard>
-      <!-- clear team button -->
     </div>
+    <CRow>
+      <CCol>
+        <CInput placeholder="The name of the team"/>
+        <!--
+          v-model
+          v-bind
+        -->
+      </CCol>
+      <CCol col = "2">
+        <CButton color="warning"> Clear Team </CButton>
+        <!--
+          v-on, event handling
+          v-if, conditional rendering
+        -->
+      </CCol>
+    </CRow>
     <EmployeeSelect>
       <template #cardActions="{item}">
         <CCol col="12">
@@ -42,7 +63,8 @@ export default {
   },
   data () {
     return {
-      team: []
+      team: [],
+      teamName: ''
     }
   },
   methods: {
@@ -57,6 +79,9 @@ export default {
     makeLeader (item) {
       this.remove(item)
       this.team.unshift(item)
+    },
+    clearTeam() {
+
     }
   },
   computed: {
