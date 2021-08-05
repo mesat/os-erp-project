@@ -16,6 +16,7 @@
           </CCol>
         </template>
       </EmployeeCard>
+      <!-- clear team button -->
     </div>
     <EmployeeSelect>
       <template #cardActions="{item}">
