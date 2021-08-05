@@ -49,6 +49,7 @@ export default {
   opacity: 0;
   transition: visibility 0s, opacity 0.3s;
   width: 100%;
+  padding: 10px;
 }
 
 #card:hover > #footer {
