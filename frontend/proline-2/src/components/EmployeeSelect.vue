@@ -22,32 +22,6 @@ export default {
   components: {
     EmployeeFilter,
     EmployeeCard
-    /*
-    'employee-cards': {
-      render(createElement) {
-        return createElement('div', {
-          style: {
-            display: 'flex',
-            'flex-wrap': 'wrap',
-            background: '#ddd',
-            'border-radius': '10px'
-          }
-        }, emp.map(function (a) {
-          return createElement('EmployeeCard', {
-            props: {
-              item: a
-            },
-            style: {
-              margin: '5px',
-              flex: '0 0 150px'
-            }
-          })
-        }))
-      },
-      components: {
-        EmployeeCard
-      }
-    }*/
   },
   data () {
     return {
@@ -55,9 +29,7 @@ export default {
     }
   },
   methods: {
-    ppp() {
-      emp.pop()
-    }
+
   },
   computed: {
     empty () {

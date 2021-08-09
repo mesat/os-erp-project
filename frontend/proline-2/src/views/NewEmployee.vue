@@ -29,7 +29,7 @@
                   label="Surname"
                   placeholder="Enter employees surname"
                   invalidFeedback= ""
-                  tooltipFeedback="true"
+                  tooltipFeedback
                   :isValid = "isValidName"
                   v-model="surName"
               />
@@ -41,7 +41,7 @@
                     type="date"
                     v-model="date"
                     invalidFeedback= "message.date"
-                    tooltipFeedback="true"
+                    tooltipFeedback
                     :isValid = "isValidDate"
                 />
               </CCol>
@@ -53,7 +53,7 @@
                 label="Role"
                 placeholder="Role in the company"
                 invalidFeedback= ""
-                tooltipFeedback="true"
+                tooltipFeedback
                 :isValid = "isValidRole"
                 v-model="role"
             />
@@ -66,7 +66,7 @@
                   rows="8"
                   placeholder="Short bio of the employee..."
                   invalidFeedback= ""
-                  tooltipFeedback="true"
+                  tooltipFeedback
                   :isValid = "isValidBio"
                   v-model="bio"
               />
@@ -88,7 +88,7 @@
           type="mail"
           placeholder="Telephone number"
           :invalidFeedback= "message.tel"
-          tooltipFeedback="true"
+          tooltipFeedback
           :isValid = "isValidTel"
       />
       <CInput
@@ -97,7 +97,7 @@
           type="tel"
           placeholder="Enter mail"
           invalidFeedback= ""
-          tooltipFeedback="true"
+          tooltipFeedback
           :isValid = "isValidMail"
       />
     </CCardBody>
@@ -120,6 +120,7 @@
 
 <script>
 import Socials from "../components/Socials";
+const axios = require('axios');
 
 const nameRegex = /^[A-Za-z]+$/i
 const nameMsg = "Names can only have letters and cannot be empty."
@@ -165,7 +166,34 @@ export default {
   },
   methods: {
     submit() {
-
+      /*axios.post('/api/employees',{
+        "name": this.name,
+        "surname": this.surname,
+        "rol": this.role,
+        "bio": this.bio,
+        "Leader": []
+      })
+      .then(function (response){
+        console.log(response)
+      })
+      .catch(function (error){
+        alert(error)
+      })*/
+      axios.request({
+        url: '/api/employees',
+        method: "POST",
+        data: {
+          "id" : 50,
+          "name": this.name,
+          "surname": this.surname,
+          "rol": this.role,
+          "bio": this.bio,
+          "Leader": []
+        },
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
     },
     isValid(val, regex) {
       if(val === '' || val === undefined)
