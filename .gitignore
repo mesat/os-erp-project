@@ -25,3 +25,5 @@ hs_err_pid*
 node_modules/
 .idea
 **/package-lock.json
+*.iml
+backend/OsErpProline/target/
