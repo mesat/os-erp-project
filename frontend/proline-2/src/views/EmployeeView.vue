@@ -12,53 +12,27 @@
     <CCardBody id="body">
 
       <CRow>
-        <CCol>
-          <CCardText align="left" id="role">
-            <span>{{item.role}}</span>
+        <CCol col="4">
+          <CCardText id="date">
+            <CRow><span id="role"> {{ item.role }}</span></CROW>
+            <CRow><strong>Start Date {{ item.date }}</strong></CRow>
           </CCardText>
         </CCol>
-      </CRow>
 
-      <CRow>
-        <CCol>
-          <CCardText align="left" id="date">
-            Start Date <strong>{{ item.date }}</strong>
+        <CCol col="8">
+          <CCardText id="bio">
+            <h1 id="blok">Biography</h1>
+            <CRow><strong> {{ item.bio }} </strong></CROW>
           </CCardText>
+          <CRow><span id="telephone">Telephone:<strong> {{ item.telephone }} </strong></span></CRow>
+          <CRow><span id="mail">Mail:<strong> {{ item.mail }}  </strong></span></CRow>
+          <CRow>
+            <CDataTable :fields="fields">
+
+            </CDataTable>
+          </CRow>
         </CCol>
       </CRow>
-
-      <CRow>
-        <CCol>
-          <CCardText  id="bio">
-            <h1 id="blok"  >Biography</h1>
-            <strong> {{ item.bio }} </strong>
-          </CCardText>
-        </CCol>
-      </CRow>
-
-      <CRow>
-        <CCol>
-          <CCardText id="telephone">
-            Telephone:<strong> {{item.telephone}} </strong>
-          </CCardText>
-        </CCol>
-      </CRow>
-
-      <CRow>
-        <CCol>
-          <CCardText  id="mail">
-            Mail:<strong> {{item.mail}} </strong>
-          </CCardText>
-        </CCol>
-      </CRow>
-
-      <CDataTable :fields="fields">
-
-
-
-
-      </CDataTable>
-
 
 
     </CCardBody>
@@ -94,7 +68,7 @@ const fields = [{
 export default {
   name: "EmployeeView",
   props: ['itemx'],
-  data () {
+  data() {
     return {
       item: emp[this.$route.params.id],
       fields: fields
@@ -104,27 +78,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$secondary-50:    #9da5b1;
-$secondary:       #3c4b64;
+$secondary-50: #9da5b1;
+$secondary: #3c4b64;
+
 #name {
-  color:rgb(255,255,255);
+  color: rgb(255, 255, 255);
   font-size: 45px;
 }
 
-#surName{
-  color:rgb(255,255,255);
+#surName {
+  color: rgb(255, 255, 255);
   font-size: 45px;
 }
 
-#role{
-  font-family:"Berlin Sans FB";
-  color:rgb(60,60,60);
+#role {
+  font-family: "Berlin Sans FB";
+  color: rgb(60, 60, 60);
   font-size: 35px;
 
 }
 
-#date{
-  color:rgb(60,60,60);
+#date {
+  color: rgb(60, 60, 60);
   font-size: 15px;
   margin-top: 5px;
 }
@@ -134,10 +109,7 @@ $secondary:       #3c4b64;
   box-sizing: content-box;
   padding: 10px;
   height: 400px;
-  text-overflow: ellipsis;
-  margin-right: 50px;
-  margin-left: 200px;
-  text-overflow: ellipsis;
+
   color: rgb(60, 60, 60);
   border-radius: 8px;
   border-width: medium;
@@ -146,50 +118,46 @@ $secondary:       #3c4b64;
   margin-bottom: 20px;
   overflow: auto;
 
+
 }
 
-#telephone{
-  margin-right: 50px;
-  margin-left:200px;
-  box-sizing:content-box;
+#telephone {
+  box-sizing: content-box;
   height: 20px;
-  color:rgb(60,60,60);
+  color: rgb(60, 60, 60);
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-#mail{
-  margin-right: 50px;
-  margin-left:200px;
-  box-sizing:content-box;
+#mail {
+  box-sizing: content-box;
   height: 20px;
-  color:rgb(60,60,60);
+  color: rgb(60, 60, 60);
   font-size: 16px;
   margin-bottom: 15px;
 
 }
-#header
-{
+
+#header {
   background-color: #3c4b64;
 
 }
-#body
-{
+
+#body {
   background-color: #b1b7c1;
 
 }
-#blok
-{
+
+#blok {
   border-style: solid;
   border-radius: 20px;
   border-width: medium;
-  border-color: rgba(150, 150,150, 0.6);
+  border-color: rgba(150, 150, 150, 0.6);
   text-align: center;
-  font-family:"Arial Rounded MT Bold";
+  font-family: "Arial Rounded MT Bold";
 
 
 }
-
 
 
 </style>
