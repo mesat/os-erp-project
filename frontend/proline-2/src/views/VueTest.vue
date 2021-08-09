@@ -1,10 +1,13 @@
 <template>
   <div>
-
+    <CButton color="success" @click="click">
+      test request
+    </CButton>
   </div>
 </template>
 
 <script>
+const axios = require('axios');
 
 export default {
   name: "VueTest",
@@ -17,7 +20,13 @@ export default {
 
   },
   methods: {
-
+    click(){
+      axios.get('https://os-erp.herokuapp.com/employees')
+      .then(function (response){
+        alert('a')
+        alert(response)
+      })
+    }
   }
 }
 </script>
