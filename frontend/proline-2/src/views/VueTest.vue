@@ -9,6 +9,7 @@
 <script>
 const axios = require('axios');
 
+
 export default {
   name: "VueTest",
   data ()  {
@@ -21,10 +22,12 @@ export default {
   },
   methods: {
     click(){
-      axios.get('https://os-erp.herokuapp.com/employees')
+      axios.get('/api/employees')
       .then(function (response){
-        alert('a')
-        alert(response)
+        alert(response.data)
+      })
+      .catch(function (error) {
+        alert(error)
       })
     }
   }
