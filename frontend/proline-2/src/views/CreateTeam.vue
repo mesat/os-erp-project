@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div id="name">
     <h1>
-      Team name here
+      {{ teamName }}
     </h1>
     <!--
+    <p v-bind:style="{fontSize:boyut + 'px'}">{{teamName}}</p>
       v-bind
     -->
     <div id="selectedTeam">
@@ -25,18 +26,17 @@
     </div>
     <CRow>
       <CCol>
-        <CInput placeholder="The name of the team"/>
-        <!--
-          v-model
-          v-bind
-        -->
+        <CInput v-model="teamName" placeholder="team name"/>
+
       </CCol>
       <CCol col = "2">
-        <CButton color="warning"> Clear Team </CButton>
+        <CButton color="warning" v-on:click="clearTeam" v-if="showClear" > Clear Team
+        </CButton>
         <!--
           v-on, event handling
           v-if, conditional rendering
         -->
+
       </CCol>
     </CRow>
     <EmployeeSelect>
@@ -77,19 +77,24 @@ export default {
       })
     },
     makeLeader (item) {
-      this.remove(item)
+      this.team.remove(item)
       this.team.unshift(item)
     },
     clearTeam() {
-
+      this.team.splice(0,this.team.length)
     }
   },
   computed: {
     notEmpty () {
       return this.team.length !== 0
+    },
+    showClear () {
+      return this.team.length !==0
+
     }
   }
 }
+
 </script>
 
 <style scoped lang="scss">
