@@ -19,6 +19,10 @@ export default [{
             _name: "CSidebarNavItem",
             name: "Create Team",
             to: "/teams",
+        }, {
+            _name: "CSidebarNavItem",
+            name: "VueTest",
+            to: "/test",
         }
     ]
 }

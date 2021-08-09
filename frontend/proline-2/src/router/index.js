@@ -6,6 +6,7 @@ const NewEmployee = () => import('@/views/NewEmployee')
 const EmployeeTable = () => import('@/views/EmployeeTable')
 const EmployeeView = () => import('@/views/EmployeeView')
 const CreateTeam = () => import('@/views/CreateTeam')
+const VueTest = () => import('@/views/VueTest')
 
 export default new Router({
     mode: 'hash', // https://router.vuejs.org/api/#mode
@@ -41,6 +42,11 @@ function configRoutes () {
                     path: 'teams',
                     name: 'CreateTeam',
                     component: CreateTeam
+                },
+                {
+                    path: 'test',
+                    name: 'VueTest',
+                    component: VueTest
                 }
             ]
         }
