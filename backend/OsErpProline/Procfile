@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dcors.address=https://forevererp.herokuapp.com/ -jar target/OsErpProline-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -Dcors.address=https://forevererp.herokuapp.com -jar target/OsErpProline-0.0.1-SNAPSHOT.jar
