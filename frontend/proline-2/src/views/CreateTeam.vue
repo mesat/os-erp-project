@@ -10,37 +10,41 @@
     <div id="selectedTeam">
       <CIcon name="cilStar" id="star" v-if="notEmpty"/>
       <transition-group name="team" id="transitionSpan">
-      <EmployeeCard v-for="(item, index) in team" :item="item" :key="item.id">
-        <template #cardActions="{item}">
-          <CCol col="8">
-            <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
-              <nobr>Make Leader</nobr>
-            </CButton>
-          </CCol>
-          <CCol col="4">
-            <CButton variant="outline" size="sm" shape="pill" color="danger" @click="remove(item)">
-              X
-            </CButton>
-          </CCol>
-        </template>
-      </EmployeeCard>
+        <EmployeeCard v-for="(item, index) in team" :item="item" :key="item.id">
+          <template #cardActions="{item}">
+            <CCol col="8">
+              <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
+                <nobr>Make Leader</nobr>
+              </CButton>
+            </CCol>
+            <CCol col="4">
+              <CButton variant="outline" size="sm" shape="pill" color="danger" @click="remove(item)">
+                X
+              </CButton>
+            </CCol>
+          </template>
+        </EmployeeCard>
       </transition-group>
+
     </div>
     <CRow>
       <CCol>
         <CInput v-model="teamName" placeholder="team name"/>
 
       </CCol>
-      <CCol col = "2">
-        <CButton color="warning" v-on:click="clearTeam" v-if="showClear" > Clear Team
-        </CButton>
-        <!--
-          v-on, event handling
-          v-if, conditional rendering
-        -->
 
+      <CCol col="2">
+        <CButton color="success" v-on:click="summit"> Summit
+        </CButton>
       </CCol>
+
+      <CCol col="2">
+        <CButton color="warning" v-on:click="clearTeam" v-if="showClear"> Clear Team
+        </CButton>
+      </CCol>
+
     </CRow>
+
     <EmployeeSelect :emp="employees" :loading="loading">
       <template #cardActions="{item}">
         <CCol col="12">
@@ -50,7 +54,11 @@
         </CCol>
       </template>
     </EmployeeSelect>
+
+
   </div>
+
+
 </template>
 
 <script>
@@ -65,7 +73,7 @@ export default {
     EmployeeSelect,
     EmployeeCard
   },
-  data () {
+  data() {
     return {
       team: [],
       teamName: '',
@@ -77,26 +85,30 @@ export default {
     addToTeam(a) {
       this.team.push(a)
     },
-    remove (item) {
+    remove(item) {
       this.team = this.team.filter(function (a) {
         return a.id !== item.id
       })
     },
-    makeLeader (item) {
+    makeLeader(item) {
       this.remove(item)
       this.team.unshift(item)
       console.log(this.team)
     },
+    summit(){
+
+    },
     clearTeam() {
-      this.team.splice(0,this.team.length)
+      this.team.splice(0, this.team.length)
     }
+
   },
   computed: {
-    notEmpty () {
+    notEmpty() {
       return this.team.length !== 0
     },
-    showClear () {
-      return this.team.length !==0
+    showClear() {
+      return this.team.length !== 0
 
     }
   },
@@ -125,12 +137,14 @@ export default {
   margin: 20px 0;
   z-index: 0;
   position: relative;
+
   strong {
     margin: auto;
   }
 
 }
-#star{
+
+#star {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -138,16 +152,19 @@ export default {
   top: 10px;
   left: 10px;
 }
+
 #transitionSpan {
   display: flex;
   width: 100%;
   height: 100%;
+
   .card {
     flex: 0 0 150px;
     margin: 2px;
     height: 280px;
   }
 }
+
 .team-enter-active, .team-leave-active {
   transition: opacity .5s;
 }
