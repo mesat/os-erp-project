@@ -1,5 +1,6 @@
 <template>
 
+
   <CCard>
     <CCardHeader>
       <CRow>
@@ -9,15 +10,13 @@
           </CToggler>
         </CCol>
         <Col col="11"/>
-
       </CRow>
-
     </CCardHeader>
     <CCollapse :show="filterShow">
       <CCardBody>
         <CRow>
           <CCol>
-            <CInput name="name" label="Name" placeholder="enter name"/>
+            <CInput v-model="name" name="name" label="Name" placeholder="enter name"/>
           </CCol>
           <CCol>
             <CInput name="last name" label="Surname" placeholder="enter surname"/>
@@ -33,10 +32,19 @@
               <CInput name="date" label="Date" type="date"/>
             </CCol>
             <CCol>
-              <CInput name="date" label="..." type="date"/>
+              <CInput  name="date" label="..." type="date"/>
             </CCol>
           </CRow>
         </CRow>
+
+        <div >
+          <span v-for="value in arry">
+            <CAlert close-button @update:show="show" color="primary">{{value.filterName}}: {{value.filterValue}}</CAlert>
+          </span>
+
+
+        </div>
+
       </CCardBody>
       <CCardFooter>
         <CRow>
@@ -48,9 +56,10 @@
             </CButton>
           </CCol>
           <CCol col="2">
-            <CButton color="success" block>
+            <CButton color="success" block @click="filter">
               Filter
             </CButton>
+
           </CCol>
         </CRow>
       </CCardFooter>
@@ -63,16 +72,17 @@ export default {
   name: "EmployeeFilter",
   data() {
     return {
-      filterShow: false
+      filterShow: false,
+      arry: [],
+      name:''
     }
   },
   methods: {
     toggleFilter() {
-      if (this.filterShow) {
-        this.filterShow = false
-      } else {
-        this.filterShow = true
-      }
+      this.filterShow = !this.filterShow;
+    },
+    filter() {
+      this.arry.push({filterName: 'Name', filterValue: this.name})
     }
   }
 }
