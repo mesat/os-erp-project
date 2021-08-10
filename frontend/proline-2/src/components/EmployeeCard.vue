@@ -35,6 +35,7 @@
 </template>
 
 <script>
+
 export default {
   name: "EmployeeCard",
   props: ['item']
