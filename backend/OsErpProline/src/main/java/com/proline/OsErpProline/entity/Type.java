@@ -5,6 +5,10 @@ import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author Esat Sakarya
+ * created at 8/9/2021
+ */
 @Entity
 public class Type {
     private String name;
@@ -12,8 +16,8 @@ public class Type {
     private Timestamp updateTime;
     private Collection<Document> documentsByName;
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "name")
+    @Id
+    @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
     }
@@ -23,7 +27,7 @@ public class Type {
     }
 
     @Basic
-    @Column(name = "insert_time")
+    @Column(name = "insert_time", nullable = true, insertable = false, updatable = false)
     public Timestamp getInsertTime() {
         return insertTime;
     }
@@ -33,7 +37,7 @@ public class Type {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", nullable = true, insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }
@@ -47,7 +51,9 @@ public class Type {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Type type = (Type) o;
-        return Objects.equals(name, type.name) && Objects.equals(insertTime, type.insertTime) && Objects.equals(updateTime, type.updateTime);
+        return Objects.equals(name, type.name) &&
+                Objects.equals(insertTime, type.insertTime) &&
+                Objects.equals(updateTime, type.updateTime);
     }
 
     @Override
