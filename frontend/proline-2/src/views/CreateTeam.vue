@@ -27,18 +27,18 @@
       </transition-group>
     </div>
     <CRow>
-      <CCol>
-        <CInput v-model="teamName" placeholder="team name"/>
+      <CCol col="10">
+        <CInput  v-model="teamName" placeholder="team name"/>
 
       </CCol>
 
-      <CCol col="2">
-        <CButton color="success" v-on:click="submit"> Submit
+      <CCol col="1">
+        <CButton style="width:100px" color="success" v-on:click="submit"> Submit
         </CButton>
       </CCol>
 
-      <CCol col="2">
-        <CButton color="warning" v-on:click="clearTeam" v-if="showClear"> Clear Team
+      <CCol col="1">
+        <CButton style="width:100px" color="warning" v-on:click="clearTeam" v-if="showClear">Clear Team
         </CButton>
       </CCol>
     </CRow>
