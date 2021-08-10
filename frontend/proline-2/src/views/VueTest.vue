@@ -1,34 +1,33 @@
 <template>
   <div>
-    <CButton color="success" @click="click">
-      test request
+    <span v-for="value in arry">
+      <CIcon name="cilStar"/>
+      {{value}}
+    </span>
+    <CButton @click="click" color="success">
+      aaaaa
     </CButton>
+    <CAlert close-button @update:show="show">aaaaaaa</CAlert>
   </div>
 </template>
 
 <script>
-const axios = require('axios');
+import {axios} from "../javascript/_axios"
 
 
 export default {
   name: "VueTest",
-  data ()  {
+  data() {
     return {
-
+      arry: []
     }
   },
-  computed: {
-
-  },
   methods: {
-    click(){
-      axios.get('/api/employees')
-      .then(function (response){
-        alert(response.data)
-      })
-      .catch(function (error) {
-        alert(error)
-      })
+    click() {
+      this.arry += 'a'
+    },
+    show() {
+      alert('a')
     }
   }
 }
