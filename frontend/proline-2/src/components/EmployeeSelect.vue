@@ -25,7 +25,7 @@ export default {
     EmployeeFilter,
     EmployeeCard
   },
-  props: ['emp', 'loading'],
+  props: ['emp', 'loading', 'dont-render'],
   data() {
     return {}
   },

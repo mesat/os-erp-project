@@ -10,22 +10,21 @@
     <div id="selectedTeam">
       <CIcon name="cilStar" id="star" v-if="notEmpty"/>
       <transition-group name="team" id="transitionSpan">
-        <EmployeeCard v-for="(item, index) in team" :item="item" :key="item.id">
-          <template #cardActions="{item}">
-            <CCol col="8">
-              <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
-                <nobr>Make Leader</nobr>
-              </CButton>
-            </CCol>
-            <CCol col="4">
-              <CButton variant="outline" size="sm" shape="pill" color="danger" @click="remove(item)">
-                X
-              </CButton>
-            </CCol>
-          </template>
-        </EmployeeCard>
+      <EmployeeCard v-for="item in team" class="team-item" :item="item" :key="item.id">
+        <template #cardActions="{item}">
+          <CCol col="8">
+            <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
+              <nobr>Make Leader</nobr>
+            </CButton>
+          </CCol>
+          <CCol col="4">
+            <CButton variant="outline" size="sm" shape="pill" color="danger" @click="remove(item)">
+              X
+            </CButton>
+          </CCol>
+        </template>
+      </EmployeeCard>
       </transition-group>
-
     </div>
     <CRow>
       <CCol>
@@ -42,9 +41,7 @@
         <CButton color="warning" v-on:click="clearTeam" v-if="showClear"> Clear Team
         </CButton>
       </CCol>
-
     </CRow>
-
     <EmployeeSelect :emp="employees" :loading="loading">
       <template #cardActions="{item}">
         <CCol col="12">
@@ -73,7 +70,7 @@ export default {
     EmployeeSelect,
     EmployeeCard
   },
-  data() {
+  data () {
     return {
       team: [],
       teamName: '',
@@ -85,31 +82,29 @@ export default {
     addToTeam(a) {
       this.team.push(a)
     },
-    remove(item) {
+    remove (item) {/*
       this.team = this.team.filter(function (a) {
         return a.id !== item.id
-      })
+      })*/
+      this.team.splice(this.team.findIndex(function (a) {
+        return a.id === item.id
+      }), 1)
     },
-    makeLeader(item) {
+    makeLeader (item) {
       this.remove(item)
       this.team.unshift(item)
       console.log(this.team)
     },
-    summit(){
-
-    },
     clearTeam() {
-      this.team.splice(0, this.team.length)
+      this.team.splice(0,this.team.length)
     }
-
   },
   computed: {
-    notEmpty() {
+    notEmpty () {
       return this.team.length !== 0
     },
-    showClear() {
-      return this.team.length !== 0
-
+    showClear () {
+      return this.team.length !==0
     }
   },
   mounted() {
@@ -137,14 +132,12 @@ export default {
   margin: 20px 0;
   z-index: 0;
   position: relative;
-
   strong {
     margin: auto;
   }
 
 }
-
-#star {
+#star{
   position: absolute;
   width: 30px;
   height: 30px;
@@ -152,21 +145,18 @@ export default {
   top: 10px;
   left: 10px;
 }
-
 #transitionSpan {
   display: flex;
   width: 100%;
   height: 100%;
-
   .card {
     flex: 0 0 150px;
     margin: 2px;
     height: 280px;
   }
 }
-
 .team-enter-active, .team-leave-active {
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 
 .team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */
@@ -175,6 +165,6 @@ export default {
 }
 
 .team-move {
-  transition: transform 1s;
+  transition: transform 0.5s;
 }
 </style>
