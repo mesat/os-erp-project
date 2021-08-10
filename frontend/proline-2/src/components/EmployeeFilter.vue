@@ -19,31 +19,39 @@
             <CInput v-model="name" name="name" label="Name" placeholder="enter name"/>
           </CCol>
           <CCol>
-            <CInput name="last name" label="Surname" placeholder="enter surname"/>
+            <CInput v-model="surname" name="last name" label="Surname" placeholder="enter surname"/>
           </CCol>
 
           <CRow>
             <CCol>
-              <CInput name="role" label="Role" placeholder="enter role"/>
+              <CInput v-model="role" name="role" label="Role" placeholder="enter role"/>
             </CCol>
           </CRow>
           <CRow>
             <CCol>
-              <CInput name="date" label="Date" type="date"/>
+              <CInput v-model="dateStart" name="date" label="Date" type="date"/>
             </CCol>
             <CCol>
-              <CInput  name="date" label="..." type="date"/>
+              <CInput v-model="dateEnd" name="date" label="..." type="date"/>
             </CCol>
           </CRow>
+
+          <CRow>
+            <CCol>
+              <CInput v-model="bio" name="bio" label="Bio" placeholder="enter bio"/>
+            </CCol>
+          </CRow>
+
         </CRow>
 
-        <div >
-          <span v-for="value in arry">
-            <CAlert close-button @update:show="show" color="primary">{{value.filterName}}: {{value.filterValue}}</CAlert>
+        <div>
+          <span v-for="value in arry" :key="value.filterId">
+            <CAlert close-button @update:show="show(value)" color="primary">
+              {{ value.filterName }}: {{ value.filterValue }}
+            </CAlert>
           </span>
-
-
         </div>
+
 
       </CCardBody>
       <CCardFooter>
@@ -74,7 +82,12 @@ export default {
     return {
       filterShow: false,
       arry: [],
-      name:''
+      name: '',
+      surname: '',
+      role: '',
+      dateStart: '',
+      dateEnd: '',
+      bio:''
     }
   },
   methods: {
@@ -82,8 +95,45 @@ export default {
       this.filterShow = !this.filterShow;
     },
     filter() {
-      this.arry.push({filterName: 'Name', filterValue: this.name})
-    }
+      this.arry = []
+      let i = 0;
+      if (this.name) {
+        this.arry.push({filterName: 'Name', filterValue: this.name, filterId: i++})
+      }
+      if (this.surname) {
+        this.arry.push({filterName: 'Surname', filterValue: this.surname, filterId: i++})
+      }
+      if(this.role) {
+        let words= this.role.split(" ")
+        for(let k=0; k < words.length;k++) {
+          this.arry.push({filterName: 'Role', filterValue: words[k], filterId: i++})
+        }
+      }
+      if(this.dateStart) {
+        this.arry.push({filterName: 'DateStart', filterValue: this.dateStart, filterId: i++})
+      }
+      if(this.dateEnd){
+        this.arry.push({filterName: 'DateEnd', filterValue: this.dateEnd, filterId: i++})
+      }
+      if(this.bio){
+        let words = this.bio.split(" ")
+        for(let k=0; k < words.length ;k++) {
+
+          this.arry.push({filterName: 'Bio', filterValue: words[k], filterId: i++})
+
+        }
+      }
+    },
+    remove (item) {
+      this.arry = this.arry.filter(function (a) {
+        return a.filterId !== item.filterName
+      })
+    },
+    show(item) {
+      this.remove(item)
+      console.log(this.arry)
+    },
+
   }
 }
 </script>
