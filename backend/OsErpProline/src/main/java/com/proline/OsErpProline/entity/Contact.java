@@ -1,27 +1,45 @@
 package com.proline.OsErpProline.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Objects;
 
+/**
+ * @author Esat Sakarya
+ * created at 8/9/2021
+ */
 @Entity
 public class Contact {
-    private int id;
+    private Integer id;
     private String link;
-    private Socialmedia socialmediaBySocialmediaId;
+    private Timestamp insertTime;
+    private Timestamp updateTime;
     private Employee employeeByEmployeeId;
+    private Socialmedia socialmediaBySocialmediaPlatform;
 
     @Id
-    @Column(name = "id")
-    public int getId() {
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(
+            strategy= GenerationType.AUTO,
+            generator="native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "link")
+    @Column(name = "link", nullable = true, length = 45)
     public String getLink() {
         return link;
     }
@@ -30,38 +48,60 @@ public class Contact {
         this.link = link;
     }
 
+    @Basic
+    @Column(name = "insert_time", nullable = true, insertable = false, updatable = false)
+    public Timestamp getInsertTime() {
+        return insertTime;
+    }
 
+    public void setInsertTime(Timestamp insertTime) {
+        this.insertTime = insertTime;
+    }
+
+    @Basic
+    @Column(name = "update_time", nullable = true, insertable = false, updatable = false)
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contact contact = (Contact) o;
-        return id == contact.id &&  Objects.equals(link, contact.link);
+        return id == contact.id &&
+                Objects.equals(link, contact.link) &&
+                Objects.equals(insertTime, contact.insertTime) &&
+                Objects.equals(updateTime, contact.updateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, link);
+        return Objects.hash(id, link, insertTime, updateTime);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "socialmedia_id", referencedColumnName = "id", nullable = false)
-    public Socialmedia getSocialmediaBySocialmediaId() {
-        return socialmediaBySocialmediaId;
-    }
-
-    public void setSocialmediaBySocialmediaId(Socialmedia socialmediaBySocialmediaId) {
-        this.socialmediaBySocialmediaId = socialmediaBySocialmediaId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(targetEntity = Employee.class,optional = false,cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    @JsonBackReference
     public Employee getEmployeeByEmployeeId() {
         return employeeByEmployeeId;
     }
 
     public void setEmployeeByEmployeeId(Employee employeeByEmployeeId) {
         this.employeeByEmployeeId = employeeByEmployeeId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "socialmedia_platform", referencedColumnName = "platform", nullable = false)
+    public Socialmedia getSocialmediaBySocialmediaPlatform() {
+        return socialmediaBySocialmediaPlatform;
+    }
+
+    public void setSocialmediaBySocialmediaPlatform(Socialmedia socialmediaBySocialmediaPlatform) {
+        this.socialmediaBySocialmediaPlatform = socialmediaBySocialmediaPlatform;
     }
 }

@@ -1,24 +1,26 @@
 package com.proline.OsErpProline.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * @author Esat Sakarya
+ * created at 8/9/2021
+ */
 @Entity
 public class Document {
     private int id;
     private byte[] documentData;
     private Timestamp insertTime;
     private Timestamp updateTime;
-    private DocumentType documentTypeByDocumentType;
     private Employee employeeByEmployeeId;
     private Type typeByType;
+    private DocumentType documentTypeByDocumentType;
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
+    @Id
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -28,7 +30,7 @@ public class Document {
     }
 
     @Basic
-    @Column(name = "document_data")
+    @Column(name = "document_data", nullable = true)
     public byte[] getDocumentData() {
         return documentData;
     }
@@ -38,7 +40,7 @@ public class Document {
     }
 
     @Basic
-    @Column(name = "insert_time")
+    @Column(name = "insert_time", nullable = true, insertable = false, updatable = false)
     public Timestamp getInsertTime() {
         return insertTime;
     }
@@ -48,7 +50,7 @@ public class Document {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", nullable = true, insertable = false, updatable = false)
     public Timestamp getUpdateTime() {
         return updateTime;
     }
@@ -62,7 +64,10 @@ public class Document {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Document document = (Document) o;
-        return id == document.id && Arrays.equals(documentData, document.documentData) && Objects.equals(insertTime, document.insertTime) && Objects.equals(updateTime, document.updateTime);
+        return id == document.id &&
+                Arrays.equals(documentData, document.documentData) &&
+                Objects.equals(insertTime, document.insertTime) &&
+                Objects.equals(updateTime, document.updateTime);
     }
 
     @Override
@@ -72,19 +77,7 @@ public class Document {
         return result;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JsonBackReference(value = "document-document")
-    @JoinColumn(name = "document_type", referencedColumnName = "name")
-    public DocumentType getDocumentTypeByDocumentType() {
-        return documentTypeByDocumentType;
-    }
-
-    public void setDocumentTypeByDocumentType(DocumentType documentTypeByDocumentType) {
-        this.documentTypeByDocumentType = documentTypeByDocumentType;
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JsonBackReference(value = "document-employe")
+    @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     public Employee getEmployeeByEmployeeId() {
         return employeeByEmployeeId;
@@ -94,8 +87,7 @@ public class Document {
         this.employeeByEmployeeId = employeeByEmployeeId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JsonBackReference(value = "document-type")
+    @ManyToOne
     @JoinColumn(name = "type", referencedColumnName = "name")
     public Type getTypeByType() {
         return typeByType;
@@ -103,5 +95,15 @@ public class Document {
 
     public void setTypeByType(Type typeByType) {
         this.typeByType = typeByType;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "document_type", referencedColumnName = "name")
+    public DocumentType getDocumentTypeByDocumentType() {
+        return documentTypeByDocumentType;
+    }
+
+    public void setDocumentTypeByDocumentType(DocumentType documentTypeByDocumentType) {
+        this.documentTypeByDocumentType = documentTypeByDocumentType;
     }
 }

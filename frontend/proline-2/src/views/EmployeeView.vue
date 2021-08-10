@@ -41,7 +41,9 @@
 
 
 <script>
-import emp from "./_employee";
+import {axios} from "../javascript/_axios"
+import Employee from "../javascript/_employee"
+
 
 const fields = [{
   key: "icon",
@@ -70,10 +72,22 @@ export default {
   props: ['itemx'],
   data() {
     return {
-      item: emp[this.$route.params.id],
-      fields: fields
+      fields: fields,
+      item: {}
     }
+  },
+  mounted() {
+    axios.get('/api/' + this.$route.params.id)
+        .then((response) => {
+          let x = response.data
+          this.item = new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+        })
+        .catch(function (error) {
+          alert(error)
+        })
   }
+
+
 }
 </script>
 

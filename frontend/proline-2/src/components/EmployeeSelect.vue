@@ -2,12 +2,15 @@
   <div>
     <EmployeeFilter id="filter"/>
     <div id="employeeContainer">
-      <EmployeeCard v-for="item in emp" :item="item" :key="item.id" card>
-        <template #cardActions="item">
-          <slot name="cardActions" :item="item"></slot>
-        </template>
-      </EmployeeCard>
-      <strong v-if="empty"> No employees match.</strong>
+      <CSpinner color="gray-600" v-if="loading" id="spinner"/>
+      <strong v-else-if="empty"> No employees match.</strong>
+      <transition-group name="fade" id="transitionSpan">
+        <EmployeeCard v-for="item in emp" :item="item" :key="item.id" card>
+          <template #cardActions="item">
+            <slot name="cardActions" :item="item"></slot>
+          </template>
+        </EmployeeCard>
+      </transition-group>
     </div>
   </div>
 </template>
@@ -15,7 +18,6 @@
 
 import EmployeeCard from "./EmployeeCard";
 import EmployeeFilter from "./EmployeeFilter";
-import emp from '../views/_employee';
 
 export default {
   name: "EmployeeTable",
@@ -23,16 +25,13 @@ export default {
     EmployeeFilter,
     EmployeeCard
   },
-  data () {
-    return {
-      emp: emp
-    }
+  props: ['emp', 'loading'],
+  data() {
+    return {}
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
-    empty () {
+    empty() {
       return this.emp.length === 0
     }
   }
@@ -43,10 +42,21 @@ export default {
 #filter {
   margin: 0
 }
+#transitionSpan {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .card {
+    flex: 0 0 150px;
+    margin: 2px;
+    height: 280px;
+  }
+}
 #employeeContainer {
   display: flex;
-  flex-wrap: wrap;
   background: #ddd;
+  position: relative;
+
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   min-height: 100px;
@@ -54,11 +64,27 @@ export default {
   strong {
     margin: auto;
   }
-  .card {
-    flex: 0 0 150px;
-    margin: 2px;
-    height: 280px;
-  }
 }
 
+#spinner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+{
+  opacity: 0;
+}
+
+.fade-move {
+  transition: transform 1s;
+}
 </style>

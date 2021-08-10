@@ -9,7 +9,8 @@
     -->
     <div id="selectedTeam">
       <CIcon name="cilStar" id="star" v-if="notEmpty"/>
-      <EmployeeCard v-for="item in team" :item="item" :key="item.id">
+      <transition-group name="team" id="transitionSpan">
+      <EmployeeCard v-for="(item, index) in team" :item="item" :key="item.id">
         <template #cardActions="{item}">
           <CCol col="8">
             <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
@@ -23,6 +24,7 @@
           </CCol>
         </template>
       </EmployeeCard>
+      </transition-group>
     </div>
     <CRow>
       <CCol>
@@ -39,7 +41,7 @@
 
       </CCol>
     </CRow>
-    <EmployeeSelect>
+    <EmployeeSelect :emp="employees" :loading="loading">
       <template #cardActions="{item}">
         <CCol col="12">
           <CButton variant="outline" size="sm" shape="pill" color="success" @click="addToTeam(item.item)">
@@ -54,6 +56,8 @@
 <script>
 import EmployeeSelect from "../components/EmployeeSelect";
 import EmployeeCard from "../components/EmployeeCard";
+import {axios} from "../javascript/_axios";
+import Employee from "../javascript/_employee";
 
 export default {
   name: "CreateTeam",
@@ -64,7 +68,9 @@ export default {
   data () {
     return {
       team: [],
-      teamName: ''
+      teamName: '',
+      employees: [],
+      loading: false
     }
   },
   methods: {
@@ -77,8 +83,9 @@ export default {
       })
     },
     makeLeader (item) {
-      this.team.remove(item)
+      this.remove(item)
       this.team.unshift(item)
+      console.log(this.team)
     },
     clearTeam() {
       this.team.splice(0,this.team.length)
@@ -92,7 +99,17 @@ export default {
       return this.team.length !==0
 
     }
-  }
+  },
+  mounted() {
+    this.loading = true
+    axios.get("/api/employees")
+        .then((response) => {
+          this.employees = response.data.map(function (x) {
+            return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+          })
+          this.loading = false
+        })
+  },
 }
 
 </script>
@@ -112,12 +129,6 @@ export default {
     margin: auto;
   }
 
-  .card {
-    flex: 0 0 150px;
-    margin: 2px;
-    height: 280px;
-    z-index: 1;
-  }
 }
 #star{
   position: absolute;
@@ -126,5 +137,27 @@ export default {
   z-index: 2;
   top: 10px;
   left: 10px;
+}
+#transitionSpan {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .card {
+    flex: 0 0 150px;
+    margin: 2px;
+    height: 280px;
+  }
+}
+.team-enter-active, .team-leave-active {
+  transition: opacity .5s;
+}
+
+.team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */
+{
+  opacity: 0;
+}
+
+.team-move {
+  transition: transform 1s;
 }
 </style>

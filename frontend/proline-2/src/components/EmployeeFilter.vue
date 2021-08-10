@@ -5,7 +5,7 @@
     <CCardHeader>
       <CRow>
         <CCol col="1">
-          <CToggler inHeader="true" @click="toggleFilter">
+          <CToggler inHeader @click="toggleFilter">
             <CIcon name="cilList"/>
           </CToggler>
         </CCol>
