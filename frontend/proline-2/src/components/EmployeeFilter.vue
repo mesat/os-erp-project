@@ -22,11 +22,7 @@
           <CCol>
             <CInput name="last name" label="Surname" placeholder="enter surname"/>
           </CCol>
-          <CRow>
-            <CCol>
-              <CInput name="telephone" label="Telephone" placeholder="enter phone number"/>
-            </CCol>
-          </CRow>
+
           <CRow>
             <CCol>
               <CInput name="role" label="Role" placeholder="enter role"/>
