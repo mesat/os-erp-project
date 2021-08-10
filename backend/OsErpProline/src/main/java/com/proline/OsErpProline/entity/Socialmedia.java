@@ -14,7 +14,6 @@ public class Socialmedia {
     private String platform;
     private Timestamp insertTime;
     private Timestamp updateTime;
-    private Collection<Contact> contactsByPlatform;
 
     @Id
     @Column(name = "platform", nullable = false, length = 45)
@@ -61,12 +60,4 @@ public class Socialmedia {
         return Objects.hash(platform, insertTime, updateTime);
     }
 
-    @OneToMany(mappedBy = "socialmediaBySocialmediaPlatform")
-    public Collection<Contact> getContactsByPlatform() {
-        return contactsByPlatform;
-    }
-
-    public void setContactsByPlatform(Collection<Contact> contactsByPlatform) {
-        this.contactsByPlatform = contactsByPlatform;
-    }
 }
