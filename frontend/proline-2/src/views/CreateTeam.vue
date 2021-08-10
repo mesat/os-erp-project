@@ -42,7 +42,7 @@
         </CButton>
       </CCol>
     </CRow>
-    <EmployeeSelect :emp="employees" :loading="loading">
+    <EmployeeSelect :emp="employees" :loading="loading" :dont="dont">
       <template #cardActions="{item}">
         <CCol col="12">
           <CButton variant="outline" size="sm" shape="pill" color="success" @click="addToTeam(item.item)">
@@ -76,6 +76,7 @@ export default {
       teamName: '',
       employees: [],
       loading: false
+
     }
   },
   methods: {
@@ -108,6 +109,14 @@ export default {
     },
     showClear () {
       return this.team.length !==0
+    },
+    dont() {
+      console.log(this.team.map(function (a) {
+        return a.id
+      }))
+      return this.team.map(function (a) {
+        return a.id
+      })
     }
   },
   mounted() {
@@ -130,7 +139,7 @@ export default {
   flex-wrap: wrap;
   background: #ddd;
   border-radius: 10px;
-  min-height: 100px;
+  min-height: 300px;
   padding: 5px;
   margin: 20px 0;
   z-index: 0;
@@ -158,16 +167,28 @@ export default {
     height: 280px;
   }
 }
-.team-enter-active, .team-leave-active {
+.team-enter-active {
+
   transition: opacity .3s;
 }
 
+.team-leave-active
+{
+  position: absolute;
+  transition: opacity .3s;
+}
 .team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */
 {
   opacity: 0;
 }
 
+
 .team-move {
   transition: transform 0.5s;
+}
+
+.team-item {
+  transition: all .3s;
+  display: inline-block;
 }
 </style>
