@@ -2,7 +2,9 @@ package com.proline.OsErpProline.Controller;
 
 import com.proline.OsErpProline.Repository.EmployeeRepository;
 
+import com.proline.OsErpProline.Repository.SocialMediaRepository;
 import com.proline.OsErpProline.entity.Employee;
+import com.proline.OsErpProline.entity.Socialmedia;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +13,11 @@ import java.util.List;
 @CrossOrigin(origins = "${cors.address}")
 public class EmployeeController {
     private final EmployeeRepository repository;
+    private final SocialMediaRepository socialMediaRepository;
 
-    public EmployeeController(EmployeeRepository repository) {
+    public EmployeeController(EmployeeRepository repository,SocialMediaRepository socialMediaRepository) {
         this.repository = repository;
+        this.socialMediaRepository = socialMediaRepository;
     }
 
     @GetMapping("/employees")
@@ -26,6 +30,11 @@ public class EmployeeController {
         if (newEmployee.getContactsById() != null)
             newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
         return repository.save(newEmployee);
+    }
+
+    @PostMapping("/employees/socialmedia")
+    Socialmedia newSocialmedia(@RequestBody Socialmedia newSocialmedia){
+        return socialMediaRepository.save(newSocialmedia);
     }
 
     @GetMapping("/employees/{id}")
