@@ -1,27 +1,23 @@
 package com.proline.OsErpProline.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @author Esat Sakarya
+ * created at 8/9/2021
+ */
 @Entity
 public class Socialmedia {
-    private int id;
     private String platform;
-    private Collection<Contact> contactsById;
+    private Timestamp insertTime;
+    private Timestamp updateTime;
+    private Collection<Contact> contactsByPlatform;
 
     @Id
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Basic
-    @Column(name = "platform")
+    @Column(name = "platform", nullable = false, length = 45)
     public String getPlatform() {
         return platform;
     }
@@ -30,25 +26,47 @@ public class Socialmedia {
         this.platform = platform;
     }
 
+    @Basic
+    @Column(name = "insert_time", nullable = true, insertable = false, updatable = false)
+    public Timestamp getInsertTime() {
+        return insertTime;
+    }
+
+    public void setInsertTime(Timestamp insertTime) {
+        this.insertTime = insertTime;
+    }
+
+    @Basic
+    @Column(name = "update_time", nullable = true, insertable = false, updatable = false)
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Socialmedia that = (Socialmedia) o;
-        return id == that.id && Objects.equals(platform, that.platform);
+        return Objects.equals(platform, that.platform) &&
+                Objects.equals(insertTime, that.insertTime) &&
+                Objects.equals(updateTime, that.updateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, platform);
+        return Objects.hash(platform, insertTime, updateTime);
     }
 
-    @OneToMany(mappedBy = "socialmediaBySocialmediaId")
-    public Collection<Contact> getContactsById() {
-        return contactsById;
+    @OneToMany(mappedBy = "socialmediaBySocialmediaPlatform")
+    public Collection<Contact> getContactsByPlatform() {
+        return contactsByPlatform;
     }
 
-    public void setContactsById(Collection<Contact> contactsById) {
-        this.contactsById = contactsById;
+    public void setContactsByPlatform(Collection<Contact> contactsByPlatform) {
+        this.contactsByPlatform = contactsByPlatform;
     }
 }

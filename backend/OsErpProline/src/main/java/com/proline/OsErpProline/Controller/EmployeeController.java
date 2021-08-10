@@ -23,6 +23,8 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     Employee newEmployee(@RequestBody Employee newEmployee) {
+        if (newEmployee.getContactsById() != null)
+            newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
         return repository.save(newEmployee);
     }
 
