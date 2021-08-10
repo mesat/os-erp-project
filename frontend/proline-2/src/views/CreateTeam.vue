@@ -33,7 +33,7 @@
       </CCol>
 
       <CCol col="2">
-        <CButton color="success" v-on:click="summit"> Summit
+        <CButton color="success" v-on:click="submit"> Submit
         </CButton>
       </CCol>
 
@@ -95,6 +95,9 @@ export default {
       this.team.unshift(item)
       console.log(this.team)
     },
+    submit(){
+
+},
     clearTeam() {
       this.team.splice(0,this.team.length)
     }
