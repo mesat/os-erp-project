@@ -10,7 +10,7 @@
     <div id="selectedTeam">
       <CIcon name="cilStar" id="star" v-if="notEmpty"/>
       <transition-group name="team" id="transitionSpan">
-      <EmployeeCard v-for="(item, index) in team" :item="item" :key="item.id">
+      <EmployeeCard v-for="item in team" class="team-item" :item="item" :key="item.id">
         <template #cardActions="{item}">
           <CCol col="8">
             <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
@@ -77,10 +77,13 @@ export default {
     addToTeam(a) {
       this.team.push(a)
     },
-    remove (item) {
+    remove (item) {/*
       this.team = this.team.filter(function (a) {
         return a.id !== item.id
-      })
+      })*/
+      this.team.splice(this.team.findIndex(function (a) {
+        return a.id === item.id
+      }), 1)
     },
     makeLeader (item) {
       this.remove(item)
@@ -97,7 +100,6 @@ export default {
     },
     showClear () {
       return this.team.length !==0
-
     }
   },
   mounted() {
@@ -149,7 +151,7 @@ export default {
   }
 }
 .team-enter-active, .team-leave-active {
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 
 .team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */
@@ -158,6 +160,6 @@ export default {
 }
 
 .team-move {
-  transition: transform 1s;
+  transition: transform 0.5s;
 }
 </style>
