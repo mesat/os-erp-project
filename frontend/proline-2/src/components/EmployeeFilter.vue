@@ -47,7 +47,7 @@
         <div>
           <span v-for="value in arry" :key="value.filterId">
             <CAlert close-button @update:show="show(value)" color="primary">
-              {{ value.filterName }}: {{ value.filterValue }}:
+              {{ value.filterName }}: {{ value.filterValue }}
             </CAlert>
           </span>
         </div>
@@ -104,7 +104,10 @@ export default {
         this.arry.push({filterName: 'Surname', filterValue: this.surname, filterId: i++})
       }
       if(this.role) {
-        this.arry.push({filterName: 'Role', filterValue: this.role, filterId: i++})
+        let words= this.role.split(" ")
+        for(let k=0; k < words.length;k++) {
+          this.arry.push({filterName: 'Role', filterValue: words[k], filterId: i++})
+        }
       }
       if(this.dateStart) {
         this.arry.push({filterName: 'DateStart', filterValue: this.dateStart, filterId: i++})
