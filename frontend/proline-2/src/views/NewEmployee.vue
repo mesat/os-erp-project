@@ -109,9 +109,14 @@
     </CCardBody>
     <CCardFooter>
       <CRow>
-        <CCol col="0" md="10"/>
+        <CCol col="0" md="10">
+          <CAlert color="danger" close-button  :show.sync="showError">
+            {{warning}}
+          </CAlert>
+        </CCol>
         <CCol md="2">
-          <CButton block color="success" @click="submit">Submit</CButton>
+          <CSpinner color="success" v-if="loading"/>
+          <CButton block color="success" @click="submit" v-else>Submit</CButton>
         </CCol>
       </CRow>
     </CCardFooter>
@@ -120,24 +125,24 @@
 
 <script>
 import Socials from "../components/Socials";
-const axios = require('axios');
-
-const nameRegex = /^[A-Za-z]+$/i
+import {axios} from "../javascript/_axios"
+const nameRegex = /^[\p{L}'][ \p{L}'-]*[\p{L}]$/ui
 const nameMsg = "Names can only have letters and cannot be empty."
 
+// eslint-disable-next-line no-control-regex
 const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i
 const emailMsg = "This is not a valid e-mail."
 
-const bioRegex = /^.+$/i
+const bioRegex = /^.+$/iu
 const bioMsg = "This field cannot be empty."
 
-const dateRegex = /^.+$/i
+const dateRegex = /^.+$/iu
 const dateMsg = "This field cannot be empty."
 
-const roleRegex = /^.+$/i
+const roleRegex = /^.+$/iu
 const roleMsg = "This field cannot be empty."
 
-const telRegex = /^(\+[0-9]{12}|[0-9]{11})$/i
+const telRegex = /^(\+[0-9]{12}|[0-9]{11})$/iu
 const telMsg = "This is not a valid telephone"
 
 
@@ -152,7 +157,10 @@ export default {
       bio: "",
       socials: [],
       valid: {},
-      message: {}
+      message: {},
+      loading: false,
+      warning: '',
+      showError: false
     }
   },
   created() {
@@ -166,33 +174,24 @@ export default {
   },
   methods: {
     submit() {
-      /*axios.post('/api/employees',{
-        "name": this.name,
-        "surname": this.surname,
-        "rol": this.role,
-        "bio": this.bio,
-        "Leader": []
-      })
-      .then(function (response){
-        console.log(response)
-      })
-      .catch(function (error){
-        alert(error)
-      })*/
+      this.loading = true
       axios.request({
         url: '/api/employees',
         method: "POST",
         data: {
-          "id" : 50,
           "name": this.name,
-          "surname": this.surname,
+          "surname": this.surName,
           "rol": this.role,
           "bio": this.bio,
-          "Leader": []
         },
         headers: {
           'Content-Type': 'application/json'
         }
+      }).then(() => {
+        this.loading = false
+      }).catch((error) => {
+        this.showAlert(error)
+        this.loading = false
       })
     },
     isValid(val, regex) {
@@ -220,6 +219,10 @@ export default {
     isValidName(val) {
       return this.isValid(val, nameRegex)
     },
+    showAlert(text) {
+      this.showError = true
+      this.warning = text
+    }
   },
   components: {
     Socials
