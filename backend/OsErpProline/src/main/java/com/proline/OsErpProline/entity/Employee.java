@@ -122,7 +122,7 @@ public class Employee {
         return Objects.hash(id, name, surname, rol, bio, insertTime, updateTime);
     }
 
-    @OneToMany(mappedBy = "employeeByEmployeeId",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @OneToMany(mappedBy = "employeeByEmployeeId",cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
     public Collection<Contact> getContactsById() {
         return contactsById;
     }
@@ -131,7 +131,7 @@ public class Employee {
         this.contactsById = contactsById;
     }
 
-    @OneToMany(mappedBy = "employeeByEmployeeId")
+    @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
     public Collection<Document> getDocumentsById() {
         return documentsById;
     }
@@ -140,7 +140,7 @@ public class Employee {
         this.documentsById = documentsById;
     }
 
-    @OneToMany(mappedBy = "employeeByEmployeeId")
+    @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
     public Collection<Leader> getLeadersById() {
         return leadersById;
     }
@@ -149,7 +149,7 @@ public class Employee {
         this.leadersById = leadersById;
     }
 
-    @OneToMany(mappedBy = "employeeByEmployeeId")
+    @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
     public Collection<TeamMember> getTeamMembersById() {
         return teamMembersById;
     }
