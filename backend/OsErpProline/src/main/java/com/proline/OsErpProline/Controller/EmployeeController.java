@@ -7,6 +7,7 @@ import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Socialmedia;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -32,10 +33,7 @@ public class EmployeeController {
         return repository.save(newEmployee);
     }
 
-    @PostMapping("/employees/socialmedia")
-    Socialmedia newSocialmedia(@RequestBody Socialmedia newSocialmedia){
-        return socialMediaRepository.save(newSocialmedia);
-    }
+
 
     @GetMapping("/employees/{id}")
     Employee one(@PathVariable Integer id) {
@@ -43,6 +41,8 @@ public class EmployeeController {
         return repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
     }
+
+
 
     @PutMapping("/employees/{id}")
     Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Integer id) {
