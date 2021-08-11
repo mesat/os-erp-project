@@ -121,7 +121,7 @@ export default {
   },
   mounted() {
     this.loading = true
-    axios.get("/api/employees")
+    axios.get("/employees")
         .then((response) => {
           this.employees = response.data.map(function (x) {
             //return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
@@ -176,7 +176,7 @@ export default {
 
 .team-leave-active
 {
-  position: fixed;
+  position: absolute;
   transition: opacity .3s;
 }
 .team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */

@@ -207,7 +207,7 @@ export default {
       }
       console.log(data);
       axios.request({
-        url: '/api/employees',
+        url: '/employees',
         method: "POST",
         data: data,
         headers: {

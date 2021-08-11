@@ -78,7 +78,7 @@ export default {
   },
   mounted() {
     this.loading = true
-    axios.get('/api/employees/' + this.$route.params.id)
+    axios.get('/employees/' + this.$route.params.id)
         .then((response) => {
           //this.item = new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
           this.item = new Employee().parse(response.data)

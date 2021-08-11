@@ -10,7 +10,7 @@ module.exports = {
     transpileDependencies: [
         '@coreui/utils',
         '@coreui/vue'
-    ],
+    ],/*
     devServer: {
         proxy: {
             "^/api": {
@@ -19,6 +19,6 @@ module.exports = {
                 changeOrigin: true,
                 pathRewrite: { "^/api": "" }
             }
-        }/* asdasdas*/
-    }
+        }
+    }*/
 }
