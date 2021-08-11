@@ -38,7 +38,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/socialmedia")
-    List<Socialmedia> getAllSocialmedia(@RequestBody Socialmedia newSocialmedia){
+    List<Socialmedia> getAllSocialmedia(){
         return socialMediaRepository.findAll();
     }
 
