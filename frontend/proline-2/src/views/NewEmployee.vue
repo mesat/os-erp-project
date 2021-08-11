@@ -20,7 +20,6 @@
                   :invalidFeedback= "message.name"
                   :isValid="isValidName"
                   v-model="name"
-                  lazy="false"
               />
             </CCol>
             <CCol>
@@ -206,6 +205,7 @@ export default {
           }
         }))
       }
+      console.log(data);
       axios.request({
         url: '/api/employees',
         method: "POST",

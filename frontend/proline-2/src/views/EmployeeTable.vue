@@ -34,7 +34,8 @@ export default {
     axios.get("/api/employees")
         .then((response) => {
           this.employees = response.data.map(function (x) {
-            return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+            //return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+            return new Employee().parse(x)
           })
           this.loading = false
         })

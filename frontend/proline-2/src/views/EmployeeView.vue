@@ -10,31 +10,30 @@
           </span>
     </CCardHeader>
     <CCardBody id="body">
+      <CSpinner color="gray-600" v-if="loading" grow style="margin: 100px;"/>
+      <div v-else>
+        <CRow>
+          <CCol col="4">
+            <CCardText id="date">
+              <CRow><span id="role"> {{ item.role }}</span></CROW>
+              <CRow><strong>Start Date {{ item.date }}</strong></CRow>
+            </CCardText>
+          </CCol>
+          <CCol col="8">
+            <CCardText id="bio">
+              <h1 id="blok">Biography</h1>
+              <CRow><strong> {{ item.bio }} </strong></CROW>
+            </CCardText>
+            <CRow><span id="telephone">Telephone:<strong> {{ item.telephone }} </strong></span></CRow>
+            <CRow><span id="mail">Mail:<strong> {{ item.mail }}  </strong></span></CRow>
+            <CRow>
+              <CDataTable :fields="fields">
 
-      <CRow>
-        <CCol col="4">
-          <CCardText id="date">
-            <CRow><span id="role"> {{ item.role }}</span></CROW>
-            <CRow><strong>Start Date {{ item.date }}</strong></CRow>
-          </CCardText>
-        </CCol>
-
-        <CCol col="8">
-          <CCardText id="bio">
-            <h1 id="blok">Biography</h1>
-            <CRow><strong> {{ item.bio }} </strong></CROW>
-          </CCardText>
-          <CRow><span id="telephone">Telephone:<strong> {{ item.telephone }} </strong></span></CRow>
-          <CRow><span id="mail">Mail:<strong> {{ item.mail }}  </strong></span></CRow>
-          <CRow>
-            <CDataTable :fields="fields">
-
-            </CDataTable>
-          </CRow>
-        </CCol>
-      </CRow>
-
-
+              </CDataTable>
+            </CRow>
+          </CCol>
+        </CRow>
+      </div>
     </CCardBody>
   </CCard>
 </template>
@@ -73,14 +72,17 @@ export default {
   data() {
     return {
       fields: fields,
-      item: {}
+      item: {},
+      loading: false
     }
   },
   mounted() {
+    this.loading = true
     axios.get('/api/employees/' + this.$route.params.id)
         .then((response) => {
-          let x = response.data
-          this.item = new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+          //this.item = new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+          this.item = new Employee().parse(response.data)
+          this.loading = false
         })
         .catch(function (error) {
           alert(error)
@@ -159,7 +161,7 @@ $secondary: #3c4b64;
 
 #body {
   background-color: #b1b7c1;
-
+  display: block;
 }
 
 #blok {
@@ -169,7 +171,6 @@ $secondary: #3c4b64;
   border-color: rgba(150, 150, 150, 0.6);
   text-align: center;
   font-family: "Arial Rounded MT Bold";
-
 
 }
 

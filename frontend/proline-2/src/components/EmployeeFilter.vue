@@ -56,14 +56,14 @@
       </CCardBody>
       <CCardFooter>
         <CRow>
-          <CCol col="8"/>
+          <CCol col="0" sm="8"/>
 
-          <CCol col="2">
+          <CCol col="6" sm="2">
             <CButton color="warning" block>
               Clear Filters
             </CButton>
           </CCol>
-          <CCol col="2">
+          <CCol col="6" sm="2">
             <CButton color="success" block @click="filter">
               Filter
             </CButton>
