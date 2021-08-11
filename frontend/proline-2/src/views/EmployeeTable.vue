@@ -2,17 +2,17 @@
   <div>
     <EmployeeSelect :emp="employees" :loading="loading">
       <template #cardActions="{item}">
-        <CCol col="2">
-          <CButton variant="outline" size="sm" shape="pill" color="success" :to="'/view/'+item.item.id">
-            View
-          </CButton>
-        </CCol>
-        <CCol col="8"/>
-        <CCol col="2">
-          <CButton variant="outline" size="sm" shape="pill" color="primary" :to="'/edit/'+item.item.id">
-            Edit
-          </CButton>
-        </CCol>
+          <CCol class="ccol">
+            <CButton variant="outline" size="sm" shape="pill" color="success" :to="'/view/'+item.item.id">
+              View
+            </CButton>
+          </CCol>
+
+          <CCol class="ccol">
+            <CButton variant="outline" size="sm" shape="pill" color="primary" :to="'/edit/'+item.item.id">
+              Edit
+            </CButton>
+          </CCol>
       </template>
     </EmployeeSelect>
   </div>
@@ -54,5 +54,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.ccol {
+  justify-content: center;
+  display: flex;
+}
 </style>

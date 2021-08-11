@@ -1,54 +1,59 @@
 <template>
   <div id="name">
-    <h1>
-      {{ teamName }}
-    </h1>
-    <!--
-    <p v-bind:style="{fontSize:boyut + 'px'}">{{teamName}}</p>
-      v-bind
-    -->
-    <div id="selectedTeam">
-      <CIcon name="cilStar" id="star" v-if="notEmpty"/>
-      <transition-group name="team" id="transitionSpan">
-      <EmployeeCard v-for="item in team" class="team-item" :item="item" :key="item.id">
-        <template #cardActions="{item}">
-          <CCol col="8">
-            <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
-              <nobr>Make Leader</nobr>
-            </CButton>
-          </CCol>
-          <CCol col="4">
-            <CButton variant="outline" size="sm" shape="pill" color="danger" @click="remove(item)">
-              X
-            </CButton>
-          </CCol>
-        </template>
-      </EmployeeCard>
-      </transition-group>
+
+
+    <div id="teamBoard">
+      <!--
+      <h1 style="opacity: 50%" v-if="teamName.match(/^\s*$/)">
+        Write a name for the team!
+      </h1>
+      <h1 v-else>
+        {{ teamName }}<span style="opacity: 0">patates</span>
+      </h1>-->
+      <h1>
+        <input id="teamName" type="text" placeholder="Write the team name here!"/>
+      </h1>
+      <div id="selectedTeam">
+        <CIcon name="cilStar" id="star" v-if="notEmpty"/>
+
+        <transition-group name="team" id="transitionSpan">
+          <EmployeeCard v-for="item in team" class="team-item" :item="item" :key="item.id">
+            <template #cardActions="{item}">
+              <CCol col="8">
+                <CButton variant="outline" size="sm" shape="pill" color="warning" @click="makeLeader(item)">
+                  <nobr>Make Leader</nobr>
+                </CButton>
+              </CCol>
+              <CCol col="4">
+                <CButton variant="outline" size="sm" shape="pill" color="danger" @click="remove(item)">
+                  X
+                </CButton>
+              </CCol>
+            </template>
+          </EmployeeCard>
+        </transition-group>
+      </div>
     </div>
-    <CRow>
-      <CCol col="10">
-        <CInput  v-model="teamName" placeholder="team name"/>
-
-      </CCol>
-
+    <CRow alignHorizontal="end" >
       <CCol col="1">
-        <CButton style="width:100px" color="success" v-on:click="submit"> Submit
+        <CButton color="success" v-on:click="submit"> Submit
         </CButton>
       </CCol>
 
       <CCol col="1">
-        <CButton style="width:100px" color="warning" v-on:click="clearTeam" v-if="showClear">Clear Team
+        <CButton color="warning" v-on:click="clearTeam" v-if="showClear">Clear Team
         </CButton>
       </CCol>
     </CRow>
     <EmployeeSelect :emp="employees" :loading="loading" :dont="dont">
       <template #cardActions="{item}">
-        <CCol col="12">
-          <CButton variant="outline" size="sm" shape="pill" color="success" @click="addToTeam(item.item)">
-            Add to team
-          </CButton>
-        </CCol>
+        <CRow>
+          <CCol col="12">
+            <CButton variant="outline" size="sm" shape="pill" color="success" @click="addToTeam(item.item)">
+              Add to team
+            </CButton>
+          </CCol>
+        </CRow>
       </template>
     </EmployeeSelect>
 
@@ -70,12 +75,12 @@ export default {
     EmployeeSelect,
     EmployeeCard
   },
-  data () {
+  data() {
     return {
       team: [],
       teamName: '',
       employees: [],
-      loading: false
+      loading: false,
 
     }
   },
@@ -83,7 +88,7 @@ export default {
     addToTeam(a) {
       this.team.push(a)
     },
-    remove (item) {/*
+    remove(item) {/*
       this.team = this.team.filter(function (a) {
         return a.id !== item.id
       })*/
@@ -91,24 +96,24 @@ export default {
         return a.id === item.id
       }), 1)
     },
-    makeLeader (item) {
+    makeLeader(item) {
       this.remove(item)
       this.team.unshift(item)
       console.log(this.team)
     },
-    submit(){
+    submit() {
 
-},
+    },
     clearTeam() {
-      this.team.splice(0,this.team.length)
+      this.team.splice(0, this.team.length)
     }
   },
   computed: {
-    notEmpty () {
+    notEmpty() {
       return this.team.length !== 0
     },
-    showClear () {
-      return this.team.length !==0
+    showClear() {
+      return this.team.length !== 0
     },
     dont() {
       console.log(this.team.map(function (a) {
@@ -136,22 +141,32 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#selectedTeam {
-  display: flex;
-  flex-wrap: wrap;
+#teamBoard {
   background: #ddd;
   border-radius: 10px;
-  min-height: 300px;
-  padding: 5px;
+  min-height: 350px;
+  padding: 10px;
   margin: 20px 0;
   z-index: 0;
-  position: relative;
   strong {
     margin: auto;
   }
-
 }
-#star{
+
+#teamName {
+  background: #0000;
+  border: none;
+  width: 100%;
+  color: var(--cui-headings-color,unset);
+  font-size: 2.1875rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 500;
+}
+#teamName:focus {
+  outline: none;
+}
+
+#star {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -159,26 +174,33 @@ export default {
   top: 10px;
   left: 10px;
 }
+
+#selectedTeam {
+  position: relative;
+}
+
 #transitionSpan {
   display: flex;
   width: 100%;
   height: 100%;
+
   .card {
     flex: 0 0 150px;
     margin: 2px;
     height: 280px;
   }
 }
+
 .team-enter-active {
 
   transition: opacity .3s;
 }
 
-.team-leave-active
-{
+.team-leave-active {
   position: absolute;
   transition: opacity .3s;
 }
+
 .team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */
 {
   opacity: 0;

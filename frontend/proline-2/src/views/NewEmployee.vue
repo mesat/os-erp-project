@@ -214,6 +214,14 @@ export default {
           'Content-Type': 'application/json'
         }
       }).then(() => {
+        this.name = ''
+        this.surName = ''
+        this.date = ''
+        this.role = ''
+        this.bio = ''
+        this.tel = ''
+        this.mail = ''
+        this.socials = []
         this.loading = false
       }).catch((error) => {
         this.showAlert(error)

@@ -1,30 +1,42 @@
 <template>
   <div>
-    <span v-for="value in arry">
-      <CIcon name="cilStar"/>
-      {{value}}
-    </span>
+    <h1 style="color: red">
+      DELETE ALL EMPLOYEES
+    </h1>
+    <CInput placeholder="password" v-model="passwd"/>
     <CButton @click="click" color="success">
-      aaaaa
+      The Big Red Button
     </CButton>
-    <CAlert close-button @update:show="show">aaaaaaa</CAlert>
   </div>
 </template>
 
 <script>
 import {axios} from "../javascript/_axios"
+import Employee from "../javascript/_employee";
 
 
 export default {
   name: "VueTest",
   data() {
     return {
-      arry: []
+      arry: [],
+      passwd:''
     }
   },
   methods: {
     click() {
-      this.arry += 'a'
+      if(this.passwd==='çernobil') {
+        axios.get("/employees")
+            .then((response) => {
+              response.data.map(function (x) {
+                //return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+                return x['id']
+              }).forEach((x) => {
+                axios.delete("/employees/"+x)
+              })
+            })
+
+      }
     },
     show() {
       alert('a')

@@ -36,23 +36,23 @@
 const fields = [{
   key: "icon",
   label: "",
-  _classes: "col-xs-1"
+  _classes: "col-0"
 }, {
   key: "name",
   label: "Name",
-  _classes: "col-sm-2"
+  _classes: "col-1"
 }, {
   key: "nick",
   label: "Nick",
-  _classes: "col-sm-2"
+  _classes: "col-1"
 }, {
   key: "link",
   label: "Link",
-  _classes: "col-xl-7"
+  _classes: "col-9"
 }, {
   key: "delete",
   label: '',
-  _classes: "col-xs-1"
+  _classes: "col-0"
 }]
 
 import socials from "./_socials"
@@ -66,7 +66,7 @@ export default {
       items: [],
       fields: fields,
       socials: socials,
-      social: {},
+      social: '',
       nick: '',
       link: ''
     }

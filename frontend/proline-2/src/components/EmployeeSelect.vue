@@ -3,8 +3,10 @@
     <EmployeeFilter id="filter"/>
     <div id="employeeContainer">
       <CSpinner color="gray-600" v-if="loading" id="spinner"/>
-      <strong v-else-if="empty"> No employees match.</strong>
-      <transition-group name="fade" id="transitionSpan">
+      <div id="emptyText" v-else-if="empty">
+        <strong> No employees match.</strong>
+      </div>
+      <transition-group v-else name="fade" id="transitionSpan">
         <EmployeeCard v-for="item in employees" :item="item" :key="item.id" card>
           <template #cardActions="item">
             <slot name="cardActions" :item="item"></slot>
@@ -28,7 +30,9 @@ export default {
   props: {
     'emp': {
       type: Array,
-      default: () =>{return []}
+      default: () => {
+        return []
+      }
     },
     'loading': {
       type: Boolean,
@@ -36,9 +40,11 @@ export default {
     },
     'dont': {
       type: Array,
-      default: () =>{return []}
+      default: () => {
+        return []
+      }
     }
-},
+  },
   data() {
     return {}
   },
@@ -60,17 +66,20 @@ export default {
 #filter {
   margin: 0
 }
+
 #transitionSpan {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
+
   .card {
     flex: 0 0 150px;
     margin: 2px;
     height: 280px;
   }
 }
+
 #employeeContainer {
   display: flex;
   background: #ddd;
@@ -80,13 +89,15 @@ export default {
   border-bottom-right-radius: 10px;
   min-height: 100px;
   padding: 5px;
-  strong {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+
+  #emptyText {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    strong {
+
+    }
   }
 }
 
@@ -99,11 +110,11 @@ export default {
   margin: auto;
 }
 
-.fade-enter-active{
+.fade-enter-active {
   transition: opacity .5s;
 }
-.fade-leave-active
-{
+
+.fade-leave-active {
   position: absolute;
   transition: opacity .5s;
 }
