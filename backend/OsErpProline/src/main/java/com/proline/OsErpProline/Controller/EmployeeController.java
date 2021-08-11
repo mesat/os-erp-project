@@ -35,6 +35,11 @@ public class EmployeeController {
 
 
 
+    @GetMapping("/employees/socialmedia")
+    List<Socialmedia> getAllSocialmedia(){
+        return socialMediaRepository.findAll();
+    }
+
     @GetMapping("/employees/{id}")
     Employee one(@PathVariable Integer id) {
 

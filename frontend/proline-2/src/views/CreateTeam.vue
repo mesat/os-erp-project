@@ -27,22 +27,22 @@
       </transition-group>
     </div>
     <CRow>
-      <CCol>
-        <CInput v-model="teamName" placeholder="team name"/>
+      <CCol col="10">
+        <CInput  v-model="teamName" placeholder="team name"/>
 
       </CCol>
 
-      <CCol col="2">
-        <CButton color="success" v-on:click="submit"> Submit
+      <CCol col="1">
+        <CButton style="width:100px" color="success" v-on:click="submit"> Submit
         </CButton>
       </CCol>
 
-      <CCol col="2">
-        <CButton color="warning" v-on:click="clearTeam" v-if="showClear"> Clear Team
+      <CCol col="1">
+        <CButton style="width:100px" color="warning" v-on:click="clearTeam" v-if="showClear">Clear Team
         </CButton>
       </CCol>
     </CRow>
-    <EmployeeSelect :emp="employees" :loading="loading">
+    <EmployeeSelect :emp="employees" :loading="loading" :dont="dont">
       <template #cardActions="{item}">
         <CCol col="12">
           <CButton variant="outline" size="sm" shape="pill" color="success" @click="addToTeam(item.item)">
@@ -76,6 +76,7 @@ export default {
       teamName: '',
       employees: [],
       loading: false
+
     }
   },
   methods: {
@@ -108,14 +109,24 @@ export default {
     },
     showClear () {
       return this.team.length !==0
+    },
+    dont() {
+      console.log(this.team.map(function (a) {
+        return a.id
+      }))
+      return this.team.map(function (a) {
+        return a.id
+      })
     }
   },
   mounted() {
     this.loading = true
-    axios.get("/api/employees")
+    axios.get("/employees")
         .then((response) => {
           this.employees = response.data.map(function (x) {
-            return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+            //return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+            return new Employee().parse(x)
+
           })
           this.loading = false
         })
@@ -130,7 +141,7 @@ export default {
   flex-wrap: wrap;
   background: #ddd;
   border-radius: 10px;
-  min-height: 100px;
+  min-height: 300px;
   padding: 5px;
   margin: 20px 0;
   z-index: 0;
@@ -158,16 +169,28 @@ export default {
     height: 280px;
   }
 }
-.team-enter-active, .team-leave-active {
+.team-enter-active {
+
   transition: opacity .3s;
 }
 
+.team-leave-active
+{
+  position: absolute;
+  transition: opacity .3s;
+}
 .team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */
 {
   opacity: 0;
 }
 
+
 .team-move {
   transition: transform 0.5s;
+}
+
+.team-item {
+  transition: all .3s;
+  display: inline-block;
 }
 </style>

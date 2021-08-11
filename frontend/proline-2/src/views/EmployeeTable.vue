@@ -7,7 +7,12 @@
             View
           </CButton>
         </CCol>
-        <CCol col="10"/>
+        <CCol col="8"/>
+        <CCol col="2">
+          <CButton variant="outline" size="sm" shape="pill" color="primary" :to="'/edit/'+item.item.id">
+            Edit
+          </CButton>
+        </CCol>
       </template>
     </EmployeeSelect>
   </div>
@@ -31,10 +36,11 @@ export default {
   },
   mounted() {
     this.loading = true
-    axios.get("/api/employees")
+    axios.get("/employees")
         .then((response) => {
           this.employees = response.data.map(function (x) {
-            return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+            //return new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+            return new Employee().parse(x)
           })
           this.loading = false
         })

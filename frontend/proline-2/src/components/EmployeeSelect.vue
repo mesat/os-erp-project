@@ -5,7 +5,7 @@
       <CSpinner color="gray-600" v-if="loading" id="spinner"/>
       <strong v-else-if="empty"> No employees match.</strong>
       <transition-group name="fade" id="transitionSpan">
-        <EmployeeCard v-for="item in emp" :item="item" :key="item.id" card>
+        <EmployeeCard v-for="item in employees" :item="item" :key="item.id" card>
           <template #cardActions="item">
             <slot name="cardActions" :item="item"></slot>
           </template>
@@ -25,7 +25,20 @@ export default {
     EmployeeFilter,
     EmployeeCard
   },
-  props: ['emp', 'loading', 'dont-render'],
+  props: {
+    'emp': {
+      type: Array,
+      default: () =>{return []}
+    },
+    'loading': {
+      type: Boolean,
+      default: false
+    },
+    'dont': {
+      type: Array,
+      default: () =>{return []}
+    }
+},
   data() {
     return {}
   },
@@ -33,6 +46,11 @@ export default {
   computed: {
     empty() {
       return this.emp.length === 0
+    },
+    employees() {
+      return this.emp.filter((a) => {
+        return !(this.dont.includes(a.id))
+      })
     }
   }
 }
@@ -44,6 +62,7 @@ export default {
 }
 #transitionSpan {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   height: 100%;
   .card {
@@ -62,6 +81,11 @@ export default {
   min-height: 100px;
   padding: 5px;
   strong {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     margin: auto;
   }
 }
@@ -75,7 +99,12 @@ export default {
   margin: auto;
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active{
+  transition: opacity .5s;
+}
+.fade-leave-active
+{
+  position: absolute;
   transition: opacity .5s;
 }
 
@@ -85,6 +114,6 @@ export default {
 }
 
 .fade-move {
-  transition: transform 1s;
+  transition: transform 0.5s;
 }
 </style>

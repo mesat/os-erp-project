@@ -20,7 +20,6 @@
                   :invalidFeedback= "message.name"
                   :isValid="isValidName"
                   v-model="name"
-                  lazy="false"
               />
             </CCol>
             <CCol>
@@ -88,6 +87,7 @@
           type="mail"
           placeholder="Telephone number"
           :invalidFeedback= "message.tel"
+          v-model="tel"
           tooltipFeedback
           :isValid = "isValidTel"
       />
@@ -98,6 +98,7 @@
           placeholder="Enter mail"
           invalidFeedback= ""
           tooltipFeedback
+          v-model="mail"
           :isValid = "isValidMail"
       />
     </CCardBody>
@@ -158,6 +159,8 @@ export default {
       socials: [],
       valid: {},
       message: {},
+      tel: '',
+      mail: '',
       loading: false,
       warning: '',
       showError: false
@@ -175,15 +178,38 @@ export default {
   methods: {
     submit() {
       this.loading = true
+      let data = {
+        "name": this.name,
+        "surname": this.surName,
+        "rol": this.role,
+        "bio": this.bio,
+        "contactsById": [
+          {
+            "link": this.tel,
+            "socialmediaBySocialmediaPlatform": {
+              "platform": "TEL_NO",
+            }
+          },
+          {
+            "link": this.mail,
+            "socialmediaBySocialmediaPlatform": {
+              "platform": "MAIL"
+            }
+          }
+        ].concat(this.socials.map(function (a) {
+          return {
+            "link": a.link,
+            "socialmediaBySocialmediaPlatform": {
+              "platform": a.name
+            }
+          }
+        }))
+      }
+      console.log(data);
       axios.request({
-        url: '/api/employees',
+        url: '/employees',
         method: "POST",
-        data: {
-          "name": this.name,
-          "surname": this.surName,
-          "rol": this.role,
-          "bio": this.bio,
-        },
+        data: data,
         headers: {
           'Content-Type': 'application/json'
         }

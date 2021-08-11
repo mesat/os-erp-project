@@ -7,6 +7,8 @@ const EmployeeTable = () => import('@/views/EmployeeTable')
 const EmployeeView = () => import('@/views/EmployeeView')
 const CreateTeam = () => import('@/views/CreateTeam')
 const VueTest = () => import('@/views/VueTest')
+const CreateSocial = () => import('@/views/CreateSocial')
+
 
 export default new Router({
     mode: 'hash', // https://router.vuejs.org/api/#mode
@@ -47,6 +49,12 @@ function configRoutes () {
                     path: 'test',
                     name: 'VueTest',
                     component: VueTest
+                },
+                ,
+                {
+                    path: 'social',
+                    name: 'CreateSocial',
+                    component: CreateSocial
                 }
             ]
         }
