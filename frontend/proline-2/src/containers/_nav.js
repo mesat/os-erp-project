@@ -19,7 +19,12 @@ export default [{
             _name: "CSidebarNavItem",
             name: "VueTest",
             to: "/test",
+        }, {
+            _name: "CSidebarNavItem",
+            name: "Create Social Media",
+            to: "/social",
         }
+
     ]
 }
 ]

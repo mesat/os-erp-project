@@ -174,7 +174,7 @@ export default {
 
 .team-leave-active
 {
-  position: absolute;
+  position: fixed;
   transition: opacity .3s;
 }
 .team-enter, .team-leave-to /* .team-leave-active below version 2.1.8 */
