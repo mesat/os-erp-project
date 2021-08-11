@@ -37,6 +37,11 @@ public class EmployeeController {
         return socialMediaRepository.save(newSocialmedia);
     }
 
+    @GetMapping("/employees/socialmedia")
+    List<Socialmedia> getAllSocialmedia(@RequestBody Socialmedia newSocialmedia){
+        return socialMediaRepository.findAll();
+    }
+
     @GetMapping("/employees/{id}")
     Employee one(@PathVariable Integer id) {
 
