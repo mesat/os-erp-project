@@ -8,6 +8,7 @@ const EmployeeView = () => import('@/views/EmployeeView')
 const CreateTeam = () => import('@/views/CreateTeam')
 const VueTest = () => import('@/views/VueTest')
 const CreateSocial = () => import('@/views/CreateSocial')
+const EditEmployee = () => import('@/views/EditEmployee')
 
 
 export default new Router({
@@ -50,11 +51,15 @@ function configRoutes () {
                     name: 'VueTest',
                     component: VueTest
                 },
-                ,
                 {
                     path: 'social',
                     name: 'CreateSocial',
                     component: CreateSocial
+                },
+                {
+                    path: 'edit/:id',
+                    name: 'EditEmployee',
+                    component: EditEmployee
                 }
             ]
         }

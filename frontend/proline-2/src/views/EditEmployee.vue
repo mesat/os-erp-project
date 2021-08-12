@@ -1,7 +1,7 @@
 <template>
   <CCard align="left">
     <CCardHeader>
-      <h1>Create a new employee</h1>
+      <h1>Edit Employee</h1>
     </CCardHeader>
     <CCardBody>
       <CRow>
@@ -111,7 +111,7 @@
     <CCardFooter>
       <CRow>
         <CCol col="0" md="10">
-          <CAlert color="danger" close-button  :show.sync="showError">
+          <CAlert :color="notificationColor" close-button  :show.sync="showError">
             {{warning}}
           </CAlert>
         </CCol>
@@ -147,7 +147,8 @@ export default {
       mail: '',
       loading: false,
       warning: '',
-      showError: false
+      showError: false,
+      notificationColor: ""
     }
   },
   created() {
@@ -163,6 +164,16 @@ export default {
         .then((response) => {
           //this.item = new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
           let item = new Employee().parse(response.data)
+          this.name = item.name
+          this.surName = item.surName
+          this.date = item.date
+          this.role = item.role
+          this.bio = item.bio
+          this.mail = item.socials.find((a) =>{ return a.name==='MAIL'}).link
+          this.tel = item.socials.find((a) =>{ return a.name==='TEL_NO'}).link
+          this.socials = item.socials.filter(function (a) {
+            return a.name!=='MAIL' && a.name!=='TEL_NO'
+          })
 
           this.loading = false
         })
@@ -209,14 +220,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }).then(() => {
-        this.name = ''
-        this.surName = ''
-        this.date = ''
-        this.role = ''
-        this.bio = ''
-        this.tel = ''
-        this.mail = ''
-        this.socials = []
+        this.showSuccess('Successfully updated Employee!')
         this.loading = false
       }).catch((error) => {
         this.showAlert(error)
@@ -249,6 +253,12 @@ export default {
       return this.isValid(val, regex.nameRegex)
     },
     showAlert(text) {
+      this.notificationColor = "danger"
+      this.showError = true
+      this.warning = text
+    },
+    showSuccess(text) {
+      this.notificationColor = "success"
       this.showError = true
       this.warning = text
     }
