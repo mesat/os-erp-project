@@ -10,6 +10,10 @@ export default class Employee {
         this.id = id
         return this
     }
+    setSocials(s){
+        this.socials = s
+        return this
+    }
     parse(obj){
         if(obj['name'] !== undefined)
         {
@@ -25,7 +29,7 @@ export default class Employee {
         }
         if(obj['rol'] !== undefined)
         {
-            this.role = obj['role']
+            this.role = obj['rol']
         }
         if(obj['bio'] !== undefined)
         {
@@ -34,6 +38,15 @@ export default class Employee {
         if(obj['id'] !== undefined)
         {
             this.id = obj['id']
+        }
+        if(obj['contactsById'] !== undefined) {
+            this.socials = obj['contactsById'].map(function(a) {
+                return {
+                    link: a.link,
+                    nick: a.nick,
+                    name: a["socialmediaBySocialmediaPlatform"]?.platform
+                }
+            })
         }
         return this
     }

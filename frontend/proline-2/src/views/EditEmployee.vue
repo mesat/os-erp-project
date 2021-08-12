@@ -128,11 +128,13 @@
 import Socials from "../components/Socials";
 import {axios} from "../javascript/_axios";
 import * as regex from "../javascript/_regex"
+import Employee from "../javascript/_employee";
 
 export default {
-  name: "NewEmployee",
+  name: "EditEmployee",
   data() {
     return {
+      id: null,
       name: "",
       surName: "",
       date: "",
@@ -156,6 +158,17 @@ export default {
     this.message.bio = regex.bioMsg
     this.message.mail = regex.emailMsg
     this.message.tel = regex.telMsg
+
+    axios.get('/employees/' + this.$route.params.id)
+        .then((response) => {
+          //this.item = new Employee(x['name'], x['surname'], '11/11/1111', x['rol'], x['bio']).setId(x['id'])
+          let item = new Employee().parse(response.data)
+
+          this.loading = false
+        })
+        .catch(function (error) {
+          alert(error)
+        })
   },
   methods: {
     submit() {
@@ -189,8 +202,8 @@ export default {
       }
       console.log(data);
       axios.request({
-        url: '/employees',
-        method: "POST",
+        url: '/employees/' + this.$route.params.id,
+        method: "PUT",
         data: data,
         headers: {
           'Content-Type': 'application/json'
