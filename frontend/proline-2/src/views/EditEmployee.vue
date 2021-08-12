@@ -110,10 +110,16 @@
     </CCardBody>
     <CCardFooter>
       <CRow>
-        <CCol col="0" md="10">
+        <CCol col="0" md="6">
           <CAlert :color="notificationColor" close-button  :show.sync="showError">
             {{warning}}
           </CAlert>
+        </CCol>
+        <CCol md="2">
+          <CButton block color="danger" @click="deleteClick" >Delete</CButton>
+        </CCol>
+        <CCol md="2">
+          <CButton block color="warning" @click="cancel" >Cancel</CButton>
         </CCol>
         <CCol md="2">
           <CSpinner color="success" v-if="loading"/>
@@ -227,6 +233,14 @@ export default {
         this.loading = false
       })
     },
+    cancel(){
+      window.history.back()
+    },
+    deleteClick(){
+      axios.delete("/employees/"+this.$route.params.id)
+      window.history.back()
+    }
+    ,
     isValid(val, regex) {
       if(val === '' || val === undefined)
       {
