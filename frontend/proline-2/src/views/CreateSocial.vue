@@ -15,8 +15,8 @@
           <CCol>
             <CInput
               name="name"
-              label="Name"
-              placeholder="Enter name"
+              label="Social Media Name"
+              placeholder="Enter Social Media Name"
               v-model="nname"
             />
           </CCol>
