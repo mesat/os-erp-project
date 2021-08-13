@@ -13,17 +13,19 @@
         <CCol md="9" class="order-md-0">
           <CRow>
             <CCol>
-              <CInput
+              <CInput class="test1"
                   name="name"
                   label="Name"
                   placeholder="Enter employees name"
                   :invalidFeedback= "message.name"
                   :isValid="isValidName"
                   v-model="name"
+
               />
             </CCol>
             <CCol>
-              <CInput
+              <CInput class="test2"
+
                   name="last-name"
                   label="Surname"
                   placeholder="Enter employees surname"
@@ -31,6 +33,7 @@
                   tooltipFeedback
                   :isValid = "isValidName"
                   v-model="surName"
+
               />
             </CCol>
             <CRow>
@@ -249,6 +252,14 @@ export default {
 <style scoped lang="scss">
 div {
   text-align: left;
+
+}
+
+.test1{
+  text-transform: capitalize;
+}
+.test2{
+  text-transform: uppercase;
 }
 
 

@@ -3,13 +3,13 @@
     <EmployeeSelect :emp="employees" :loading="loading">
       <template #cardActions="{item}">
           <CCol class="ccol">
-            <CButton variant="outline" size="sm" shape="pill" color="success" :to="'/view/'+item.item.id">
+            <CButton variant="outline" size="sm" shape="pill" color="primary" :to="'view/'+item.item.id">
               View
             </CButton>
           </CCol>
 
           <CCol class="ccol">
-            <CButton variant="outline" size="sm" shape="pill" color="primary" :to="'/edit/'+item.item.id">
+            <CButton variant="outline" size="sm" shape="pill" color="success" :to="'edit/'+item.item.id">
               Edit
             </CButton>
           </CCol>

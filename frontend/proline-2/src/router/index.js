@@ -8,6 +8,9 @@ const EmployeeView = () => import('@/views/EmployeeView')
 const CreateTeam = () => import('@/views/CreateTeam')
 const VueTest = () => import('@/views/VueTest')
 const CreateSocial = () => import('@/views/CreateSocial')
+const EditEmployee = () => import('@/views/EditEmployee')
+const EmployeeContainer = () => import('@/containers/EmployeeContainer')
+const Dashboard = () => import('@/views/Dashboard')
 
 
 export default new Router({
@@ -23,22 +26,39 @@ function configRoutes () {
     return [
         {
             path: '/',
+            redirect: 'home',
             name: 'Home',
             component: TheContainer,
             children: [
+                {
+                  path: 'home',
+                  component: Dashboard
+                },
                 {
                     path: 'new',
                     name: 'NewEmployee',
                     component: NewEmployee
                 },{
-                    path: 'table',
+                    path: 'employees',
                     name: 'EmployeeTable',
-                    component: EmployeeTable
-                },
-                {
-                    path: 'view/:id',
-                    name: 'EmployeeView',
-                    component: EmployeeView
+                    redirect: 'employees/table',
+                    component: EmployeeContainer,
+                    children: [
+                        {
+                            path:'table',
+                            component: EmployeeTable
+                        },
+                        {
+                            path: 'edit/:id',
+                            name: 'EditEmployee',
+                            component: EditEmployee
+                        },
+                        {
+                            path: 'view/:id',
+                            name: 'EmployeeView',
+                            component: EmployeeView
+                        },
+                    ]
                 },
                 {
                     path: 'teams',
@@ -50,7 +70,6 @@ function configRoutes () {
                     name: 'VueTest',
                     component: VueTest
                 },
-                ,
                 {
                     path: 'social',
                     name: 'CreateSocial',

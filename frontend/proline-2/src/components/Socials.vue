@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <CDataTable :items="items" :fields="fields">
       <template #no-items-view>
         <div/>

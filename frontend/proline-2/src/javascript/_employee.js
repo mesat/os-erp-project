@@ -44,7 +44,8 @@ export default class Employee {
                 return {
                     link: a.link,
                     nick: a.nick,
-                    name: a["socialmediaBySocialmediaPlatform"]?.platform
+                    name: a["socialmediaBySocialmediaPlatform"]?.platform,
+                    icon: a["socialmediaBySocialmediaPlatform"]?.icon
                 }
             })
         }
