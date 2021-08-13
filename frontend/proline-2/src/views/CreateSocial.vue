@@ -8,8 +8,6 @@
     <CCardBody>
       <div id="selectedContainer">
         <CIcon :name="selected" id="selectedIcon" size="custom"/>
-
-
       </div>
 
       <div id="iconContainer">
@@ -19,7 +17,7 @@
       </div>
 
       <CRow alignHorizontal="end" >
-        <CCol col="1">
+        <CCol col="auto"  >
           <CButton color="success" v-on:click="submit"> Submit
           </CButton>
         </CCol>
@@ -31,6 +29,7 @@
 <script>
 
 import {iconsSet} from "../assets/icons/icons";
+import * as regex from "@/javascript/_regex";
 
 export default {
   name: "CreateSocial",
@@ -39,6 +38,7 @@ export default {
       selected: ''
     }
   },
+
   mounted() {
     console.log(Object.keys(iconsSet))
   },
@@ -62,6 +62,7 @@ export default {
   flex-wrap: wrap;
   padding: 10px;
   border-radius: 10px;
+  margin-bottom:10px;
   .iconButton {
     flex: 0 0 40px;
     margin: 5px;
