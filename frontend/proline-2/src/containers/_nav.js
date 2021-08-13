@@ -9,7 +9,7 @@ export default [{
         }, {
             _name: "CSidebarNavItem",
             name: "Employees",
-            to: "/table",
+            to: "/employees",
 
         }, {
             _name: "CSidebarNavItem",
