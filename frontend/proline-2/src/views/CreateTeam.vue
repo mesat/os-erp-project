@@ -36,7 +36,7 @@
     </div>
     <CRow alignHorizontal="end" >
       <CCol col="1">
-        <CButton color="success" v-on:click="submit"> Submit
+        <CButton id="submit" color="success" v-on:click="submit" > Submit
         </CButton>
       </CCol>
 
@@ -148,8 +148,10 @@ export default {
   padding: 10px;
   margin: 20px 0;
   z-index: 0;
+
   strong {
     margin: auto;
+
   }
 }
 
@@ -161,9 +163,12 @@ export default {
   font-size: 2.1875rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 500;
+
+
 }
 #teamName:focus {
   outline: none;
+
 }
 
 #star {
@@ -174,9 +179,13 @@ export default {
   top: 10px;
   left: 10px;
 }
+#submit{
+  margin-bottom: 15px;
+}
 
 #selectedTeam {
   position: relative;
+
 }
 
 #transitionSpan {
@@ -184,10 +193,12 @@ export default {
   width: 100%;
   height: 100%;
 
+
   .card {
     flex: 0 0 150px;
     margin: 2px;
     height: 280px;
+
   }
 }
 
@@ -214,5 +225,6 @@ export default {
 .team-item {
   transition: all .3s;
   display: inline-block;
+
 }
 </style>
