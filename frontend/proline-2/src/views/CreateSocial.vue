@@ -17,6 +17,7 @@
               name="name"
               label="Name"
               placeholder="Enter name"
+              v-model="nname"
             />
           </CCol>
         </CRow>
@@ -30,7 +31,7 @@
 
       <CRow alignHorizontal="end" >
         <CCol col="auto"  >
-          <CButton color="success" v-on:click="submit"> Submit
+          <CButton color="success" v-on:click="submit" > Submit
           </CButton>
         </CCol>
       </CRow>
@@ -47,7 +48,8 @@ export default {
   name: "CreateSocial",
   data() {
     return {
-      selected: ''
+      selected: '',
+      nname:''
     }
   },
 
@@ -62,7 +64,10 @@ export default {
   methods: {
     clickIcon(item) {
       this.selected = item
-    }
+    },
+    submit(item){
+      this.selected=item
+    },
   }
 }
 </script>
