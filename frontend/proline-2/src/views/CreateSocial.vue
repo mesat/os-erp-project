@@ -8,12 +8,22 @@
     <CCardBody>
       <div id="selectedContainer">
         <CIcon :name="selected" id="selectedIcon" size="custom"/>
+
+
       </div>
+
       <div id="iconContainer">
         <CButton class="iconButton" v-for="item in iconNames" :key="item" @click="clickIcon(item)" >
           <CIcon :name="item" customClasses="icons" size="custom"/>
         </CButton>
       </div>
+
+      <CRow alignHorizontal="end" >
+        <CCol col="1">
+          <CButton color="success" v-on:click="submit"> Submit
+          </CButton>
+        </CCol>
+      </CRow>
     </CCardBody>
   </CCard>
 </template>
