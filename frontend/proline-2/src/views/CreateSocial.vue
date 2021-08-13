@@ -10,6 +10,18 @@
         <CIcon :name="selected" id="selectedIcon" size="custom"/>
       </div>
 
+      <CCol>
+        <CRow>
+          <CCol>
+            <CInput
+              name="name"
+              label="Name"
+              placeholder="Enter name"
+            />
+          </CCol>
+        </CRow>
+      </CCol>
+
       <div id="iconContainer">
         <CButton class="iconButton" v-for="item in iconNames" :key="item" @click="clickIcon(item)" >
           <CIcon :name="item" customClasses="icons" size="custom"/>
