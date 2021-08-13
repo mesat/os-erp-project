@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 public class Document {
-    private int id;
+    private Integer id;
     private byte[] documentData;
     private Timestamp insertTime;
     private Timestamp updateTime;
@@ -21,7 +21,7 @@ public class Document {
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
