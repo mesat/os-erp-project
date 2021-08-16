@@ -91,15 +91,15 @@ export default {
   },
   computed: {
     socials () {
-      return this.item.socials.filter(function (a) {
+      return this.item.socials?.filter(function (a) {
         return a.name!=='MAIL' && a.name!=='TEL_NO'
       })
     },
     mail () {
-      return this.item.socials.find((a) =>{ return a.name==='MAIL'}).link
+      return this.item.socials?.find((a) =>{ return a.name==='MAIL'}).link
     },
     telephone () {
-      return this.item.socials.find((a) =>{ return a.name==='TEL_NO'}).link
+      return this.item.socials?.find((a) =>{ return a.name==='TEL_NO'}).link
     }
   }
 

@@ -89,9 +89,6 @@ export default {
       if (typeof(this.social.name) != "undefined" && this.nick !== '' && this.link !== '') {
         this.$emit('input', this.items)
         this.items.push({icon: this.social.icon, name: this.social.name, nick: this.nick, link: this.link})
-      } else {
-        // Change This!
-        alert('dont leave fields empty')
       }
     },
     delete_item(id) {
