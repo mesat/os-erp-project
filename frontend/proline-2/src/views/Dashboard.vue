@@ -5,20 +5,20 @@
 
         <CRow>
 
-          <CCol col="6">
+          <CCol col="3" >
             <CJumbotron class="h-75">
-            <CCardText id="header">
-          <h1>PROLİNE BİLİŞİM</h1>
+            <CCardText id="header" >
+          <h1>OS-ERP PROJECT</h1>
 
             </CCardText>
             </CJumbotron>
           </CCol>
 
 
-              <CCol col="6">
+              <CCol col="9">
                 <CJumbotron class="h-75">
                 <CCardText >
-                  <h1 id="contactInformation">Contact Information</h1>
+                  <h1>Contact Information</h1>
 
                   Şerifali Mah. Beyan Sok. No:60/1 34775 Ümraniye - ISTANBUL<br>
                   Tel  : +90 (216) 528 62 00<br>
@@ -32,36 +32,25 @@
 
         <CRow>
 
-          <CCol col="6">
-            <CJumbotron class="h-auto">
+          <CCol col="9">
+            <CJumbotron class="h-a" >
               <CCardText >
-                <p1>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum accumsan condimentum enim a varius.
-                  Maecenas placerat mattis risus, quis elementum augue aliquet vel.
-                  Pellentesque id metus magna. Praesent iaculis diam quis odio dapibus,
-                  in elementum nulla ornare. Phasellus posuere eros nisi, in porta purus fermentum vitae.
-                  Quisque eu sem est. Nulla gravida tortor convallis posuere condimentum.
-                  Aliquam pulvinar ullamcorper gravida. Nullam sed erat dolor. Nunc finibus,
-                  elit dignissim fringilla lobortis, neque metus hendrerit urna,
-                  id aliquam ligula mauris id nunc.
+                <h1>Information</h1>
+                <p1>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac interdum velit. Duis ac felis bibendum, dignissim orci sit amet, sodales tellus. Proin et mi ut justo sollicitudin semper. Mauris sit amet condimentum libero, a finibus orci. Donec scelerisque suscipit augue, sit amet volutpat neque scelerisque ut. Aenean ullamcorper vulputate dui, et condimentum elit auctor eget. Fusce nec ullamcorper lorem. Nullam auctor ex vitae cursus vestibulum. Integer pretium rutrum laoreet. Duis pellentesque libero odio, vitae viverra libero tempor at. Ut ut purus et neque sollicitudin semper nec ac nibh. Nulla vitae maximus enim. Maecenas imperdiet urna ac enim sollicitudin, non porttitor enim dictum. Nam tincidunt felis et sapien faucibus porttitor. Praesent eleifend dui eros. Praesent facilisis erat elit, id tincidunt orci lacinia vel.
+
+                  Nulla id neque id magna vulputate eleifend. Maecenas sapien justo, placerat sed facilisis vitae, placerat ut nulla. Nunc eget faucibus neque. Phasellus vulputate sed diam vitae sodales. Vestibulum pellentesque nunc et iaculis iaculis. Aenean a nisl nec lacus laoreet dapibus ac efficitur dolor. Nullam sit amet odio varius, suscipit elit at, malesuada tortor. Curabitur euismod dapibus libero, ut aliquet nibh aliquam non. Morbi venenatis eu sem nec vestibulum. Morbi consectetur quam quis est fringilla dictum condimentum a massa. Suspendisse potenti. Curabitur venenatis efficitur est, eu venenatis metus accumsan nec. Suspendisse interdum massa purus, at interdum purus elementum at. Donec blandit vitae purus vel luctus. Aenean suscipit enim nisl, ut ornare ex laoreet eget.
                 </p1>
               </CCardText>
             </CJumbotron>
           </CCol>
 
 
-          <CCol col="6">
-            <CJumbotron class="h-auto">
-              <CCardText>
-                <p2>Maecenas semper efficitur tellus eget placerat.
-                  Nullam accumsan, justo nec feugiat pellentesque,
-                  ante dui pulvinar turpis, eu blandit velit augue ac risus. Nulla nec accumsan mauris,
-                  a malesuada eros. Curabitur neque odio, bibendum eu velit eu, luctus laoreet augue.
-                  Curabitur neque ligula, iaculis quis sem quis, vulputate pretium enim.
-                  Fusce consequat scelerisque dictum. Morbi tristique blandit facilisis.
-                  Quisque eu massa porttitor ex posuere finibus.
-                  Nam rhoncus, augue fermentum porta molestie, nulla nisl dignissim arcu,
-                  eu semper ante ipsum et purus. Aliquam aliquam odio eu finibus feugiat.</p2>
+          <CCol col="3">
+            <CJumbotron class="h-75" >
+              <CCardText id="dynamic" >
+                <h1>NUMBER OF EMPLOYEES:</h1>
+                <h2 id="number">250</h2>
+                <p2></p2>
               </CCardText>
             </CJumbotron>
           </CCol>
@@ -86,15 +75,19 @@ export default {
   text-shadow: 3px 3px #3c4b64;
   font-size: larger;
   font-family: "Segoe UI Black";
+  position: absolute;
+}
+#dynamic {
+  position: absolute;
 }
 
-  #contactInformation{
-    color: #2c3e50;
-    text-shadow: 2px 2px #3c4b64;
-    font-size: xx-large;
-    font-family: "Segoe UI Black";
+#number{
+  color: #42b983;
 
-  }
+
+}
+
+
 
 
 </style>
