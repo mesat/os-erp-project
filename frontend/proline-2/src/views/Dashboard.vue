@@ -1,7 +1,53 @@
 <template>
   <CCard align="left" >
-    <CCardHeader id="header">
-      <h1>PROLİNE BİLİŞİM</h1>
+    <CCardHeader >
+      <CCardBody>
+
+        <CRow>
+
+          <CCol col="6">
+            <CJumbotron>
+            <CCardText id="header">
+          <h1>PROLİNE BİLİŞİM</h1>
+            </CCardText>
+            </CJumbotron>
+          </CCol>
+
+
+              <CCol col="6">
+                <CJumbotron>
+                <CCardText>
+                  <h1>PROLİNE BİLİŞİM</h1>
+                </CCardText>
+                 </CJumbotron>
+              </CCol>
+
+        </CRow>
+
+
+        <CRow>
+
+          <CCol col="6">
+            <CJumbotron>
+              <CCardText id="header">
+                <h1>PROLİNE BİLİŞİM</h1>
+              </CCardText>
+            </CJumbotron>
+          </CCol>
+
+
+          <CCol col="6">
+            <CJumbotron>
+              <CCardText>
+                <h1>PROLİNE BİLİŞİM</h1>
+              </CCardText>
+            </CJumbotron>
+          </CCol>
+
+        </CRow>
+
+      </CCardBody>
+
     </CCardHeader>
   </CCard>
 </template>
