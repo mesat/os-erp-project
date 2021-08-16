@@ -18,6 +18,7 @@ public class Type {
 
     @Id
     @Column(name = "name", nullable = false, length = 45)
+    @SequenceGenerator(name = "name", sequenceName = "ORACLE_DB_SEQ_ID")
     public String getName() {
         return name;
     }

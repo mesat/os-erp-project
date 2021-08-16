@@ -6,14 +6,14 @@
     <CCardBody>
       <CRow>
         <CCol>
-      <CCardText align="center">
+      <CCardText align="center" class="test1">
         <h3> {{item.name}} </h3>
       </CCardText>
         </CCol>
       </CRow>
       <CRow>
         <CCol>
-          <CCardText align="center">
+          <CCardText align="center" class="test2">
             <h4>{{item.surName}}</h4>
           </CCardText>
         </CCol>
@@ -57,6 +57,11 @@ export default {
   opacity: 1;
   visibility: visible;
 }
-
+.test1{
+  text-transform: capitalize;
+}
+.test2{
+  text-transform: uppercase;
+}
 
 </style>

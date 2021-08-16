@@ -4,6 +4,7 @@ import com.proline.OsErpProline.Repository.EmployeeRepository;
 import com.proline.OsErpProline.Repository.LeaderRepository;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Leader;
+import com.proline.OsErpProline.entity.Socialmedia;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -35,6 +37,11 @@ public class LeaderController {
         }
 
         return ResponseEntity.ok(optionalLeader.get());
+    }
+
+    @GetMapping
+    List<Leader> all() {
+        return leaderRepository.findAll();
     }
 
     @DeleteMapping("/{id}")

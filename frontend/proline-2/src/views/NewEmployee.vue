@@ -20,10 +20,12 @@
                   :invalidFeedback= "message.name"
                   :isValid="isValidName"
                   v-model="name"
+
               />
             </CCol>
             <CCol>
               <CInput
+
                   name="last-name"
                   label="Surname"
                   placeholder="Enter employees surname"
@@ -31,6 +33,7 @@
                   tooltipFeedback
                   :isValid = "isValidName"
                   v-model="surName"
+
               />
             </CCol>
             <CRow>
@@ -249,7 +252,10 @@ export default {
 <style scoped lang="scss">
 div {
   text-align: left;
+
 }
+
+
 
 
 </style>
