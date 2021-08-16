@@ -155,7 +155,6 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
-    @JsonBackReference
     public Collection<Leader> getLeadersById() {
         return leadersById;
     }
@@ -165,7 +164,6 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
-    @JsonBackReference
     public Collection<TeamMember> getTeamMembersById() {
         return teamMembersById;
     }
