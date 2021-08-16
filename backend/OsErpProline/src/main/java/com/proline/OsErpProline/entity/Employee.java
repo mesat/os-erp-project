@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -18,6 +19,7 @@ public class Employee {
     private String surname;
     private String rol;
     private String bio;
+    private Date startDate;
     private Timestamp insertTime;
     private Timestamp updateTime;
     private Collection<Contact> contactsById;
@@ -62,6 +64,17 @@ public class Employee {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    @Basic
+    @Column(name = "start_date")
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
 
     @Basic
     @Column(name = "rol", nullable = true, length = 45)
