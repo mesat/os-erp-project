@@ -6,11 +6,13 @@
         <CRow>
 
           <CCol col="3" >
-            <CJumbotron class="h-75">
+            <CJumbotron class="h-75" >
             <CCardText id="header" >
           <h1>OS-ERP PROJECT</h1>
+              <img src="../assets/prologo.jpg" height="150" width="150">
 
             </CCardText>
+
             </CJumbotron>
           </CCol>
 
