@@ -12,7 +12,6 @@
               <img src="../assets/prologo.jpg" height="150" width="150">
 
             </CCardText>
-
             </CJumbotron>
           </CCol>
 
@@ -75,9 +74,10 @@ export default {
 #header {
   color: #42b983;
   text-shadow: 3px 3px #3c4b64;
-  font-size: larger;
-  font-family: "Segoe UI Black";
-  position: absolute;
+  font-family: "Segoe UI Black","Fantasy black", serif;
+  position: relative;
+
+
 }
 #dynamic {
   position: absolute;
@@ -85,7 +85,8 @@ export default {
 
 #number{
   color: #42b983;
-
+  font-size: 75px;
+  text-shadow: 3px 3px #3c4b64;
 
 }
 
