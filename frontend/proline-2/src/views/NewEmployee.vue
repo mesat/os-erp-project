@@ -13,7 +13,7 @@
         <CCol md="9" class="order-md-0">
           <CRow>
             <CCol>
-              <CInput class="test1"
+              <CInput
                   name="name"
                   label="Name"
                   placeholder="Enter employees name"
@@ -24,7 +24,7 @@
               />
             </CCol>
             <CCol>
-              <CInput class="test2"
+              <CInput
 
                   name="last-name"
                   label="Surname"
@@ -255,12 +255,7 @@ div {
 
 }
 
-.test1{
-  text-transform: capitalize;
-}
-.test2{
-  text-transform: uppercase;
-}
+
 
 
 </style>
