@@ -14,6 +14,7 @@ public class Socialmedia {
     private String platform;
     private Timestamp insertTime;
     private Timestamp updateTime;
+    private String icon;
 
     @Id
     @Column(name = "platform", nullable = false, length = 45)
@@ -45,19 +46,27 @@ public class Socialmedia {
         this.updateTime = updateTime;
     }
 
+    @Basic
+    @Column(name = "icon", nullable = true,insertable = false,updatable = false)
+    public String getIcon(){ return icon; }
+
+    public void setIcon(String icon){ this.icon = icon; }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Socialmedia that = (Socialmedia) o;
         return Objects.equals(platform, that.platform) &&
+                Objects.equals(icon,that.icon)&&
                 Objects.equals(insertTime, that.insertTime) &&
                 Objects.equals(updateTime, that.updateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(platform, insertTime, updateTime);
+        return Objects.hash(platform,icon, insertTime, updateTime);
     }
 
 }

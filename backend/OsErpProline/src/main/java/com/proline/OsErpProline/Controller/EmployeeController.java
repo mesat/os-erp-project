@@ -3,6 +3,7 @@ package com.proline.OsErpProline.Controller;
 import com.proline.OsErpProline.Repository.EmployeeRepository;
 
 import com.proline.OsErpProline.Repository.SocialMediaRepository;
+import com.proline.OsErpProline.entity.Contact;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Socialmedia;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +59,10 @@ public class EmployeeController {
                     employee.setSurname(newEmployee.getSurname());
                     employee.setBio(newEmployee.getBio());
                     employee.setRol(newEmployee.getRol());
+                    employee.setContactsById(newEmployee.getContactsById());
+                    employee.setLeadersById(newEmployee.getLeadersById());
+                    employee.setDocumentsById(newEmployee.getDocumentsById());
+                    employee.setTeamMembersById(newEmployee.getTeamMembersById());
                     return repository.save(employee);
                 })
                 .orElseGet(() -> {

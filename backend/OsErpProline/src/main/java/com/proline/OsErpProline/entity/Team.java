@@ -1,5 +1,8 @@
 package com.proline.OsErpProline.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -11,7 +14,7 @@ import java.util.Objects;
  */
 @Entity
 public class Team {
-    private int id;
+    private Integer id;
     private Timestamp insertTime;
     private Timestamp updateTime;
     private Leader leaderByLeaderId;
@@ -19,7 +22,15 @@ public class Team {
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    @GeneratedValue(
+            strategy= GenerationType.AUTO,
+            generator="native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
+    public Integer getId() {
         return id;
     }
 
@@ -62,17 +73,17 @@ public class Team {
         return Objects.hash(id, insertTime, updateTime);
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "leader_id", referencedColumnName = "id", nullable = false)
     public Leader getLeaderByLeaderId() {
-        return leaderByLeaderId;
+            return leaderByLeaderId;
     }
 
     public void setLeaderByLeaderId(Leader leaderByLeaderId) {
         this.leaderByLeaderId = leaderByLeaderId;
     }
 
-    @OneToMany(mappedBy = "teamByTeamId")
+    @OneToMany(mappedBy = "teamByTeamId",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     public Collection<TeamMember> getTeamMembersById() {
         return teamMembersById;
     }
