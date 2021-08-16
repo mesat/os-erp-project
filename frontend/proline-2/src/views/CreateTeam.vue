@@ -99,7 +99,6 @@ export default {
     makeLeader(item) {
       this.remove(item)
       this.team.unshift(item)
-      console.log(this.team)
     },
     submit() {
 

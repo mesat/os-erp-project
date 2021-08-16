@@ -84,7 +84,7 @@
       <CInput
           name="tel"
           label="Telephone Number"
-          type="mail"
+          type="tel"
           placeholder="Telephone number"
           :invalidFeedback= "message.tel"
           v-model="tel"
@@ -94,7 +94,7 @@
       <CInput
           name="e-mail"
           label="E-Mail"
-          type="tel"
+          type="mail"
           placeholder="Enter mail"
           invalidFeedback= ""
           tooltipFeedback
@@ -181,13 +181,13 @@ export default {
         ].concat(this.socials.map(function (a) {
           return {
             "link": a.link,
+            "nick": a.nick,
             "socialmediaBySocialmediaPlatform": {
               "platform": a.name
             }
           }
         }))
       }
-      console.log(data);
       axios.request({
         url: '/employees',
         method: "POST",

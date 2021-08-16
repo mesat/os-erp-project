@@ -49,6 +49,7 @@ export default class Employee {
                 }
             })
         }
+        console.log(this)
         return this
     }
 }
