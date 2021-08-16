@@ -7,8 +7,8 @@
 
           <CCol col="3" >
             <CJumbotron class="h-75">
-            <CCardText id="header" >
-          <h1>OS-ERP PROJECT</h1>
+            <CCardText >
+          <h1 id="header" >OS-ERP PROJECT</h1>
 
             </CCardText>
             </CJumbotron>
@@ -50,7 +50,6 @@
               <CCardText id="dynamic" >
                 <h1>NUMBER OF EMPLOYEES:</h1>
                 <h2 id="number">250</h2>
-                <p2></p2>
               </CCardText>
             </CJumbotron>
           </CCol>
@@ -73,9 +72,10 @@ export default {
 #header {
   color: #42b983;
   text-shadow: 3px 3px #3c4b64;
-  font-size: larger;
-  font-family: "Segoe UI Black";
-  position: absolute;
+  font-family: "Segoe UI Black","Fantasy black", serif;
+  position: relative;
+
+
 }
 #dynamic {
   position: absolute;
@@ -83,7 +83,8 @@ export default {
 
 #number{
   color: #42b983;
-
+  font-size: 75px;
+  text-shadow: 3px 3px #3c4b64;
 
 }
 
