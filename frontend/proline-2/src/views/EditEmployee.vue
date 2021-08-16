@@ -6,8 +6,9 @@
     <CCardBody>
       <CRow>
         <CCol class="order-md-12">
-          <img src="../assets/logo.png" alt="logo" height="150" width="150">
-          <CInputFile custom/>
+          <img src="../assets/logo.png" height="150" width="150" v-if="!uploaded" class="profileImg">
+          <img :src="imgsrc" alt="logo" height="150" width="150" v-else class="profileImg">
+          <CInputFile custom @change="fileChange" accept="image/*"/>
         </CCol>
 
         <CCol md="9" class="order-md-0">
@@ -135,6 +136,7 @@ import Socials from "../components/Socials";
 import {axios} from "../javascript/_axios";
 import * as regex from "../javascript/_regex"
 import Employee from "../javascript/_employee";
+const urlCreator = window.URL || window.webkitURL;
 
 export default {
   name: "EditEmployee",
@@ -154,7 +156,8 @@ export default {
       loading: false,
       warning: '',
       showError: false,
-      notificationColor: ""
+      notificationColor: "",
+      uploaded: false
     }
   },
   created() {
@@ -275,6 +278,10 @@ export default {
       this.notificationColor = "success"
       this.showError = true
       this.warning = text
+    },
+    fileChange(files, event) {
+      this.uploaded = true
+      this.imgsrc = urlCreator.createObjectURL(files[0])
     }
   },
   components: {

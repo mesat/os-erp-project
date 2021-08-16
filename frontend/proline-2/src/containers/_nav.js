@@ -8,7 +8,7 @@ export default [{
             to: "/new",
         }, {
             _name: "CSidebarNavItem",
-            name: "Employees",
+            name: "Manage Employees",
             to: "/employees",
 
         }, {
@@ -21,7 +21,7 @@ export default [{
             to: "/test",
         }, {
             _name: "CSidebarNavItem",
-            name: "Create Social Media",
+            name: "Manage Social Media",
             to: "/social",
         }
 

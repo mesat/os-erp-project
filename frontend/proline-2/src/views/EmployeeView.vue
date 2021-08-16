@@ -24,11 +24,15 @@
               <h1 id="blok">Biography</h1>
               <CRow><strong> {{ item.bio }} </strong></CROW>
             </CCardText>
-            <CRow><span id="telephone">Telephone:<strong> {{ item.telephone }} </strong></span></CRow>
-            <CRow><span id="mail">Mail:<strong> {{ item.mail }}  </strong></span></CRow>
+            <CRow><span id="telephone">Telephone:<strong> {{ telephone }} </strong></span></CRow>
+            <CRow><span id="mail">Mail:<strong> {{ mail }}  </strong></span></CRow>
             <CRow>
-              <CDataTable :fields="fields">
-
+              <CDataTable :fields="fields" :items="socials">
+                <template #icon="{item}">
+                  <td>
+                    <CIcon :name="item.icon"/>
+                  </td>
+                </template>
               </CDataTable>
             </CRow>
           </CCol>
@@ -60,10 +64,6 @@ const fields = [{
   key: "link",
   label: "Link",
   _classes: "col-xl-7"
-}, {
-  key: "delete",
-  label: '',
-  _classes: "col-xs-1"
 }]
 
 export default {
@@ -72,6 +72,7 @@ export default {
   data() {
     return {
       fields: fields,
+
       item: {},
       loading: false
     }
@@ -87,7 +88,21 @@ export default {
         .catch(function (error) {
           alert(error)
         })
+  },
+  computed: {
+    socials () {
+      return this.item.socials?.filter(function (a) {
+        return a.name!=='MAIL' && a.name!=='TEL_NO'
+      })
+    },
+    mail () {
+      return this.item.socials?.find((a) =>{ return a.name==='MAIL'}).link
+    },
+    telephone () {
+      return this.item.socials?.find((a) =>{ return a.name==='TEL_NO'}).link
+    }
   }
+
 
 
 }

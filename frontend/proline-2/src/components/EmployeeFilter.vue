@@ -45,7 +45,7 @@
         </CRow>
 
         <div>
-          <span v-for="value in arry" :key="value.filterId">
+          <span v-for="value in filters" :key="value.filterId">
             <CAlert close-button @update:show="show(value)" color="primary">
               {{ value.filterName }}: {{ value.filterValue }}
             </CAlert>
@@ -81,13 +81,14 @@ export default {
   data() {
     return {
       filterShow: false,
-      arry: [],
+      filters: [],
       name: '',
       surname: '',
       role: '',
       dateStart: '',
       dateEnd: '',
-      bio:''
+      bio:'',
+      i: 0
     }
   },
   methods: {
@@ -95,43 +96,43 @@ export default {
       this.filterShow = !this.filterShow;
     },
     filter() {
-      this.arry = []
-      let i = 0;
+      this.filters = []
       if (this.name) {
-        this.arry.push({filterName: 'Name', filterValue: this.name, filterId: i++})
+        this.filters.push({filterName: 'Name', filterValue: this.name, filterId: this.i++})
       }
       if (this.surname) {
-        this.arry.push({filterName: 'Surname', filterValue: this.surname, filterId: i++})
+        this.filters.push({filterName: 'Surname', filterValue: this.surname, filterId: this.i++})
       }
       if(this.role) {
         let words= this.role.split(" ")
         for(let k=0; k < words.length;k++) {
-          this.arry.push({filterName: 'Role', filterValue: words[k], filterId: i++})
+          this.filters.push({filterName: 'Role', filterValue: words[k], filterId: this.i++})
         }
       }
       if(this.dateStart) {
-        this.arry.push({filterName: 'DateStart', filterValue: this.dateStart, filterId: i++})
+        this.filters.push({filterName: 'DateStart', filterValue: this.dateStart, filterId: this.i++})
       }
       if(this.dateEnd){
-        this.arry.push({filterName: 'DateEnd', filterValue: this.dateEnd, filterId: i++})
+        this.filters.push({filterName: 'DateEnd', filterValue: this.dateEnd, filterId: this.i++})
       }
       if(this.bio){
         let words = this.bio.split(" ")
         for(let k=0; k < words.length ;k++) {
 
-          this.arry.push({filterName: 'Bio', filterValue: words[k], filterId: i++})
+          this.filters.push({filterName: 'Bio', filterValue: words[k], filterId: this.i++})
 
         }
       }
+      console.log(this.filters)
     },
     remove (item) {
-      this.arry = this.arry.filter(function (a) {
+      this.filters = this.filters.filter(function (a) {
         return a.filterId !== item.filterName
       })
     },
     show(item) {
       this.remove(item)
-      console.log(this.arry)
+      console.log(this.filters)
     },
 
   }

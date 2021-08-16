@@ -6,8 +6,9 @@
     <CCardBody>
       <CRow>
         <CCol class="order-md-12">
-          <img src="../assets/logo.png" alt="logo" height="150" width="150">
-          <CInputFile custom/>
+          <img src="../assets/logo.png" height="150" width="150" v-if="!uploaded" class="profileImg">
+          <img :src="imgsrc" alt="logo" height="150" width="150" v-else class="profileImg">
+          <CInputFile custom @change="fileChange" accept="image/*"/>
         </CCol>
 
         <CCol md="9" class="order-md-0">
@@ -17,7 +18,7 @@
                   name="name"
                   label="Name"
                   placeholder="Enter employees name"
-                  :invalidFeedback= "message.name"
+                  :invalidFeedback="message.name"
                   :isValid="isValidName"
                   v-model="name"
 
@@ -29,9 +30,9 @@
                   name="last-name"
                   label="Surname"
                   placeholder="Enter employees surname"
-                  invalidFeedback= ""
+                  invalidFeedback=""
                   tooltipFeedback
-                  :isValid = "isValidName"
+                  :isValid="isValidName"
                   v-model="surName"
 
               />
@@ -42,9 +43,9 @@
                     label="Date"
                     type="date"
                     v-model="date"
-                    invalidFeedback= "message.date"
+                    invalidFeedback="message.date"
                     tooltipFeedback
-                    :isValid = "isValidDate"
+                    :isValid="isValidDate"
                 />
               </CCol>
             </CRow>
@@ -54,9 +55,9 @@
                 name="role"
                 label="Role"
                 placeholder="Role in the company"
-                invalidFeedback= ""
+                invalidFeedback=""
                 tooltipFeedback
-                :isValid = "isValidRole"
+                :isValid="isValidRole"
                 v-model="role"
             />
           </CRow>
@@ -67,9 +68,9 @@
                   label="Bio"
                   rows="8"
                   placeholder="Short bio of the employee..."
-                  invalidFeedback= ""
+                  invalidFeedback=""
                   tooltipFeedback
-                  :isValid = "isValidBio"
+                  :isValid="isValidBio"
                   v-model="bio"
               />
             </CCol>
@@ -87,22 +88,22 @@
       <CInput
           name="tel"
           label="Telephone Number"
-          type="mail"
+          type="tel"
           placeholder="Telephone number"
-          :invalidFeedback= "message.tel"
+          :invalidFeedback="message.tel"
           v-model="tel"
           tooltipFeedback
-          :isValid = "isValidTel"
+          :isValid="isValidTel"
       />
       <CInput
           name="e-mail"
           label="E-Mail"
-          type="tel"
+          type="mail"
           placeholder="Enter mail"
-          invalidFeedback= ""
+          invalidFeedback=""
           tooltipFeedback
           v-model="mail"
-          :isValid = "isValidMail"
+          :isValid="isValidMail"
       />
     </CCardBody>
     <CCardHeader>
@@ -114,8 +115,8 @@
     <CCardFooter>
       <CRow>
         <CCol col="0" md="10">
-          <CAlert color="danger" close-button  :show.sync="showError">
-            {{warning}}
+          <CAlert color="danger" close-button :show.sync="showError">
+            {{ warning }}
           </CAlert>
         </CCol>
         <CCol md="2">
@@ -131,6 +132,8 @@
 import Socials from "../components/Socials";
 import {axios} from "../javascript/_axios";
 import * as regex from "../javascript/_regex"
+
+const urlCreator = window.URL || window.webkitURL;
 
 export default {
   name: "NewEmployee",
@@ -148,11 +151,13 @@ export default {
       mail: '',
       loading: false,
       warning: '',
-      showError: false
+      showError: false,
+      photo: '',
+      uploaded: false
     }
   },
   created() {
-    this.message.name= regex.nameMsg
+    this.message.name = regex.nameMsg
     this.message.surName = regex.nameMsg
     this.message.date = regex.dateMsg
     this.message.role = regex.roleMsg
@@ -162,63 +167,67 @@ export default {
   },
   methods: {
     submit() {
-      this.loading = true
-      let data = {
-        "name": this.name,
-        "surname": this.surName,
-        "rol": this.role,
-        "bio": this.bio,
-        "contactsById": [
-          {
-            "link": this.tel,
-            "socialmediaBySocialmediaPlatform": {
-              "platform": "TEL_NO",
+      if (
+          this.isValidName(this.name) &&
+          this.isValidName(this.surName) &&
+          this.isValidRole(this.role) &&
+          this.isValidMail(this.mail) &&
+          this.isValidTel(this.tel) &&
+          this.isValidBio(this.bio) &&
+          this.isValidDate(this.date)
+      ) {
+        this.loading = true
+        let data = {
+          "name": this.name,
+          "surname": this.surName,
+          "rol": this.role,
+          "bio": this.bio,
+          "contactsById": [
+            {
+              "link": this.tel,
+              "socialmediaBySocialmediaPlatform": {
+                "platform": "TEL_NO",
+              }
+            },
+            {
+              "link": this.mail,
+              "socialmediaBySocialmediaPlatform": {
+                "platform": "MAIL"
+              }
             }
-          },
-          {
-            "link": this.mail,
-            "socialmediaBySocialmediaPlatform": {
-              "platform": "MAIL"
+          ].concat(this.socials.map(function (a) {
+            return {
+              "link": a.link,
+              "nick": a.nick,
+              "socialmediaBySocialmediaPlatform": {
+                "platform": a.name
+              }
             }
-          }
-        ].concat(this.socials.map(function (a) {
-          return {
-            "link": a.link,
-            "socialmediaBySocialmediaPlatform": {
-              "platform": a.name
-            }
-          }
-        }))
-      }
-      console.log(data);
-      axios.request({
-        url: '/employees',
-        method: "POST",
-        data: data,
-        headers: {
-          'Content-Type': 'application/json'
+          }))
         }
-      }).then(() => {
-        this.name = ''
-        this.surName = ''
-        this.date = ''
-        this.role = ''
-        this.bio = ''
-        this.tel = ''
-        this.mail = ''
-        this.socials = []
-        this.loading = false
-      }).catch((error) => {
-        this.showAlert(error)
-        this.loading = false
-      })
+        axios.request({
+          url: '/employees',
+          method: "POST",
+          data: data,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then((response) => {
+          this.$router.push("employees/view/"+response.data['id'])
+          this.loading = false
+        }).catch((error) => {
+          this.showAlert(error)
+          this.loading = false
+        })
+      } else
+      {
+        this.showAlert("Invalid fields")
+      }
     },
     isValid(val, regex) {
-      if(val === '' || val === undefined)
-      {
+      if (val === '' || val === undefined) {
         return null
-      }
-      else return val.match(regex) !== null;
+      } else return val.match(regex) !== null;
     },
     isValidDate(val) {
       return this.isValid(val, regex.dateRegex)
@@ -241,6 +250,10 @@ export default {
     showAlert(text) {
       this.showError = true
       this.warning = text
+    },
+    fileChange(files, event) {
+      this.uploaded = true
+      this.imgsrc = urlCreator.createObjectURL(files[0])
     }
   },
   components: {
@@ -252,10 +265,11 @@ export default {
 <style scoped lang="scss">
 div {
   text-align: left;
-
 }
 
-
+.profileImg {
+  margin: 10px
+}
 
 
 </style>

@@ -7,7 +7,7 @@ const EmployeeTable = () => import('@/views/EmployeeTable')
 const EmployeeView = () => import('@/views/EmployeeView')
 const CreateTeam = () => import('@/views/CreateTeam')
 const VueTest = () => import('@/views/VueTest')
-const CreateSocial = () => import('@/views/CreateSocial')
+const ManageSocial = () => import('@/views/ManageSocial')
 const EditEmployee = () => import('@/views/EditEmployee')
 const EmployeeContainer = () => import('@/containers/EmployeeContainer')
 const Dashboard = () => import('@/views/Dashboard')
@@ -72,8 +72,8 @@ function configRoutes () {
                 },
                 {
                     path: 'social',
-                    name: 'CreateSocial',
-                    component: CreateSocial
+                    name: 'ManageSocial',
+                    component: ManageSocial
                 }
             ]
         }
