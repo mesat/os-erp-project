@@ -3,9 +3,9 @@ package com.proline.OsErpProline.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Objects;
 
 /**

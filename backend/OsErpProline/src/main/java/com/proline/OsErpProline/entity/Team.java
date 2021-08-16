@@ -76,7 +76,7 @@ public class Team {
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name = "leader_id", referencedColumnName = "id", nullable = false)
     public Leader getLeaderByLeaderId() {
-            return leaderByLeaderId;
+        return leaderByLeaderId;
     }
 
     public void setLeaderByLeaderId(Leader leaderByLeaderId) {

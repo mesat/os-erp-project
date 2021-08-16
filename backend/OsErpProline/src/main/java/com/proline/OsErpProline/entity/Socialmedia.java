@@ -68,4 +68,5 @@ public class Socialmedia {
     public int hashCode() {
         return Objects.hash(platform,icon, insertTime, updateTime);
     }
+
 }

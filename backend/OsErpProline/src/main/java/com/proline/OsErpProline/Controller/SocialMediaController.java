@@ -30,4 +30,5 @@ public class SocialMediaController {
     void deleteEmployee(@PathVariable String platform) {
         socialMediaRepository.deleteById(platform);
     }
+
 }
