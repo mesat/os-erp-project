@@ -4,10 +4,7 @@ import com.proline.OsErpProline.Repository.EmployeeRepository;
 import com.proline.OsErpProline.Repository.SocialMediaRepository;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Socialmedia;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +25,10 @@ public class SocialMediaController {
     Socialmedia newSocialmedia(@RequestBody Socialmedia newSocialmedia){
         return socialMediaRepository.save(newSocialmedia);
     }
+
+    @DeleteMapping("/socialmedida/platform")
+    void deleteEmployee(@PathVariable String platform) {
+        socialMediaRepository.deleteById(platform);
+    }
+
 }

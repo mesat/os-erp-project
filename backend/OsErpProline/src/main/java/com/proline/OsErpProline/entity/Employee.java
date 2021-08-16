@@ -1,8 +1,10 @@
 package com.proline.OsErpProline.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
@@ -18,6 +20,7 @@ public class Employee {
     private String surname;
     private String rol;
     private String bio;
+    private Date startDate;
     private Timestamp insertTime;
     private Timestamp updateTime;
     private Collection<Contact> contactsById;
@@ -62,6 +65,17 @@ public class Employee {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    @Basic
+    @Column(name = "start_date")
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
 
     @Basic
     @Column(name = "rol", nullable = true, length = 45)
@@ -123,6 +137,7 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
+    @JsonBackReference
     public Collection<Contact> getContactsById() {
         return contactsById;
     }
@@ -132,6 +147,7 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
+    @JsonBackReference
     public Collection<Document> getDocumentsById() {
         return documentsById;
     }
@@ -141,6 +157,7 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
+    @JsonBackReference
     public Collection<Leader> getLeadersById() {
         return leadersById;
     }
@@ -150,6 +167,7 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
+    @JsonBackReference
     public Collection<TeamMember> getTeamMembersById() {
         return teamMembersById;
     }
