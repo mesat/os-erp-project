@@ -75,7 +75,7 @@ public class TeamMember {
 
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("teamMembersById")
     public Team getTeamByTeamId() {
         return teamByTeamId;
     }

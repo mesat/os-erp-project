@@ -1,5 +1,7 @@
 package com.proline.OsErpProline.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Arrays;
@@ -79,6 +81,7 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    @JsonBackReference("documentsById")
     public Employee getEmployeeByEmployeeId() {
         return employeeByEmployeeId;
     }

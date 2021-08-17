@@ -13,12 +13,8 @@ export default [{
 
         }, {
             _name: "CSidebarNavItem",
-            name: "Create Team",
+            name: "Manage Teams",
             to: "/teams",
-        }, {
-            _name: "CSidebarNavItem",
-            name: "VueTest",
-            to: "/test",
         }, {
             _name: "CSidebarNavItem",
             name: "Manage Social Media",

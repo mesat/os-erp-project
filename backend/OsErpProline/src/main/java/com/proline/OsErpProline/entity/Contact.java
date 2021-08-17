@@ -86,7 +86,7 @@ public class Contact {
 
     @ManyToOne(targetEntity = Employee.class,optional = false,cascade = CascadeType.REFRESH)
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    @JsonBackReference
+    @JsonBackReference("contactsById")
     public Employee getEmployeeByEmployeeId() {
         return employeeByEmployeeId;
     }
