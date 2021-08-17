@@ -9,7 +9,7 @@
             <CJumbotron class="h-75" >
             <CCardText id="header" >
           <h1>OS-ERP PROJECT</h1>
-              <img src="../assets/prologo.jpg" height="150" width="150">
+              <img id="image" src="../assets/prologo.jpg" height="150" width="150">
 
             </CCardText>
             </CJumbotron>
@@ -82,7 +82,11 @@ export default {
 #dynamic {
   position: absolute;
 }
-
+#image{
+  width: 100%;
+  height: auto;
+  border-radius: 500px;
+}
 #number{
   color: #42b983;
   font-size: 75px;
