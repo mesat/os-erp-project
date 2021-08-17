@@ -87,7 +87,6 @@ public class Leader {
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id", nullable = false)
-    @JsonBackReference
     public Employee getEmployeeByEmployeeId() {
         return employeeByEmployeeId;
     }

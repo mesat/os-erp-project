@@ -1,2 +1,2 @@
 export const axios = require('axios');
-axios.defaults.baseURL = "https://os-erp.herokuapp.com"
+axios.defaults.baseURL = "http://192.168.6.25:8080"
