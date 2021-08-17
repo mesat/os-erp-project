@@ -4,13 +4,14 @@ import com.proline.OsErpProline.entity.Document;
 import com.proline.OsErpProline.entity.DocumentType;
 import com.proline.OsErpProline.entity.Type;
 
+import java.io.Serializable;
 import java.util.Base64;
 
 /**
  * @author Muhammet Sakarya
  * created at 8/17/2021
  */
-public class DocumentDto {
+public class DocumentDto implements Serializable {
     private String type;
     private String documentType;
     private String document;

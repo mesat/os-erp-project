@@ -2,13 +2,14 @@ package com.proline.OsErpProline.dto;
 
 import com.proline.OsErpProline.entity.Contact;
 
+import java.io.Serializable;
 import java.util.stream.Stream;
 
 /**
  * @author Muhammet Sakarya
  * created at 8/17/2021
  */
-public class ContactDto {
+public class ContactDto implements Serializable {
     private String link;
     private SocialmediaDto socialmediaBySocialmediaPlatform;
 

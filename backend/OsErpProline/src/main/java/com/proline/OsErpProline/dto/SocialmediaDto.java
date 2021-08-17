@@ -1,10 +1,12 @@
 package com.proline.OsErpProline.dto;
 
+import java.io.Serializable;
+
 /**
  * @author Muhammet Sakarya
  * created at 8/17/2021
  */
-public class SocialmediaDto {
+public class SocialmediaDto implements Serializable {
     private String platform;
     private String icon;
 

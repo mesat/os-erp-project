@@ -3,6 +3,7 @@ package com.proline.OsErpProline.dto;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Leader;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
  * @author Muhammet Sakarya
  * created at 8/17/2021
  */
-public class EmployeeDto {
+public class EmployeeDto implements Serializable {
     private Integer id;
     private String name;
     private String surname;
