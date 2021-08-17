@@ -4,6 +4,7 @@ import com.proline.OsErpProline.Exception.EmployeeNotFoundException;
 import com.proline.OsErpProline.Repository.EmployeeRepository;
 
 import com.proline.OsErpProline.Repository.SocialMediaRepository;
+import com.proline.OsErpProline.dto.EmployeeDto;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Socialmedia;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +28,11 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    Employee newEmployee(@RequestBody Employee newEmployee) {
-        if (newEmployee.getContactsById() != null)
-            newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
-        return repository.save(newEmployee);
+    Employee newEmployee(@RequestBody EmployeeDto newEmployee) {
+//        if (newEmployee.getContactsById() != null)
+//            newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
+
+        return repository.save(newEmployee.toEmployee());
     }
 
 
