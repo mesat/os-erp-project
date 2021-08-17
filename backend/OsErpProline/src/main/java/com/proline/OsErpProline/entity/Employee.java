@@ -137,7 +137,6 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
-    @JsonBackReference
     public Collection<Contact> getContactsById() {
         return contactsById;
     }
@@ -147,7 +146,6 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
-    @JsonBackReference
     public Collection<Document> getDocumentsById() {
         return documentsById;
     }
@@ -157,7 +155,6 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
-    @JsonBackReference
     public Collection<Leader> getLeadersById() {
         return leadersById;
     }
@@ -167,7 +164,6 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
-    @JsonBackReference
     public Collection<TeamMember> getTeamMembersById() {
         return teamMembersById;
     }
