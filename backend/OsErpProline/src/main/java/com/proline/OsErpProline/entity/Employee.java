@@ -157,7 +157,7 @@ public class Employee {
         this.documentsById = documentsById;
     }
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonIgnore
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
     public Collection<Leader> getLeadersById() {
         return leadersById;
@@ -168,6 +168,7 @@ public class Employee {
     }
 
     @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
+    @JsonIgnore
     public Collection<TeamMember> getTeamMembersById() {
         return teamMembersById;
     }
