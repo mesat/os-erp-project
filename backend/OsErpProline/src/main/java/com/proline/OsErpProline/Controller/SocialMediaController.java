@@ -26,7 +26,7 @@ public class SocialMediaController {
         return socialMediaRepository.save(newSocialmedia);
     }
 
-    @DeleteMapping("/socialmedida/platform")
+    @DeleteMapping("/socialmedida/{platform}")
     void deleteEmployee(@PathVariable String platform) {
         socialMediaRepository.deleteById(platform);
     }
