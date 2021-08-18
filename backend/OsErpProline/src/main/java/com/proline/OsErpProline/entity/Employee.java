@@ -148,7 +148,7 @@ public class Employee {
         this.contactsById = contactsById;
     }
 
-    @OneToMany(mappedBy = "employeeByEmployeeId",orphanRemoval = true)
+    @OneToMany(mappedBy = "employeeByEmployeeId",cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
     public Collection<Document> getDocumentsById() {
         return documentsById;
     }

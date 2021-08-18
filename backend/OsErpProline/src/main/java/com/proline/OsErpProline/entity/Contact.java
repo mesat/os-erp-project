@@ -15,6 +15,7 @@ import java.util.Objects;
 public class Contact {
     private Integer id;
     private String link;
+    private String nick;
     private Timestamp insertTime;
     private Timestamp updateTime;
     private Employee employeeByEmployeeId;
@@ -46,6 +47,16 @@ public class Contact {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    @Basic
+    @Column(name = "nick", nullable = true, length = 45)
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
     @Basic
@@ -84,7 +95,7 @@ public class Contact {
         return Objects.hash(id, link, insertTime, updateTime);
     }
 
-    @ManyToOne(targetEntity = Employee.class,optional = false,cascade = CascadeType.REFRESH)
+    @ManyToOne(targetEntity = Employee.class,optional = false,cascade = {CascadeType.REFRESH,CascadeType.PERSIST})
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     @JsonBackReference("contactsById")
     public Employee getEmployeeByEmployeeId() {

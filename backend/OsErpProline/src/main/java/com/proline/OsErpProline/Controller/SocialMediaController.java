@@ -2,6 +2,7 @@ package com.proline.OsErpProline.Controller;
 
 import com.proline.OsErpProline.Repository.EmployeeRepository;
 import com.proline.OsErpProline.Repository.SocialMediaRepository;
+import com.proline.OsErpProline.dto.SocialmediaDto;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Socialmedia;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,8 @@ public class SocialMediaController {
     }
 
     @PostMapping("/socialmedia")
-    Socialmedia newSocialmedia(@RequestBody Socialmedia newSocialmedia){
-        return socialMediaRepository.save(newSocialmedia);
+    Socialmedia newSocialmedia(@RequestBody SocialmediaDto newSocialmedia){
+        return socialMediaRepository.save(newSocialmedia.toSocialmedia());
     }
 
     @DeleteMapping("/socialmedida/{platform}")

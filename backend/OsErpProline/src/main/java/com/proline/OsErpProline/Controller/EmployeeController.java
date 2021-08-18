@@ -29,13 +29,11 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     Employee newEmployee(@RequestBody EmployeeDto newEmployee) {
-//        if (newEmployee.getContactsById() != null)
-//            newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
+        //if (newEmployee.getContactsById() != null)
+        //  newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
 
         return repository.save(newEmployee.toEmployee());
     }
-
-
 
     @GetMapping("/employees/socialmedia")
     List<Socialmedia> getAllSocialmedia(){

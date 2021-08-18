@@ -1,9 +1,12 @@
 package com.proline.OsErpProline.dto;
 
 import com.proline.OsErpProline.entity.Contact;
+import com.proline.OsErpProline.entity.DocumentType;
+import com.proline.OsErpProline.entity.Employee;
+import com.proline.OsErpProline.entity.Socialmedia;
 
 import java.io.Serializable;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * @author Muhammet Sakarya
@@ -11,7 +14,8 @@ import java.util.stream.Stream;
  */
 public class ContactDto implements Serializable {
     private String link;
-    private SocialmediaDto socialmediaBySocialmediaPlatform;
+    private String nick;
+    private SocialmediaDto socialmedia;
 
     public String getLink() {
         return link;
@@ -21,16 +25,31 @@ public class ContactDto implements Serializable {
         this.link = link;
     }
 
-    public SocialmediaDto getSocialmediaBySocialmediaPlatform() {
-        return socialmediaBySocialmediaPlatform;
+    public String getNick() {
+        return nick;
     }
 
-    public void setSocialmediaBySocialmediaPlatform(SocialmediaDto socialmediaBySocialmediaPlatform) {
-        this.socialmediaBySocialmediaPlatform = socialmediaBySocialmediaPlatform;
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public SocialmediaDto getSocialmedia() {
+        return socialmedia;
+    }
+
+    public void setSocialmedia(SocialmediaDto socialmedia) {
+        this.socialmedia = socialmedia;
     }
 
     //todo: mapping
     public Contact toContact() {
-        return null;
+        Contact contact = new Contact();
+
+        contact.setLink(this.link);
+        contact.setNick(this.nick);
+
+        contact.setSocialmediaBySocialmediaPlatform(this.socialmedia.toSocialmedia());
+
+        return contact;
     }
 }

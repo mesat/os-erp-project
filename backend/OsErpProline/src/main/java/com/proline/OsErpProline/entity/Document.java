@@ -1,6 +1,7 @@
 package com.proline.OsErpProline.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -22,6 +23,14 @@ public class Document {
     private DocumentType documentTypeByDocumentType;
 
     @Id
+    @GeneratedValue(
+            strategy= GenerationType.AUTO,
+            generator="native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
@@ -79,7 +88,7 @@ public class Document {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Employee.class,optional = false,cascade = {CascadeType.REFRESH,CascadeType.PERSIST})
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     @JsonBackReference("documentsById")
     public Employee getEmployeeByEmployeeId() {

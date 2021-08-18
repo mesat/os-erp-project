@@ -17,6 +17,7 @@ public class Socialmedia {
     private String icon;
 
     @Id
+
     @Column(name = "platform", nullable = false, length = 45)
     public String getPlatform() {
         return platform;

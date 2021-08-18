@@ -1,5 +1,7 @@
 package com.proline.OsErpProline.dto;
 
+import com.proline.OsErpProline.entity.Socialmedia;
+
 import java.io.Serializable;
 
 /**
@@ -24,5 +26,14 @@ public class SocialmediaDto implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Socialmedia toSocialmedia(){
+        Socialmedia socialmedia = new Socialmedia();
+
+        socialmedia.setPlatform(this.platform);
+        socialmedia.setIcon(this.icon);
+
+        return socialmedia;
     }
 }
