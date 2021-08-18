@@ -6,7 +6,7 @@
     <CCardBody>
       <CRow>
         <CCol class="order-md-12">
-          <img src="../assets/logo.png" height="150" width="150" v-if="!uploaded" class="profileImg">
+          <img  src="../assets/logo.png" height="150" width="150" v-if="!uploaded" class="profileImg">
           <img :src="imgsrc" alt="logo" height="150" width="150" v-else class="profileImg">
           <CInputFile custom @change="fileChange" accept="image/*"/>
         </CCol>
@@ -268,7 +268,13 @@ div {
 }
 
 .profileImg {
-  margin: 10px
+  margin: 10px;
+  width: 75%;
+  height: auto;
+  border:15px solid;
+  border-radius: 500px;
+  border-color: #2c3e50;
+
 }
 
 
