@@ -1,6 +1,7 @@
 package com.proline.OsErpProline.Controller;
 
 import com.proline.OsErpProline.Repository.TeamRepository;
+import com.proline.OsErpProline.dto.TeamDto;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Socialmedia;
 import com.proline.OsErpProline.entity.Team;
@@ -24,10 +25,11 @@ public class TeamController {
     }
 
     @PostMapping("/team")
-    Team newEmployee(@RequestBody Team newTeam, TeamMember teamMember) {
-        if (newTeam.getTeamMembersById() != null)
-            newTeam.getTeamMembersById().forEach(member -> member.setTeamByTeamId(newTeam));
-        return teamRepository.save(newTeam);
+    Team newTeam(@RequestBody TeamDto newTeam) {
+        /*if (newTeam.getTeamMembersById() != null)
+            newTeam.getTeamMembersById().forEach(member -> member.setTeamByTeamId(newTeam));*/
+
+        return teamRepository.save(newTeam.toTeam());
     }
 
     @GetMapping("/team")

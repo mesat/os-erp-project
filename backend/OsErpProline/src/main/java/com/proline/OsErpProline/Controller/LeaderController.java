@@ -2,6 +2,8 @@ package com.proline.OsErpProline.Controller;
 
 import com.proline.OsErpProline.Repository.EmployeeRepository;
 import com.proline.OsErpProline.Repository.LeaderRepository;
+import com.proline.OsErpProline.dto.EmployeeDto;
+import com.proline.OsErpProline.dto.LeaderDto;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.Leader;
 import com.proline.OsErpProline.entity.Socialmedia;
@@ -56,7 +58,7 @@ public class LeaderController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping
+    /*@PostMapping
     public ResponseEntity<Leader> create(@RequestBody @Valid Leader leader) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(leader.getEmployeeByEmployeeId().getId());
         if (!optionalEmployee.isPresent()) {
@@ -70,8 +72,23 @@ public class LeaderController {
                 .buildAndExpand(savedLeader.getId()).toUri();
 
         return ResponseEntity.created(location).body(savedLeader);
+    }*/
+
+    @PostMapping
+    Leader newLeader(@RequestBody LeaderDto newLeader) {
+        //if (newEmployee.getContactsById() != null)
+        //  newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
+
+        return leaderRepository.save(newLeader.toLeader());
     }
 
+    /*@PostMapping
+    Leader newLeader(@RequestBody Leader newLeader) {
+        //if (newEmployee.getContactsById() != null)
+        //  newEmployee.getContactsById().forEach(o->o.setEmployeeByEmployeeId(newEmployee));
+
+        return leaderRepository.save(newLeader);
+    }*/
 
     @PutMapping("/{id}")
     public ResponseEntity<Leader> update(@RequestBody @Valid Leader leader, @PathVariable Integer id) {

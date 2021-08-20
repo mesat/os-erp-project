@@ -33,7 +33,9 @@ public class Leader {
             strategy = "native"
     )
 
-    public Integer getId() { return id; }
+    public Integer getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -95,7 +97,7 @@ public class Leader {
         this.employeeByEmployeeId = employeeByEmployeeId;
     }
 
-    @OneToMany(mappedBy = "leaderByLeaderId")
+    @OneToMany(mappedBy = "leaderByLeaderId",cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
     @JsonBackReference(value = "teamMembersById")
     public Collection<Team> getTeamsById() {
         return teamsById;

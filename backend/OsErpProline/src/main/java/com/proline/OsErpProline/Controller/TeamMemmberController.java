@@ -3,6 +3,7 @@ package com.proline.OsErpProline.Controller;
 import com.proline.OsErpProline.Exception.EmployeeNotFoundException;
 import com.proline.OsErpProline.Exception.TeamMemberException;
 import com.proline.OsErpProline.Repository.TeamMemberRepository;
+import com.proline.OsErpProline.dto.TeamMemberDto;
 import com.proline.OsErpProline.entity.Employee;
 import com.proline.OsErpProline.entity.TeamMember;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,8 @@ public class TeamMemmberController {
     }
 
     @PostMapping("/teammember")
-    TeamMember newTeamMember(@RequestBody TeamMember teamMember){
-        return teamMemberRepository.save(teamMember);
+    TeamMember newTeamMember(@RequestBody TeamMemberDto teamMember){
+        return teamMemberRepository.save(teamMember.toTeamMember());
     }
 
     @GetMapping("/teammember/{id}")

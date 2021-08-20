@@ -86,20 +86,22 @@ public class EmployeeDto implements Serializable {
     }
 
     public Employee toEmployee() {
+
         Employee employee = new Employee();
         employee.setBio(this.bio);
+        employee.setId(this.id);
 
-            employee.setContactsById(this.contactsById.stream().map(ContactDto::toContact).collect(Collectors.toList()));
-            employee.getContactsById().forEach(contact -> contact.setEmployeeByEmployeeId(employee));
+        employee.setContactsById(this.contactsById.stream().map(ContactDto::toContact).collect(Collectors.toList()));
+        employee.getContactsById().forEach(contact -> contact.setEmployeeByEmployeeId(employee));
 
-
-            employee.setDocumentsById(this.documentsById.stream().map(DocumentDto::toDocument).collect(Collectors.toList()));
-            employee.getDocumentsById().forEach(document -> document.setEmployeeByEmployeeId(employee));
+        employee.setDocumentsById(this.documentsById.stream().map(DocumentDto::toDocument).collect(Collectors.toList()));
+        employee.getDocumentsById().forEach(document -> document.setEmployeeByEmployeeId(employee));
 
         employee.setName(this.name);
         employee.setRol(this.rol);
         employee.setSurname(this.surname);
         employee.setStartDate(this.startDate);
+
         return employee;
     }
 }

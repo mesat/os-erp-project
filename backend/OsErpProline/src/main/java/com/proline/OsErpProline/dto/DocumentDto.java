@@ -42,11 +42,13 @@ public class DocumentDto implements Serializable {
 
     public Document toDocument() {
         Document document = new Document();
+
         document.setDocumentData(Base64.getDecoder().decode(this.document));
         document.setDocumentTypeByDocumentType(new DocumentType());
         document.getDocumentTypeByDocumentType().setName(this.documentType);
         document.setTypeByType(new Type());
         document.getTypeByType().setName(this.type);
+
         return document;
     }
 }

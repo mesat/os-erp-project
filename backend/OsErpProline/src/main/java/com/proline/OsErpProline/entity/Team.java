@@ -17,6 +17,7 @@ public class Team {
     private Integer id;
     private Timestamp insertTime;
     private Timestamp updateTime;
+    private String teamName;
     private Leader leaderByLeaderId;
     private Collection<TeamMember> teamMembersById;
 
@@ -56,6 +57,16 @@ public class Team {
 
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Basic
+    @Column(name = "team_name", nullable = true, length = 45)
+    public String getName() {
+        return teamName;
+    }
+
+    public void setName(String name) {
+        this.teamName = name;
     }
 
     @Override

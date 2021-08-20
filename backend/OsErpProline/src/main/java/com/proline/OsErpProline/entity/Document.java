@@ -101,6 +101,7 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name = "type", referencedColumnName = "name")
+    @JsonBackReference("type")
     public Type getTypeByType() {
         return typeByType;
     }
@@ -111,6 +112,7 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name = "document_type", referencedColumnName = "name")
+    @JsonBackReference("documentType")
     public DocumentType getDocumentTypeByDocumentType() {
         return documentTypeByDocumentType;
     }
