@@ -17,7 +17,6 @@ public class TeamDto implements Serializable {
 
     private Integer leaderEmployeeId;
     private String role;
-
     private List<Integer> employeeIdList;
 
     public Integer getLeaderEmployeeId() {

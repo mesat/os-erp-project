@@ -2,17 +2,13 @@ package com.proline.OsErpProline.Controller;
 
 import com.proline.OsErpProline.Repository.TeamRepository;
 import com.proline.OsErpProline.dto.TeamDto;
-import com.proline.OsErpProline.entity.Employee;
-import com.proline.OsErpProline.entity.Socialmedia;
 import com.proline.OsErpProline.entity.Team;
-import com.proline.OsErpProline.entity.TeamMember;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -35,5 +31,12 @@ public class TeamController {
     @GetMapping("/team")
     List<Team> getAllTeam(){
         return teamRepository.findAll();
+    }
+
+    @PutMapping("/team/{teamId}/{leaderEmployeeId}")
+    @Transactional
+    public void replaceTeam(@PathVariable Integer teamId,@PathVariable Integer leaderEmployeeId){
+        Team team = teamRepository.findById(teamId).get();
+         teamRepository.updateLeader(leaderEmployeeId,team.getLeaderByLeaderId().getId());
     }
 }
