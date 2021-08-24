@@ -37,6 +37,6 @@ public class TeamController {
     @Transactional
     public void replaceTeam(@PathVariable Integer teamId,@PathVariable Integer leaderEmployeeId){
         Team team = teamRepository.findById(teamId).get();
-         teamRepository.updateLeader(leaderEmployeeId,team.getLeaderByLeaderId().getId());
+        teamRepository.updateLeader(leaderEmployeeId,team.getLeaderByLeaderId().getId());
     }
 }

@@ -47,7 +47,11 @@ public class EmployeeController {
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
-
+    @GetMapping("employees/{rol}/{bio}")
+    public List<Employee> employeeSearch(@PathVariable String rol, @PathVariable String bio){
+        List<Employee> result = repository.searchEmployee(rol,bio);
+        return result;
+    }
 
     @PutMapping("/employees/{id}")
     Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Integer id) {
